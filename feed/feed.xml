@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="pretty-atom-feed.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Blog Title</title>
+  <subtitle>This is a longer description about your blog.</subtitle>
+  <link href="https://example.com/eleventy-base-blog/feed/feed.xml" rel="self" />
+  <link href="https://example.com/eleventy-base-blog/" />
+  <updated>2024-12-28T00:00:00Z</updated>
+  <id>https://example.com/eleventy-base-blog/</id>
+  <author>
+    <name>Your Name</name>
+  </author>
+  <entry>
+    <title>Charitable Giving in 2024</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2024-12-28-charitable-giving-in-2024/" />
+    <updated>2024-12-28T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2024-12-28-charitable-giving-in-2024/</id>
+    <content type="html">&lt;p&gt;At the end of the year I square up my donations in order to meet the fuzzy target I set for that year.  There is really no reason why I need to do this by the end of the year. It is mostly a habit from back when there was a tax advantage to donating smaller amounts while using the standard deduction.&lt;/p&gt;
+&lt;p&gt;Here is my general methodology:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Throughout the year when anyone I know (friends, family, coworkers, local orgs) asks me for support or donations, I always contribute - even if it&#39;s small.&lt;/li&gt;
+&lt;li&gt;Do lump sum donations only. This means no memberships or recurring monthly subscriptions.&lt;/li&gt;
+&lt;li&gt;Some charities I continue to do every year, but always rotate in new ones and research the effectiveness of existing ones.&lt;/li&gt;
+&lt;li&gt;Also rotate causes year by year depending on what is going on in the world. For example one year I may target climate change issues. Another year I may lean on political issues or global welfare.&lt;/li&gt;
+&lt;li&gt;Always give significantly to animal advocacy groups since animal agriculture results in more suffering and environmental damage then other industries by orders of magnitude.&lt;/li&gt;
+&lt;li&gt;For larger donations, gift my most appreciated stocks instead of cash which helps minimize capital gains taxes and maximize the impact of my giving.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here are most of the donations I gave in 2024.&lt;/p&gt;
+&lt;h3 id=&quot;cash-donations-to-communities-local-orgs&quot;&gt;Cash donations to communities/local orgs&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://sogoreate-landtrust.org/shuumi-land-tax/&quot;&gt;Shuumi Land Tax&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.lightthenight.org/&quot;&gt;Light The Night&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.catalogchoice.org/&quot;&gt;Catalog Choice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.flipthevote.org/&quot;&gt;Flip the Vote&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://swingleft.org/&quot;&gt;Swing Left&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.indivisible.org/how-to-give&quot;&gt;Indivisible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PTA and various public school things&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;open-source-tech&quot;&gt;Open source/tech&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/sponsors/syncthing&quot;&gt;syncthing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://keepass.info/donate.html&quot;&gt;KeePass&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opencollective.com/keepassxc&quot;&gt;KeePassXC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opencollective.com/curl/contribute&quot;&gt;Curl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.gnome.org/donate/&quot;&gt;Gnome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://archlinux.org/donate/&quot;&gt;Arch Linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nixos.org/community/#foundation&quot;&gt;NixOS Foundation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.fsf.org&quot;&gt;Free Software Foundation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.eff.org/&quot;&gt;Electronic Frontier Foundation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://linuxunplugged.com/&quot;&gt;Linux Unplugged&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;larger-stock-donations&quot;&gt;Larger stock donations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.doctorswithoutborders.org&quot;&gt;Doctors Without Borders&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.givedirectly.org/&quot;&gt;Give Directly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://animalcharityevaluators.org/donate/&quot;&gt;Animal Charity Evaluators Effective Animal Advocacy Fund&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://mercyforanimals.org/ways-to-give/&quot;&gt;Mercy For Animals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.catf.us/&quot;&gt;Clean Air Task Force&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>On Coding Interviews: What Works, What Doesn’t, and Why It Matters</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/" />
+    <updated>2024-10-25T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/</id>
+    <content type="html">&lt;p&gt;The relationship between technical interviews and real-world performance remains one of the most debated topics in software engineering recruitment. While you may be reading this because of a recent interview experience we shared, this post aims to explore a broader and more important question: how can companies better identify talented developers? Although many organizations have established interview processes they consider sufficient, the challenge of false negatives – rejecting qualified candidates – continues to impact both companies and developers &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;. As Joel Spolsky notes, &amp;quot;A lot of good programmers end up getting rejected — while, even worse, companies end up hiring people who are good at passing tests, but under-perform in the real world&amp;quot; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn2&quot; id=&quot;fnref2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;. Drawing from industry anecdotes &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn3&quot; id=&quot;fnref3&quot;&gt;[3]&lt;/a&gt;&lt;/sup&gt;, professional discussions &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn4&quot; id=&quot;fnref4&quot;&gt;[4]&lt;/a&gt;&lt;/sup&gt;, and academic research &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn5&quot; id=&quot;fnref5&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;, this post examines real-world examples and alternatives to traditional coding interviews.&lt;/p&gt;
+&lt;h2 id=&quot;a-bit-about-me&quot;&gt;A bit about me&lt;/h2&gt;
+&lt;p&gt;I am a lifelong developer. When I discovered programming in adolescence I took to it and never stopped. After decades of being a full time individual contributor my love of coding only continues to deepen.&lt;/p&gt;
+&lt;p&gt;I always have my hands in open source and side projects. After the work day is done it is not uncommon for me to put in another days worth of work on &lt;a href=&quot;https://github.com/jonocodes&quot;&gt;my personal and open source projects&lt;/a&gt;. Many of these projects also directly benefit my place of work &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn6&quot; id=&quot;fnref6&quot;&gt;[6]&lt;/a&gt;&lt;/sup&gt; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn7&quot; id=&quot;fnref7&quot;&gt;[7]&lt;/a&gt;&lt;/sup&gt; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn8&quot; id=&quot;fnref8&quot;&gt;[8]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Managers say I am enthusiastic and known for going above and beyond to work out innovative solutions. I am eager to learn and like to mentor. I regularly give tech talks, non-tech talks, lead projects, and security workshops &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn9&quot; id=&quot;fnref9&quot;&gt;[9]&lt;/a&gt;&lt;/sup&gt;.  See my &lt;a href=&quot;https://digitus.notion.site/Jono-Finger-Professional-Info-113025d8c35b80bea249e1de35ae55c4&quot;&gt;reviews from peers and managers&lt;/a&gt;. They can be &lt;a href=&quot;https://www.linkedin.com/in/jfinger/details/recommendations&quot;&gt;verified on linkedin&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;the-problem-with-coding-questions&quot;&gt;The problem with coding questions&lt;/h2&gt;
+&lt;p&gt;I do well on all parts of the interview process, but not on live coding questions. Most professions do not have an equivalent hurdle in their process, but these are common place in tech. Many experienced engineers, particularly at senior levels, view these assessments with skepticism or actively avoid organizations that rely heavily on them &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn10&quot; id=&quot;fnref10&quot;&gt;[10]&lt;/a&gt;&lt;/sup&gt;. They consider it a red flag or they find them insulting.&lt;/p&gt;
+&lt;p&gt;Still, companies rely heavily on these pass/fail &amp;quot;tests&amp;quot;. In my tenure as a programmer I have actually seen interviews improve over the years by relying less on these assessments. But some traditions die hard &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn11&quot; id=&quot;fnref11&quot;&gt;[11]&lt;/a&gt;&lt;/sup&gt;. As technologists, we should strive to keep up with best practices.&lt;/p&gt;
+&lt;p&gt;Having an hour long tech question tends to rely on landing the &amp;quot;trick&amp;quot; to the answer early on.&lt;br&gt;
+If you don&#39;t happen to know the answer from previously doing the same one or miraculously stumbling upon it in the first few minutes you will be wasting the next 40. Some engineers have a knack for these types of questions - but it is not a good measure of the quality of their work.&lt;/p&gt;
+&lt;p&gt;Consider a magic trick: initially, it captivates audiences precisely because the solution seems impossibly clever. Yet once revealed, the same trick often appears deceptively simple, leading viewers to wonder why they didn&#39;t see through it immediately. This psychological shift reflects perfectly the dynamics of technical interview questions. This phenomenon can be explained by what psychologists call &amp;quot;the curse of knowledge&amp;quot; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn12&quot; id=&quot;fnref12&quot;&gt;[12]&lt;/a&gt;&lt;/sup&gt; or the &amp;quot;illusion of transparency&amp;quot; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn13&quot; id=&quot;fnref13&quot;&gt;[13]&lt;/a&gt;&lt;/sup&gt; When an interviewer is given the answer to a coding question it becomes obvious to them. They feel it is trivial by virtue of knowing the answer. This is not their fault. It&#39;s a natural bias, but one we can address.&lt;/p&gt;
+&lt;p&gt;The problem compounds when companies reuse interview questions over extended periods - sometimes years. Engineer interviewers naturally refine their understanding of the problem space, discovering edge cases and optimization opportunities. This deepening expertise can widen the gap between their perception of the problem&#39;s difficulty and a candidate&#39;s first-time experience with it.&lt;/p&gt;
+&lt;p&gt;Another common pitfall occurs when companies frame interview questions around their domain expertise, even when hiring for general software engineering roles. For instance, a biotech company might ask candidates to implement a gene-pair categorizing algorithm, despite not requiring prior biology knowledge. The employee lives and breaths these questions every day. So does everyone around them. That&#39;s likely been what they have been working on for years. Such questions can create an unintended expertise bias, as interviewers who work with these concepts daily may struggle to view the problem from a newcomer&#39;s perspective.&lt;/p&gt;
+&lt;p&gt;In practice these types of questions rarely come up at work. But if they do, we enjoy it. We share the problem with the team and try to figure out the best solutions. Sleep on it. Come back the next day and talk some more. Engineers are problem solvers and love a good challenge, but that experience is different then a timed pass/fail &amp;quot;test&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Much of the same can be said for interview sessions focused on algorithm whiteboarding. Balance a red black tree? When would someone ever need to implement that? In fact, they should not. A good engineer stands on the shoulders of giants and knows to not roll their own cryptography &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn14&quot; id=&quot;fnref14&quot;&gt;[14]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;alternative-approaches&quot;&gt;Alternative Approaches&lt;/h2&gt;
+&lt;p&gt;Here are several alternatives to traditional live coding interviews I have seen or implemented myself at companies that can better assess a candidate&#39;s real-world engineering capabilities:&lt;/p&gt;
+&lt;h3 id=&quot;1-take-home-projects&quot;&gt;1. Take-Home Projects&lt;/h3&gt;
+&lt;p&gt;Provide candidates with a substantial coding assignment they can complete in their natural development environment. This approach allows for more complex problems than live coding sessions, as developers can utilize their usual tools and resources – reflecting actual workplace conditions &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn15&quot; id=&quot;fnref15&quot;&gt;[15]&lt;/a&gt;&lt;/sup&gt;. Consider:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Setting clear time expectations rather than strict limits&lt;/li&gt;
+&lt;li&gt;Requesting documentation and test coverage&lt;/li&gt;
+&lt;li&gt;Create your own unit tests that can check the answers&lt;/li&gt;
+&lt;li&gt;Using platforms like Coderpad or Codility for streamlined administration&lt;/li&gt;
+&lt;li&gt;Ensuring the scope remains reasonable and respectful of candidates&#39; time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2-code-review-sessions&quot;&gt;2. Code Review Sessions&lt;/h3&gt;
+&lt;p&gt;Present candidates with existing code and evaluate their analytical abilities through various exercises:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Identifying potential issues and red flags&lt;/li&gt;
+&lt;li&gt;Debugging specific problems&lt;/li&gt;
+&lt;li&gt;Conducting mock pull request reviews&lt;/li&gt;
+&lt;li&gt;Discussing optimization opportunities&lt;/li&gt;
+&lt;li&gt;Implementing test coverage strategies&lt;/li&gt;
+&lt;li&gt;Analyzing algorithmic complexity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-portfolio-discussion&quot;&gt;3. Portfolio Discussion&lt;/h3&gt;
+&lt;p&gt;Have candidates present their own project work, which provides insight into their:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Development process and decision-making&lt;/li&gt;
+&lt;li&gt;Technical communication skills&lt;/li&gt;
+&lt;li&gt;Understanding of trade-offs and improvements&lt;/li&gt;
+&lt;li&gt;Testing strategies and quality assurance approaches&lt;/li&gt;
+&lt;li&gt;Project management and prioritization abilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;4-guided-implementation&quot;&gt;4. Guided Implementation&lt;/h3&gt;
+&lt;p&gt;Share pre-designed algorithms or pseudocode for candidates to implement in code. This method:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Better mirrors real-world development scenarios&lt;/li&gt;
+&lt;li&gt;Focuses on implementation skills rather than problem-solving under pressure&lt;/li&gt;
+&lt;li&gt;Creates a collaborative environment for discussion&lt;/li&gt;
+&lt;li&gt;Allows evaluation of coding style and testing approaches&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;5-technical-discussion-series&quot;&gt;5. Technical Discussion Series&lt;/h3&gt;
+&lt;p&gt;Present a variety of shorter, focused technical discussions that might cover:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Database schema design and optimization&lt;/li&gt;
+&lt;li&gt;Algorithmic complexity analysis&lt;/li&gt;
+&lt;li&gt;Data structure selection and trade-offs&lt;/li&gt;
+&lt;li&gt;Security best practices and PII handling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;6-flexible-assessment-options&quot;&gt;6. Flexible Assessment Options&lt;/h3&gt;
+&lt;p&gt;Consider offering candidates a choice of several of the different assessment methods above. This approach:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Accommodates diverse working styles and preferences&lt;/li&gt;
+&lt;li&gt;Promotes inclusive hiring practices &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fn10&quot; id=&quot;fnref10:1&quot;&gt;[10:1]&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Allows candidates to demonstrate their strengths&lt;/li&gt;
+&lt;li&gt;Respects different time constraints and commitments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These alternative approaches can be implemented within the same time investment as traditional coding interviews, while potentially yielding richer insights into candidates&#39; capabilities. If you want to improve the effectiveness even more, regularly gather candidate feedback and refine your methods over time.&lt;/p&gt;
+&lt;hr class=&quot;footnotes-sep&quot;&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn1&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Howell, Max (2018). &lt;a href=&quot;https://www.quora.com/Whats-the-logic-behind-Google-rejecting-Max-Howell-the-author-of-Homebrew-for-not-being-able-to-invert-a-binary-tree&quot;&gt;What&#39;s the logic behind Google rejecting Max Howell, the author of Homebrew, for not being able to invert a binary tree?&lt;/a&gt; Quora &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn2&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Cassel, David (2018). &lt;a href=&quot;https://thenewstack.io/joel-spolsky-on-stack-overflow-inclusion-and-how-he-broke-it-recruiting/&quot;&gt;Joel Spolsky on Stack Overflow, Inclusion, and How He Broke IT Recruiting&lt;/a&gt; The New Stack &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref2&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn3&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Storm, Adam (2020). &lt;a href=&quot;https://medium.com/swlh/why-senior-engineers-hate-coding-interviews-d583d2855757&quot;&gt;Why Senior Engineers Hate Coding Interviews&lt;/a&gt; Medium &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref3&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn4&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Ellis, Ike (2013). &lt;a href=&quot;https://news.ycombinator.com/item?id=6251087&quot;&gt;I will no do a tech interview&lt;/a&gt; Hacker News &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref4&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn5&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Behroozi, Mahnaz; Parnin, Chris; Barik, Titus (2019). &lt;a href=&quot;https://www.researchgate.net/publication/334448588_Hiring_is_Broken_What_Do_Developers_Say_About_Technical_Interviews&quot;&gt;Hiring is Broken: What Do Developers Say About Technical Interviews?&lt;/a&gt; IEEE Symposium on Visual Languages / Human-Centric Computing Languages and Environments &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref5&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn6&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;jonocodes (2016). &lt;a href=&quot;https://github.com/jonocodes/branchr&quot;&gt;Branchr&lt;/a&gt; - Feature branch monitoring for product development &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref6&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn7&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;jonocodes (2017). &lt;a href=&quot;https://github.com/jonocodes/envoy&quot;&gt;Envoy&lt;/a&gt;- Test framework for microservices using Docker &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref7&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn8&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;jonocodes (2023). &lt;a href=&quot;https://pypi.org/project/mystique/&quot;&gt;Mystique&lt;/a&gt;- Python test helpers for loose data matching &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref8&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn9&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://juice-shop.github.io/juice-shop/&quot;&gt;OWASP Juice Shop&lt;/a&gt; - Insecure web application for security trainings &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref9&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn10&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Henry, Bradston (2022). &lt;a href=&quot;https://dev.to/bradstondev/why-i-stopped-interviewing-with-companies-that-require-a-coding-test-2j6n&quot;&gt;Why I Stopped Interviewing with Companies That Require a Coding Test&lt;/a&gt; DEV &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref10&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt; &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref10:1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn11&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Goodin, Dan (2019). &lt;a href=&quot;https://arstechnica.com/information-technology/2019/06/microsoft-says-mandatory-password-changing-is-ancient-and-obsolete/&quot;&gt;Microsoft says mandatory password changing is “ancient and obsolete”&lt;/a&gt; &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref11&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn12&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Curse_of_knowledge&quot;&gt;Curse of Knowledge&lt;/a&gt; Wikipedia &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref12&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn13&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Illusion_of_transparency&quot;&gt;Illusion of Transparency&lt;/a&gt; Wikipedia &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref13&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn14&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Morrow, Susan (2019). &lt;a href=&quot;https://www.infosecinstitute.com/resources/cryptography/the-dangers-of-rolling-your-own-encryption/&quot;&gt;The Dangers of “Rolling Your Own” Encryption&lt;/a&gt; Infosec Institute &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref14&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn15&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Gentleman, Daniel (2022). &lt;a href=&quot;https://www.linkedin.com/pulse/live-coding-interviews-terrible-might-daniel-gentleman/&quot;&gt;Live coding interviews are terrible - and they might be discriminatory&lt;/a&gt; LinkedIn &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2024-10-25-on-coding-interviews/#fnref15&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Talk: Computer Keyboards!</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2024-09-20-computer-keyboards/" />
+    <updated>2024-09-20T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2024-09-20-computer-keyboards/</id>
+    <content type="html">&lt;p&gt;I&#39;m a keyboard nerd. I think if you are spending most of your days sitting at a desk, you may as well make it nice.&lt;/p&gt;
+&lt;p&gt;For me, its all about ergonomic &lt;a href=&quot;https://kinesis-ergo.com/keyboards/advantage360/&quot;&gt;forms&lt;/a&gt; and &lt;a href=&quot;https://colemak.com/&quot;&gt;layouts&lt;/a&gt;, but in this talk I get into the world of keyboard styling, meetups, hacking, competitions, and history. Its a very visual talk and somehow I managed to deliver these ~120 slides in 1 hour.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://jonocodes.github.io/awesome-keyboards&quot;&gt;Slides&lt;/a&gt; and &lt;a href=&quot;https://github.com/jonocodes/awesome-keyboards&quot;&gt;source&lt;/a&gt; here.&lt;/p&gt;
+&lt;div class=&quot;youtube-video&quot;&gt;
+  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/W07djmOesVQ?si=8cJdX7rRoYojo-rV&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;Key takeaways from the talk:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Thumb clusters are awesome.&lt;/li&gt;
+&lt;li&gt;QWERTY is an outdated convention.&lt;/li&gt;
+&lt;li&gt;Keyboard customization can be a (fun) rabbit hole.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>OWASP Security Workshop 2024</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2024-04-18-owasp-workshop-2024/" />
+    <updated>2024-04-18T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2024-04-18-owasp-workshop-2024/</id>
+    <content type="html">&lt;p&gt;At Udemy we had a two day workshop/game given a couple times a year for anyone who wanted to join. It was a fun way of introducing penetration testing to web application developers.&lt;/p&gt;
+&lt;p&gt;As a developer we may know to use the right database library that prevents things like an SQL injection, but do we really ever get to experience a real SQL injection?&lt;/p&gt;
+&lt;p&gt;So we review the &lt;a href=&quot;https://owasp.org/www-project-top-ten/&quot;&gt;top 10 web vulnerabilities&lt;/a&gt;, put on our hacker hats and practice penetration testing.&lt;/p&gt;
+&lt;p&gt;There is a great project called the &lt;a href=&quot;https://owasp.org/www-project-juice-shop/&quot;&gt;OWASP Juice Shop&lt;/a&gt; that is a modern PHP web app, full of vulnerabilities. Even better, the app has an area that describes specific challenges and keep track of your progress.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/2024-04-18-owasp-workshop-2024/o_brUlJ3aX-800.avif 800w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/2024-04-18-owasp-workshop-2024/o_brUlJ3aX-800.webp&quot; alt=&quot;juice shop logo&quot; width=&quot;800&quot; height=&quot;420&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;I have adapted my own version of running this workshop. It&#39;s low overhead and can be done both as a group and individually self directed. I ran the workshop over a day with the development team while working at &lt;a href=&quot;https://www.populus.ai/&quot;&gt;Populus&lt;/a&gt;. It went well and I got some valuable feedback. I plan to repeat this tradition at future workplaces and will continue to refine it each time.&lt;/p&gt;
+&lt;!-- https://www.notion.so/populus/Application-Security-Bootcamp-2024-a2f66c989b374788aee60aef9df7f15e#f7121d961f2c4f0eb1ddebb2606b32d3 --&gt;
+&lt;p&gt;TODO: post actual workshop instructions here&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Bringing Back San Francisco Casual Carpool</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/" />
+    <updated>2023-08-10T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/</id>
+    <content type="html">&lt;p&gt;I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done between September 2022 and August 2023.&lt;/p&gt;
+&lt;h3 id=&quot;things-i-have-tried&quot;&gt;Things I have tried&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Waiting at the North Berkeley passenger line daily, using both &lt;a href=&quot;http://sfcarpool.app&quot;&gt;sfcarpool.app&lt;/a&gt; and the &lt;a href=&quot;https://rapidcarpool.com/&quot;&gt;RapidCarpool&lt;/a&gt; app
+&lt;ul&gt;
+&lt;li&gt;I have done this for close to a year, waiting 20 minutes a day. I get picked up around once a month.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Created &lt;a href=&quot;http://SFcarpool.app&quot;&gt;SFcarpool.app&lt;/a&gt; for helping people coordinate carpools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/xGXc1hedHf-964.avif 964w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/xGXc1hedHf-964.webp 964w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/xGXc1hedHf-964.png&quot; alt=&quot;carpool app screenshot&quot; width=&quot;964&quot; height=&quot;636&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reached out to existing &lt;a href=&quot;https://ridenow.org/carpool/discussion.html&quot;&gt;carpool web sites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Handing out &lt;a href=&quot;https://docs.google.com/document/d/1LPvqR0_lNU-az14bWNEczinnv-THPdeeWqLz62zsdKw/edit?usp=sharing&quot;&gt;flyers at North Berkeley BART&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This suggested with coordinated start date. BART riders showed interest, but there was no uptick in carpooling. I did this for about a month in late 2022.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sfcarpool.app/survey&quot;&gt;Created outreach survey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.facebook.com/groups/bringbacksfcarpool&quot;&gt;Created a Facebook group&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://nextdoor.com/p/mqMwzXJqrjTK?view=detail&quot;&gt;Post&lt;/a&gt; to other social media, like &lt;a href=&quot;https://www.reddit.com/r/bayarea/comments/yc46lb/casual_carpool_in_2022/jrcff21/?context=3&quot;&gt;Reddit&lt;/a&gt; and &lt;a href=&quot;https://nextdoor.com/p/dQJpxCTN6SmZ/c/846265547?post=241417236&amp;amp;comment=846265547&amp;amp;ct=pdXr03-vsiKf6ALGoGfMif2Va68MPE83Hrb77iEEcki2N3JNt6ytnWqJLzW7oL8Y&amp;amp;ec=jUsXRsKkOPMVxJBs1Cj9scCEDVfj1pLaDEEEO8rW-uw%3D&quot;&gt;Nextdoor&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;News outlet outreach
+&lt;ul&gt;
+&lt;li&gt;I reached out to reporters who wrote about carpool in the last couple years. At &lt;a href=&quot;https://www.kqed.org/news/11934347/will-casual-carpool-ever-come-back&quot;&gt;KQED&lt;/a&gt;, &lt;a href=&quot;https://www.berkeleyside.org/2022/11/20/casual-carpool-bay-bridge-covid-traffi&quot;&gt;Berkeleyside&lt;/a&gt;, Chronicle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Reached out to the city of Berkeley to talk about help/solutions. No responses.&lt;/li&gt;
+&lt;li&gt;Reached out to the city of Oakland to talk about help/solutions. No responses.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://abc7news.com/bay-area-casual-carpool-commuting-bart-freeways/13559738/&quot;&gt;TV interview on ABC 7&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;youtube-video&quot;&gt;
+    &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/WMYYXLnO9cY?si=jZQE81rg_k0tKn1X&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Reached out to officials at MTC and SFMTA to see if we can get historical data for bridge exits to see if there has been a dip in exits at carpool drop sites. No response.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.bayareametro.gov/posts/survey-seeks-bay-area-casual-carpool-revival&quot;&gt;MTC blog post&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;KQED interview (recording forthcoming)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;things-i-have-not-yet-tried&quot;&gt;Things I have not yet tried&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Op-ed. It has been suggested I submit one to the Chronicle. And/or The East Bay Times, Berkeleyside, Daily Cal, Radio Perspective (KQED Radio)&lt;/li&gt;
+&lt;li&gt;Bay Curious podcast&lt;/li&gt;
+&lt;li&gt;Reach out to other casual carpool groups like Huston and DC.&lt;/li&gt;
+&lt;li&gt;Contact Caltrans to see if they have highway exit data.&lt;/li&gt;
+&lt;li&gt;Online date coordination
+&lt;ul&gt;
+&lt;li&gt;I flyered at BART with a start date to build a critical mass. But we could do a more effective version of this by polling people online and seeing who wants to commit to a date.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Posting physical flyers with various web addresses at BART stations.&lt;/li&gt;
+&lt;li&gt;Reviewing &lt;a href=&quot;https://www.researchgate.net/publication/292208482_Casual_Carpooling_in_The_San_Francisco_Bay_Area_Understanding_User_Characteristics_Behaviors_and_Motivations&quot;&gt;previous research&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Talk: GraphQL and the n+1 problem</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2022-07-14-graphql-and-n-plus-one/" />
+    <updated>2022-07-14T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2022-07-14-graphql-and-n-plus-one/</id>
+    <content type="html">&lt;p&gt;When I was working at &lt;a href=&quot;https://www.udemy.com/&quot;&gt;Udemy&lt;/a&gt;, there was a new charter for all services to communicate internally via grpc, and all for public facing traffic to use GraphQL.&lt;/p&gt;
+&lt;p&gt;Some teams were using these technologies a bit, but for most of them these were both new technologies to learn. Since I had GraphQL experience from previous jobs, I was tasked with doing this work for my team, Adaptive Assessments.&lt;/p&gt;
+&lt;p&gt;This was one of the first projects to migrate in the company and best practices were not yet established. As someone with experience and opinions of how to implement GraphQL well, I experimented and proposed several ways to meet these requirements.&lt;/p&gt;
+&lt;p&gt;After my solution was rolled out, I taught my team how to work on our new system going forward. I then delivered a company wide presentation on my findings and best practices.&lt;/p&gt;
+&lt;div class=&quot;youtube-video&quot;&gt;
+  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/LE6tHglPPXk?si=PVUpuJDZWnFSb5ps&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;Not really mentioned in this talk is my real take on GraphQL, which I should probably elaborate on in a separate post. Long story short: GraphQL is a nice-to-have for front end teams. In practice their GraphQL service probably does not really solve the problem they were designed for, and the backend team implementing them almost always does a poor job of it. I am not blaming them for it. Creating a robust backend for this is prohibitively difficult and I dont think I have ever seen an in-house implementation that is secure, efficient, and wont break if used wrong.&lt;/p&gt;
+&lt;p&gt;This is why I always suggest tools like &lt;a href=&quot;https://hasura.io/&quot;&gt;Hasura&lt;/a&gt;, which essentially do all the backend GraphQL work for you. It comes loaded with best practices, efficiency, and extensibility. The takeaway here is: If you are implementing GraphQL yourself, you are probably doing it wrong.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Talk: Financial Independence</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2018-04-05-financial-independence/" />
+    <updated>2018-04-05T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2018-04-05-financial-independence/</id>
+    <content type="html">&lt;p&gt;In 2018, my buddy &lt;a href=&quot;http://www.joryjohn.com/&quot;&gt;Jory John&lt;/a&gt; was nudging me to &lt;a href=&quot;https://www.mrmoneymustache.com/&quot;&gt;read&lt;/a&gt; and &lt;a href=&quot;https://choosefi.com/listen&quot;&gt;listen&lt;/a&gt; to some personal finance stuff that was going around. I enjoyed it, and it was a wake up call for me to get my ducks in order.&lt;/p&gt;
+&lt;p&gt;I made plans to aggressively pay off our debts, learned how to methodically save, consolidated my accounts, and figured out index fund investing for retirement (which I had always felt daunted by).&lt;/p&gt;
+&lt;p&gt;After enthusiastically talking with friends about my findings and recommending books, my co-worked suggested I make a brown bag talk about it for the office. &lt;a href=&quot;https://jonocodes.github.io/whyfi/static/index.html#/&quot;&gt;Slides&lt;/a&gt; and &lt;a href=&quot;https://github.com/jonocodes/whyfi?tab=readme-ov-file&quot;&gt;source&lt;/a&gt; here.&lt;/p&gt;
+&lt;div class=&quot;youtube-video&quot;&gt;
+  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/lmRLp9vvwJg?si=7xZrLhpa80N4YvwK&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;p&gt;This is not the favorite of my talks, but I have given it several times. These day when I present it, I like to focus on &lt;a href=&quot;https://www.reddit.com/r/churning/&quot;&gt;credit card churning&lt;/a&gt; - since it can be fun and people always have the most questions about it. Its a little more enjoyable then giving blanket financial advice like: Dont buy that Starbucks coffee every morning. Instead you could invest that spending and become a millionaire by the time you are 40.&lt;/p&gt;
+&lt;p&gt;These days when someone wants to dip their tow in financial independence, I suggest reading &lt;a href=&quot;https://www.goodreads.com/book/show/30646587-the-simple-path-to-wealth&quot;&gt;The Simple Path To Wealth&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Supercharging your API with Swagger</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2018-03-22-supercharging-your-api-with-swagger/" />
+    <updated>2018-03-22T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2018-03-22-supercharging-your-api-with-swagger/</id>
+    <content type="html">&lt;p&gt;&lt;em&gt;This was a post I wrote for the &lt;a href=&quot;http://blogs.plos.org/tech/supercharging-your-api-with-swagger/&quot;&gt;PLOS tech blog&lt;/a&gt;, which is no longer online.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;If you manage, develop, or use REST APIs I have a tip for you. &lt;a href=&quot;https://example.com/eleventy-base-blog/blog/2018-03-22-supercharging-your-api-with-swagger/%5Bhttps:/swagger.io/%5D(https:/swagger.io/)&quot;&gt;Swagger&lt;/a&gt; is a framework and toolset that greatly eases the pain of documenting and interacting with your APIs. It&#39;s a swiss army knife for all things APIs and in this post I&#39;ll explain why and how it makes APIs more enjoyable to work with.&lt;/p&gt;
+&lt;p&gt;We have quite a few APIs here are PLOS. Some are internal, some are exposed to the world. We have APIs for article content, authors, readers, manuscripts, taxonomies, configuration, metrics, reviewer matching and more. They are developed with a breadth of technologies including Java, Python, and Ruby.&lt;/p&gt;
+&lt;p&gt;Keeping track of how all these APIs work is quite a task. Back when we only had a single API we had it documented in a Wiki. As the API grew, the maintenance cost of that document also increased. As we started splitting our mega service into smaller ones, we needed a better way to keep our documentation up to date. Swagger did that and so much more.&lt;/p&gt;
+&lt;p&gt;At its core, Swagger uses the OpenAPI specification which is a machine readable description of your API. It typically looks like a large JSON or YAML file. The spec itself is not too interesting, but the tooling around it makes the spec incredibly powerful.&lt;/p&gt;
+&lt;p&gt;For example, one of our &lt;a href=&quot;https://github.com/PLOS/named-entity.service/&quot;&gt;internal APIs&lt;/a&gt; implements a well defined &lt;a href=&quot;https://jersey.github.io/&quot;&gt;Java REST specification&lt;/a&gt;. We use a &lt;a href=&quot;https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-Jersey-2.X-Project-Setup-1.5&quot;&gt;library provided by Swagger&lt;/a&gt; to autogenerate the swagger spec into JSON from our API. This spec is regenerated every time our project is updated and hosted in a special namespace of our API.&lt;/p&gt;
+&lt;p&gt;Now that we have a spec, we use the &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI tool&lt;/a&gt; which is simply an HTML/Javascript page that parses the spec and displays it as readable documentation. The documentation is not static though. You can actually interact with it and perform API calls through your browser with it . We deploy these interactive docs with our service and it helps our consumers a lot.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.avif 1034w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.webp 1034w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.png&quot; alt=&quot;swagger UI&quot; width=&quot;1034&quot; height=&quot;858&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;We have done almost no work and our API consumers are greatly benefited. But it doesn&#39;t stop there.&lt;/p&gt;
+&lt;p&gt;We have many APIs and we also have many apps that use those APIs. The consumer apps can also make use of the spec. &lt;a href=&quot;https://swagger.io/swagger-codegen/&quot;&gt;Swagger code generators&lt;/a&gt; parse the spec and generate client libraries for us. This way our apps don&#39;t have to know about REST at all. They just load a client library and interact with it like an object. The generators support dozens of languages and frameworks out of the box. You can extend them or use one of the hundreds of &lt;a href=&quot;https://swagger.io/open-source-integrations/&quot;&gt;community driven ones&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Want a command line tool that can tap into all your APIs at your organization at once? The generators can help with that too.&lt;/p&gt;
+&lt;p&gt;That is most of how we use it at PLOS, but Swagger can do much more. For example you can write an OpenAPI spec and use a code generator to create scaffolding for a new API. Or even mock parts of your API.&lt;/p&gt;
+&lt;p&gt;Additionally the community behind swagger is an open group of API enthusiasts. I have found that most of the problems I might have with APIs they have solved, or are working on it.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Talk: How to Entertain a Juggler</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2015-05-25-how-to-entertain-a-juggler/" />
+    <updated>2015-05-25T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2015-05-25-how-to-entertain-a-juggler/</id>
+    <content type="html">&lt;p&gt;This is a presentation I seem to give every couple years. It can be 30 minutes to an hour depending on the venue, and if there is a hands on juggling lesson at the end.&lt;/p&gt;
+&lt;p&gt;In 2015 I went to see a friend do a presentation at  &lt;a href=&quot;https://www.facebook.com/NerdNiteEB/&quot;&gt;Nerd Nite East Bay&lt;/a&gt; about Native Bees. There were some other interesting talks and one was about competitive dodgeball leagues. The audience was very entertained with the idea that a kids playground game would be turned so seriously by adults.&lt;/p&gt;
+&lt;p&gt;I had been going to juggling festivals most of my life at this point and while watching the dodgeball talk, I thought this is pretty tame compared to &lt;a href=&quot;https://www.thewjf.com/combat-juggling/&quot;&gt;full contact combat juggling&lt;/a&gt; competitions. And combat is only one of dozens of other events one may find at a juggling festival.&lt;/p&gt;
+&lt;p&gt;So I started working on my own talk. But since combat is not really my jam, I focus on showing all the fun things jugglers like to do when they get together and are not focused on entertaining non-jugglers. And there is a LOT. Find the &lt;a href=&quot;http://jonocodes.github.io/howToEntertainAJuggler/#/&quot;&gt;slides here&lt;/a&gt; and &lt;a href=&quot;https://github.com/jonocodes/howToEntertainAJuggler&quot;&gt;source here&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;youtube-video&quot;&gt;
+  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/65ImZaHIffk?si=nsT47dI8SqfrUW20&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Post: Testing Made Awesome With Docker</title>
+    <link href="https://example.com/eleventy-base-blog/blog/2015-05-01-testing-made-awesome-with-docker/" />
+    <updated>2015-05-01T00:00:00Z</updated>
+    <id>https://example.com/eleventy-base-blog/blog/2015-05-01-testing-made-awesome-with-docker/</id>
+    <content type="html">&lt;p&gt;&lt;em&gt;This was a post I wrote for the &lt;a href=&quot;https://web.archive.org/web/20170608215050/http://blogs.plos.org/tech/testing-made-awesome-with-docker/&quot;&gt;PLOS tech blog&lt;/a&gt;. I later started writing &lt;a href=&quot;https://leanpub.com/u/jonocodes&quot;&gt;a book with the same title&lt;/a&gt;, but eventually moved on to other projects before finishing it.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;As PLOS has grown (in users, articles, and developers) we have put a lot of effort into splitting our original applications into groups of services. My team is responsible for several web services. We have worked on finding open source tools that can help us and the other PLOS development teams across our growing service ecosystem. I would like to tell you about one of our favorite new tools: Docker.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://example.com/eleventy-base-blog/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.avif 679w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://example.com/eleventy-base-blog/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.webp&quot; alt=&quot;docker whale&quot; width=&quot;679&quot; height=&quot;320&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docker.com&quot;&gt;Docker&lt;/a&gt; is an open platform for developers and sysadmins to build, ship, and run distributed applications. For our purposes Docker containers give us access to a jailed operating system that any of our services can run in with almost none of the overhead of a virtual machine.&lt;/p&gt;
+&lt;p&gt;The many uses of Docker are still being realized and the broader community continues to determine what the best practices are. It is not just used by operations and development. For example, &lt;a href=&quot;http://melissagymrek.com/science/2014/08/29/docker-reproducible-research.html&quot;&gt;Melissa Gymrek wrote about using Docker to support reproducible research&lt;/a&gt;, and used a PLOS Genetics article as a test case.&lt;/p&gt;
+&lt;p&gt;Less then a year ago I used Docker on a couple projects which I thought may help with cross team development. We liked Docker, but were not ready to take it to production. Around the same time, our team was without any QA bodies, so us developers had the opportunity to setup our own testing plan. As we thought about it, Docker seemed like a perfect fit for what we needed. We creating test environments that mimic production using Docker containers and quickly found that Docker makes it easy to narrow the gap between production and development.&lt;/p&gt;
+&lt;h2 id=&quot;consistent-environments&quot;&gt;Consistent Environments&lt;/h2&gt;
+&lt;p&gt;With &lt;a href=&quot;https://docs.docker.com/reference/dockerfile/&quot;&gt;Dockerfiles&lt;/a&gt; we can define an exact template for what each application needs, from operating system to libraries to open ports. In the git repository for each of our projects we can include a Dockerfile right along with the source code. This way anyone who pulls the project can get it up and running with a few simple commands. They don&#39;t need to install all the dependencies manually and hope it works on their own computer, since this will all be taken care of in the Docker container. This means getting up and running is fast since the host machine requires nothing installed but the Docker service itself.&lt;/p&gt;
+&lt;p&gt;Docker containers are so lightweight that it is beneficial to run only one application per container. Since your application very likely has dependencies on other services (database, caching server, message queue, etc), you will need multiple Docker files to bring up a working stack. This is where Docker Compose comes in.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/compose/&quot;&gt;Docker Compose&lt;/a&gt; gives a way to bring up a collection of containers. In a short yaml file we can define our entire stack. With a &#39;docker-compose up&#39;, our entire stack is up and running in few seconds. Here is a sample compose.yml file:&lt;/p&gt;
+&lt;pre class=&quot;language-yaml&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;web&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  build&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; webserviceapi    &lt;span class=&quot;token comment&quot;&gt;# location of our Dockerfile&lt;/span&gt;
+  volumes&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; ../target&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;/build    &lt;span class=&quot;token comment&quot;&gt;# share directory to get compiled build from&lt;/span&gt;
+  links&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; database&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;database   &lt;span class=&quot;token comment&quot;&gt;# network link between containers&lt;/span&gt;
+  ports&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &quot;8080&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;8080&quot;         &lt;span class=&quot;token comment&quot;&gt;# expose port 8080 to host&lt;/span&gt;
+
+&lt;span class=&quot;token key atrule&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+  image&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; mysql&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;5.5        &lt;span class=&quot;token comment&quot;&gt;# name of community a supported image&lt;/span&gt;
+  environment&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; MYSQL_ROOT_PASSWORD=verycomplexpassword&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;black-box-testing&quot;&gt;Black Box Testing&lt;/h2&gt;
+&lt;p&gt;Our web service container exposes port 8080 so it can be reached from the host. To run our API integration tests all we have to do is point them at that port, and we are testing the Dockerized API instead of a service running directly on the host. I wrote a few small scripts that orchestrate bringing those containers up and down as needed between various tests and now we have a very fast and comprehensive integration testing system.&lt;/p&gt;
+&lt;h2 id=&quot;scalability-testing&quot;&gt;Scalability Testing&lt;/h2&gt;
+&lt;p&gt;You can use compose to bring up any number of instances of the services in your stack with something like:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;docker-compose scale web=10 database=3&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is great for testing things like database clusters or load balancers. I have seen hundreds of database containers run on a single laptop with no problem. Try doing that with a virtual machine.&lt;/p&gt;
+&lt;h2 id=&quot;configuration-testing&quot;&gt;Configuration Testing&lt;/h2&gt;
+&lt;p&gt;It is easy to add very invasive automated tests here as well. Let&#39;s say we want to automate the testing of different system configurations. We usually use MySQL, but this service also can work with a Postgres backend. This test can be added in a few minutes. Just create a Postgres container (&lt;a href=&quot;https://registry.hub.docker.com/_/postgres/&quot;&gt;or find an existing one on Dockerhub&lt;/a&gt;), and modify our test script to run as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bring up new stack (with MySQL backend), seed with data, Run API tests, Tear down stack.&lt;/li&gt;
+&lt;li&gt;Bring up new stack (with Postgres backend), seed with data, Run API tests, Tear down stack.&lt;/li&gt;
+&lt;li&gt;Report on any differences in test results between MySQL and Postgres backends.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;simplifying-development&quot;&gt;Simplifying Development&lt;/h2&gt;
+&lt;p&gt;In the past, some of our system tests used a different database technology than the production deployment. These tests used in-memory H2 databases since it is faster to bring up then a full database server. This has given us problems since we need to manage drivers additional specific to testing, and &lt;a href=&quot;http://h2database.com/html/features.html#compatibility&quot;&gt;H2&#39;s compatibility mode for MySQL only implements some of the MySQL feature set&lt;/a&gt;. Since Docker allows us to quickly create production-like systems we have completely removed H2 and test right on a MySQL container. Now that we have fewer dependencies, we have less code, and fewer points of failure.&lt;/p&gt;
+&lt;h2 id=&quot;simplifying-testing&quot;&gt;Simplifying Testing&lt;/h2&gt;
+&lt;p&gt;Now that our stack is Dockerized, anyone can easily run the tests. New developers can run tests against their new code right away, leading to fewer checked in bugs. And QA can focus on tasks beyond regression testing.&lt;/p&gt;
+&lt;p&gt;Speaking of QA, we don&#39;t need special servers that only QA has access to. Anyone with Docker installed can not only run the whole application stack but can run the full test suite. The same minimal requirements are in place on our continuous integration build server. We don&#39;t need to take up any public facing ports. When the build finishes, it brings up a whole stack, tests it inside the local machine, and tears it down. Did I mention the overhead to run these tests against a brand new full stack is only seconds! I probably did. But its worth saying again.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

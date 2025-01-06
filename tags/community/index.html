@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Tagged &#39;community&#39;</title>
+		<meta name="description" content="thoughts, talks, projects and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s thoughts">
+		
+		<style>.postlist { counter-reset: start-from 5 }
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	/* font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px; */
+	text-decoration: none;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+
+.youtube-video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+  }
+  
+  .youtube-video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  }
+  
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Jono&#39;s thoughts</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			<!-- Delete this block, which will also remove the component CSS from the bundle -->
+
+<!-- Stop deleting -->
+
+<h1 id="tagged-community">Tagged “community”</h1>
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
+	
+
+<div style="border-bottom: 1px dashed var(--color-gray-20); padding-bottom: 20px; margin-bottom: 30px;">
+
+<h2 id="charitable-giving-in-2024"><a href="/eleventy-base-blog/blog/2024-12-28-charitable-giving-in-2024/" class="postlist-link">Charitable Giving in 2024</a></h2>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-12-28">28 December 2024</time></li>
+	<li><a href="/eleventy-base-blog/tags/finance/" class="post-tag">finance</a>, </li>
+	<li><a href="/eleventy-base-blog/tags/community/" class="post-tag">community</a></li>
+	
+	<p class="">At the end of the year I square up my donations in order to meet the fuzzy target I set for that year.  There is really no reason why I need to do this by the end of the year. It is mostly a habit from back when there was a tax advantage to donating smaller amounts while using the standard deduction.
+Here is my general methodology:
+
+Throughout the year when anyone I know (friends, family,... <a href="/eleventy-base-blog/blog/2024-12-28-charitable-giving-in-2024/">[read more]</a></p>
+</ul>
+
+</div>
+
+
+
+
+	
+	
+	
+
+	
+
+<div style="border-bottom: 1px dashed var(--color-gray-20); padding-bottom: 20px; margin-bottom: 30px;">
+
+<h2 id="bringing-back-san-francisco-casual-carpool"><a href="/eleventy-base-blog/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/" class="postlist-link">Bringing Back San Francisco Casual Carpool</a></h2>
+
+<ul class="post-metadata">
+	<li><time datetime="2023-08-10">10 August 2023</time></li>
+	<li><a href="/eleventy-base-blog/tags/community/" class="post-tag">community</a>, </li>
+	<li><a href="/eleventy-base-blog/tags/tech/" class="post-tag">tech</a></li>
+	
+	<p class="">I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done between September 2022 and August 2023.
+Things I have tried
+
+Waiting at the North Berkeley passenger line daily, using both sfcarpool.app and the RapidCarpool app
+
+I have done this for close to a year, waiting 20 minutes a day. I get picked up around once a... <a href="/eleventy-base-blog/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/">[read more]</a></p>
+</ul>
+
+</div>
+
+
+
+
+	
+	
+	
+
+	
+
+<div style="border-bottom: 1px dashed var(--color-gray-20); padding-bottom: 20px; margin-bottom: 30px;">
+
+<h2 id="a-visit-from-richard-stallman"><a href="/eleventy-base-blog/blog/2014-03-13-visit-from-richard-stallman/" class="postlist-link">A Visit from Richard Stallman</a></h2>
+
+<ul class="post-metadata">
+	<li><time datetime="2014-03-13">13 March 2014</time></li>
+	<li><a href="/eleventy-base-blog/tags/community/" class="post-tag">community</a>, </li>
+	<li><a href="/eleventy-base-blog/tags/work/" class="post-tag">work</a>, </li>
+	<li><a href="/eleventy-base-blog/tags/tech/" class="post-tag">tech</a></li>
+	
+	<p class="">When I was working at The Public Library of Science (PLOS), one of my co-workers ran into Richard Stallman on the streets of San Francisco - presumably flown in to give a talk at some local conference.
+Somehow my co-worker talking him into giving a talk at PLOS. After all, our mission (making science/research free and accessible to all), is somewhat parallel to the mission of the The Free Software... <a href="/eleventy-base-blog/blog/2014-03-13-visit-from-richard-stallman/">[read more]</a></p>
+</ul>
+
+</div>
+
+
+
+
+	
+	
+	
+
+	
+
+<div style="border-bottom: 1px dashed var(--color-gray-20); padding-bottom: 20px; margin-bottom: 30px;">
+
+<h2 id="talk-free-and-open-source-software"><a href="/eleventy-base-blog/blog/2012-02-15-free-and-open-source-software/" class="postlist-link">Talk: Free and Open Source Software</a></h2>
+
+<ul class="post-metadata">
+	<li><time datetime="2012-02-15">15 February 2012</time></li>
+	<li><a href="/eleventy-base-blog/tags/talks/" class="post-tag">talks</a>, </li>
+	<li><a href="/eleventy-base-blog/tags/community/" class="post-tag">community</a></li>
+	
+	<p class="">When I was living in New Haven there was a thriving Pecha Kutcha group, so I gave a couple talks.
+Here is my 6 minute introduction to free/libre software, for non-technical people.
+
+ ... <a href="/eleventy-base-blog/blog/2012-02-15-free-and-open-source-software/">[read more]</a></p>
+</ul>
+
+</div>
+
+
+
+
+
+
+
+<p>See <a href="/eleventy-base-blog/tags/">all tags</a>.</p>
+
+
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/tags/community/` was built on 2025-01-06T06:43:43.895Z -->
+		<script type="module" src="/eleventy-base-blog/dist/rJ3_G-2ArF.js"></script>
+	</body>
+</html>

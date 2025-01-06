@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Post: Testing Made Awesome With Docker</title>
+		<meta name="description" content="thoughts, talks, projects and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s thoughts">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	/* font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px; */
+	text-decoration: none;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+
+.youtube-video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+  }
+  
+  .youtube-video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  }
+  
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Jono&#39;s thoughts</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1 id="post-testing-made-awesome-with-docker">Post: Testing Made Awesome With Docker</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2015-05-01">01 May 2015</time></li>
+	<li><a href="/eleventy-base-blog/tags/work/" class="post-tag">work</a>, </li>
+	<li><a href="/eleventy-base-blog/tags/tech/" class="post-tag">tech</a>, </li>
+	<li><a href="/eleventy-base-blog/tags/docker/" class="post-tag">docker</a></li>
+</ul>
+
+	<heading-anchors>
+		<p><em>This was a post I wrote for the <a href="https://web.archive.org/web/20170608215050/http://blogs.plos.org/tech/testing-made-awesome-with-docker/">PLOS tech blog</a>. I later started writing <a href="https://leanpub.com/u/jonocodes">a book with the same title</a>, but eventually moved on to other projects before finishing it.</em></p>
+<p>As PLOS has grown (in users, articles, and developers) we have put a lot of effort into splitting our original applications into groups of services. My team is responsible for several web services. We have worked on finding open source tools that can help us and the other PLOS development teams across our growing service ecosystem. I would like to tell you about one of our favorite new tools: Docker.</p>
+<p><picture><source type="image/avif" srcset="/eleventy-base-blog/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.avif 679w"><img loading="lazy" decoding="async" src="/eleventy-base-blog/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.webp" alt="docker whale" width="679" height="320"></picture></p>
+<p><a href="https://docker.com">Docker</a> is an open platform for developers and sysadmins to build, ship, and run distributed applications. For our purposes Docker containers give us access to a jailed operating system that any of our services can run in with almost none of the overhead of a virtual machine.</p>
+<p>The many uses of Docker are still being realized and the broader community continues to determine what the best practices are. It is not just used by operations and development. For example, <a href="http://melissagymrek.com/science/2014/08/29/docker-reproducible-research.html">Melissa Gymrek wrote about using Docker to support reproducible research</a>, and used a PLOS Genetics article as a test case.</p>
+<p>Less then a year ago I used Docker on a couple projects which I thought may help with cross team development. We liked Docker, but were not ready to take it to production. Around the same time, our team was without any QA bodies, so us developers had the opportunity to setup our own testing plan. As we thought about it, Docker seemed like a perfect fit for what we needed. We creating test environments that mimic production using Docker containers and quickly found that Docker makes it easy to narrow the gap between production and development.</p>
+<h2 id="consistent-environments">Consistent Environments</h2>
+<p>With <a href="https://docs.docker.com/reference/dockerfile/">Dockerfiles</a> we can define an exact template for what each application needs, from operating system to libraries to open ports. In the git repository for each of our projects we can include a Dockerfile right along with the source code. This way anyone who pulls the project can get it up and running with a few simple commands. They don't need to install all the dependencies manually and hope it works on their own computer, since this will all be taken care of in the Docker container. This means getting up and running is fast since the host machine requires nothing installed but the Docker service itself.</p>
+<p>Docker containers are so lightweight that it is beneficial to run only one application per container. Since your application very likely has dependencies on other services (database, caching server, message queue, etc), you will need multiple Docker files to bring up a working stack. This is where Docker Compose comes in.</p>
+<p><a href="https://docs.docker.com/compose/">Docker Compose</a> gives a way to bring up a collection of containers. In a short yaml file we can define our entire stack. With a 'docker-compose up', our entire stack is up and running in few seconds. Here is a sample compose.yml file:</p>
+<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">web</span><span class="token punctuation">:</span>
+  build<span class="token punctuation">:</span> webserviceapi    <span class="token comment"># location of our Dockerfile</span>
+  volumes<span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ../target<span class="token punctuation">:</span>/build    <span class="token comment"># share directory to get compiled build from</span>
+  links<span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> database<span class="token punctuation">:</span>database   <span class="token comment"># network link between containers</span>
+  ports<span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> "8080<span class="token punctuation">:</span>8080"         <span class="token comment"># expose port 8080 to host</span>
+
+<span class="token key atrule">database</span><span class="token punctuation">:</span>
+  image<span class="token punctuation">:</span> mysql<span class="token punctuation">:</span>5.5        <span class="token comment"># name of community a supported image</span>
+  environment<span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> MYSQL_ROOT_PASSWORD=verycomplexpassword</code></pre>
+<h2 id="black-box-testing">Black Box Testing</h2>
+<p>Our web service container exposes port 8080 so it can be reached from the host. To run our API integration tests all we have to do is point them at that port, and we are testing the Dockerized API instead of a service running directly on the host. I wrote a few small scripts that orchestrate bringing those containers up and down as needed between various tests and now we have a very fast and comprehensive integration testing system.</p>
+<h2 id="scalability-testing">Scalability Testing</h2>
+<p>You can use compose to bring up any number of instances of the services in your stack with something like:</p>
+<blockquote>
+<p>docker-compose scale web=10 database=3</p>
+</blockquote>
+<p>This is great for testing things like database clusters or load balancers. I have seen hundreds of database containers run on a single laptop with no problem. Try doing that with a virtual machine.</p>
+<h2 id="configuration-testing">Configuration Testing</h2>
+<p>It is easy to add very invasive automated tests here as well. Let's say we want to automate the testing of different system configurations. We usually use MySQL, but this service also can work with a Postgres backend. This test can be added in a few minutes. Just create a Postgres container (<a href="https://registry.hub.docker.com/_/postgres/">or find an existing one on Dockerhub</a>), and modify our test script to run as follows:</p>
+<ul>
+<li>Bring up new stack (with MySQL backend), seed with data, Run API tests, Tear down stack.</li>
+<li>Bring up new stack (with Postgres backend), seed with data, Run API tests, Tear down stack.</li>
+<li>Report on any differences in test results between MySQL and Postgres backends.</li>
+</ul>
+<h2 id="simplifying-development">Simplifying Development</h2>
+<p>In the past, some of our system tests used a different database technology than the production deployment. These tests used in-memory H2 databases since it is faster to bring up then a full database server. This has given us problems since we need to manage drivers additional specific to testing, and <a href="http://h2database.com/html/features.html#compatibility">H2's compatibility mode for MySQL only implements some of the MySQL feature set</a>. Since Docker allows us to quickly create production-like systems we have completely removed H2 and test right on a MySQL container. Now that we have fewer dependencies, we have less code, and fewer points of failure.</p>
+<h2 id="simplifying-testing">Simplifying Testing</h2>
+<p>Now that our stack is Dockerized, anyone can easily run the tests. New developers can run tests against their new code right away, leading to fewer checked in bugs. And QA can focus on tasks beyond regression testing.</p>
+<p>Speaking of QA, we don't need special servers that only QA has access to. Anyone with Docker installed can not only run the whole application stack but can run the full test suite. The same minimal requirements are in place on our continuous integration build server. We don't need to take up any public facing ports. When the build finishes, it brings up a whole stack, tests it inside the local machine, and tears it down. Did I mention the overhead to run these tests against a brand new full stack is only seconds! I probably did. But its worth saying again.</p>
+
+	</heading-anchors>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/eleventy-base-blog/blog/2014-03-13-visit-from-richard-stallman/">A Visit from Richard Stallman</a></li><li class="links-nextprev-next">Next →<br><a href="/eleventy-base-blog/blog/2015-05-25-how-to-entertain-a-juggler/">Talk: How to Entertain a Juggler</a></li>
+</ul>
+
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2015-05-01-testing-made-awesome-with-docker/` was built on 2025-01-06T06:43:43.750Z -->
+		<script type="module" src="/eleventy-base-blog/dist/rJ3_G-2ArF.js"></script>
+	</body>
+</html>

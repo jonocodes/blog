@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>On Coding Interviews: What Works, What Doesn’t, and Why It Matters</title>
+		<meta name="description" content="thoughts, talks, projects and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s thoughts">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	/* font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px; */
+	text-decoration: none;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+
+.youtube-video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+  }
+  
+  .youtube-video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  }
+  
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/eleventy-base-blog/" class="home-link">Jono&#39;s thoughts</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/eleventy-base-blog/">Home</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/about/">About</a></li>
+					<li class="nav-item"><a href="/eleventy-base-blog/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1 id="on-coding-interviews-what-works-what-doesn-t-and-why-it-matters">On Coding Interviews: What Works, What Doesn’t, and Why It Matters</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-10-25">25 October 2024</time></li>
+	<li><a href="/eleventy-base-blog/tags/tech/" class="post-tag">tech</a></li>
+</ul>
+
+	<heading-anchors>
+		<p>The relationship between technical interviews and real-world performance remains one of the most debated topics in software engineering recruitment. While you may be reading this because of a recent interview experience we shared, this post aims to explore a broader and more important question: how can companies better identify talented developers? Although many organizations have established interview processes they consider sufficient, the challenge of false negatives – rejecting qualified candidates – continues to impact both companies and developers <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. As Joel Spolsky notes, &quot;A lot of good programmers end up getting rejected — while, even worse, companies end up hiring people who are good at passing tests, but under-perform in the real world&quot; <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>. Drawing from industry anecdotes <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>, professional discussions <sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup>, and academic research <sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup>, this post examines real-world examples and alternatives to traditional coding interviews.</p>
+<h2 id="a-bit-about-me">A bit about me</h2>
+<p>I am a lifelong developer. When I discovered programming in adolescence I took to it and never stopped. After decades of being a full time individual contributor my love of coding only continues to deepen.</p>
+<p>I always have my hands in open source and side projects. After the work day is done it is not uncommon for me to put in another days worth of work on <a href="https://github.com/jonocodes">my personal and open source projects</a>. Many of these projects also directly benefit my place of work <sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup> <sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup> <sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>.</p>
+<p>Managers say I am enthusiastic and known for going above and beyond to work out innovative solutions. I am eager to learn and like to mentor. I regularly give tech talks, non-tech talks, lead projects, and security workshops <sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup>.  See my <a href="https://digitus.notion.site/Jono-Finger-Professional-Info-113025d8c35b80bea249e1de35ae55c4">reviews from peers and managers</a>. They can be <a href="https://www.linkedin.com/in/jfinger/details/recommendations">verified on linkedin</a>.</p>
+<h2 id="the-problem-with-coding-questions">The problem with coding questions</h2>
+<p>I do well on all parts of the interview process, but not on live coding questions. Most professions do not have an equivalent hurdle in their process, but these are common place in tech. Many experienced engineers, particularly at senior levels, view these assessments with skepticism or actively avoid organizations that rely heavily on them <sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup>. They consider it a red flag or they find them insulting.</p>
+<p>Still, companies rely heavily on these pass/fail &quot;tests&quot;. In my tenure as a programmer I have actually seen interviews improve over the years by relying less on these assessments. But some traditions die hard <sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup>. As technologists, we should strive to keep up with best practices.</p>
+<p>Having an hour long tech question tends to rely on landing the &quot;trick&quot; to the answer early on.<br>
+If you don't happen to know the answer from previously doing the same one or miraculously stumbling upon it in the first few minutes you will be wasting the next 40. Some engineers have a knack for these types of questions - but it is not a good measure of the quality of their work.</p>
+<p>Consider a magic trick: initially, it captivates audiences precisely because the solution seems impossibly clever. Yet once revealed, the same trick often appears deceptively simple, leading viewers to wonder why they didn't see through it immediately. This psychological shift reflects perfectly the dynamics of technical interview questions. This phenomenon can be explained by what psychologists call &quot;the curse of knowledge&quot; <sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup> or the &quot;illusion of transparency&quot; <sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup> When an interviewer is given the answer to a coding question it becomes obvious to them. They feel it is trivial by virtue of knowing the answer. This is not their fault. It's a natural bias, but one we can address.</p>
+<p>The problem compounds when companies reuse interview questions over extended periods - sometimes years. Engineer interviewers naturally refine their understanding of the problem space, discovering edge cases and optimization opportunities. This deepening expertise can widen the gap between their perception of the problem's difficulty and a candidate's first-time experience with it.</p>
+<p>Another common pitfall occurs when companies frame interview questions around their domain expertise, even when hiring for general software engineering roles. For instance, a biotech company might ask candidates to implement a gene-pair categorizing algorithm, despite not requiring prior biology knowledge. The employee lives and breaths these questions every day. So does everyone around them. That's likely been what they have been working on for years. Such questions can create an unintended expertise bias, as interviewers who work with these concepts daily may struggle to view the problem from a newcomer's perspective.</p>
+<p>In practice these types of questions rarely come up at work. But if they do, we enjoy it. We share the problem with the team and try to figure out the best solutions. Sleep on it. Come back the next day and talk some more. Engineers are problem solvers and love a good challenge, but that experience is different then a timed pass/fail &quot;test&quot;.</p>
+<p>Much of the same can be said for interview sessions focused on algorithm whiteboarding. Balance a red black tree? When would someone ever need to implement that? In fact, they should not. A good engineer stands on the shoulders of giants and knows to not roll their own cryptography <sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup>.</p>
+<h2 id="alternative-approaches">Alternative Approaches</h2>
+<p>Here are several alternatives to traditional live coding interviews I have seen or implemented myself at companies that can better assess a candidate's real-world engineering capabilities:</p>
+<h3 id="1-take-home-projects">1. Take-Home Projects</h3>
+<p>Provide candidates with a substantial coding assignment they can complete in their natural development environment. This approach allows for more complex problems than live coding sessions, as developers can utilize their usual tools and resources – reflecting actual workplace conditions <sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup>. Consider:</p>
+<ul>
+<li>Setting clear time expectations rather than strict limits</li>
+<li>Requesting documentation and test coverage</li>
+<li>Create your own unit tests that can check the answers</li>
+<li>Using platforms like Coderpad or Codility for streamlined administration</li>
+<li>Ensuring the scope remains reasonable and respectful of candidates' time</li>
+</ul>
+<h3 id="2-code-review-sessions">2. Code Review Sessions</h3>
+<p>Present candidates with existing code and evaluate their analytical abilities through various exercises:</p>
+<ul>
+<li>Identifying potential issues and red flags</li>
+<li>Debugging specific problems</li>
+<li>Conducting mock pull request reviews</li>
+<li>Discussing optimization opportunities</li>
+<li>Implementing test coverage strategies</li>
+<li>Analyzing algorithmic complexity</li>
+</ul>
+<h3 id="3-portfolio-discussion">3. Portfolio Discussion</h3>
+<p>Have candidates present their own project work, which provides insight into their:</p>
+<ul>
+<li>Development process and decision-making</li>
+<li>Technical communication skills</li>
+<li>Understanding of trade-offs and improvements</li>
+<li>Testing strategies and quality assurance approaches</li>
+<li>Project management and prioritization abilities</li>
+</ul>
+<h3 id="4-guided-implementation">4. Guided Implementation</h3>
+<p>Share pre-designed algorithms or pseudocode for candidates to implement in code. This method:</p>
+<ul>
+<li>Better mirrors real-world development scenarios</li>
+<li>Focuses on implementation skills rather than problem-solving under pressure</li>
+<li>Creates a collaborative environment for discussion</li>
+<li>Allows evaluation of coding style and testing approaches</li>
+</ul>
+<h3 id="5-technical-discussion-series">5. Technical Discussion Series</h3>
+<p>Present a variety of shorter, focused technical discussions that might cover:</p>
+<ul>
+<li>Database schema design and optimization</li>
+<li>Algorithmic complexity analysis</li>
+<li>Data structure selection and trade-offs</li>
+<li>Security best practices and PII handling</li>
+</ul>
+<h3 id="6-flexible-assessment-options">6. Flexible Assessment Options</h3>
+<p>Consider offering candidates a choice of several of the different assessment methods above. This approach:</p>
+<ul>
+<li>Accommodates diverse working styles and preferences</li>
+<li>Promotes inclusive hiring practices <sup class="footnote-ref"><a href="#fn10" id="fnref10:1">[10:1]</a></sup></li>
+<li>Allows candidates to demonstrate their strengths</li>
+<li>Respects different time constraints and commitments</li>
+</ul>
+<p>These alternative approaches can be implemented within the same time investment as traditional coding interviews, while potentially yielding richer insights into candidates' capabilities. If you want to improve the effectiveness even more, regularly gather candidate feedback and refine your methods over time.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Howell, Max (2018). <a href="https://www.quora.com/Whats-the-logic-behind-Google-rejecting-Max-Howell-the-author-of-Homebrew-for-not-being-able-to-invert-a-binary-tree">What's the logic behind Google rejecting Max Howell, the author of Homebrew, for not being able to invert a binary tree?</a> Quora <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Cassel, David (2018). <a href="https://thenewstack.io/joel-spolsky-on-stack-overflow-inclusion-and-how-he-broke-it-recruiting/">Joel Spolsky on Stack Overflow, Inclusion, and How He Broke IT Recruiting</a> The New Stack <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Storm, Adam (2020). <a href="https://medium.com/swlh/why-senior-engineers-hate-coding-interviews-d583d2855757">Why Senior Engineers Hate Coding Interviews</a> Medium <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Ellis, Ike (2013). <a href="https://news.ycombinator.com/item?id=6251087">I will no do a tech interview</a> Hacker News <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>Behroozi, Mahnaz; Parnin, Chris; Barik, Titus (2019). <a href="https://www.researchgate.net/publication/334448588_Hiring_is_Broken_What_Do_Developers_Say_About_Technical_Interviews">Hiring is Broken: What Do Developers Say About Technical Interviews?</a> IEEE Symposium on Visual Languages / Human-Centric Computing Languages and Environments <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>jonocodes (2016). <a href="https://github.com/jonocodes/branchr">Branchr</a> - Feature branch monitoring for product development <a href="#fnref6" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>jonocodes (2017). <a href="https://github.com/jonocodes/envoy">Envoy</a>- Test framework for microservices using Docker <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>jonocodes (2023). <a href="https://pypi.org/project/mystique/">Mystique</a>- Python test helpers for loose data matching <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p><a href="https://juice-shop.github.io/juice-shop/">OWASP Juice Shop</a> - Insecure web application for security trainings <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>Henry, Bradston (2022). <a href="https://dev.to/bradstondev/why-i-stopped-interviewing-with-companies-that-require-a-coding-test-2j6n">Why I Stopped Interviewing with Companies That Require a Coding Test</a> DEV <a href="#fnref10" class="footnote-backref">↩︎</a> <a href="#fnref10:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Goodin, Dan (2019). <a href="https://arstechnica.com/information-technology/2019/06/microsoft-says-mandatory-password-changing-is-ancient-and-obsolete/">Microsoft says mandatory password changing is “ancient and obsolete”</a> <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p><a href="https://en.wikipedia.org/wiki/Curse_of_knowledge">Curse of Knowledge</a> Wikipedia <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p><a href="https://en.wikipedia.org/wiki/Illusion_of_transparency">Illusion of Transparency</a> Wikipedia <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>Morrow, Susan (2019). <a href="https://www.infosecinstitute.com/resources/cryptography/the-dangers-of-rolling-your-own-encryption/">The Dangers of “Rolling Your Own” Encryption</a> Infosec Institute <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p>Gentleman, Daniel (2022). <a href="https://www.linkedin.com/pulse/live-coding-interviews-terrible-might-daniel-gentleman/">Live coding interviews are terrible - and they might be discriminatory</a> LinkedIn <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+	</heading-anchors>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/eleventy-base-blog/blog/2024-09-20-computer-keyboards/">Talk: Computer Keyboards!</a></li><li class="links-nextprev-next">Next →<br><a href="/eleventy-base-blog/blog/2024-12-28-charitable-giving-in-2024/">Charitable Giving in 2024</a></li>
+</ul>
+
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2024-10-25-on-coding-interviews/` was built on 2025-01-06T06:43:43.751Z -->
+		<script type="module" src="/eleventy-base-blog/dist/rJ3_G-2ArF.js"></script>
+	</body>
+</html>
