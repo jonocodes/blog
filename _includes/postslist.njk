@@ -1,0 +1,41 @@
+{%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
+
+
+{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
+{%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %} #}
+
+
+{# <ol reversed class="postlist"> #}
+{%- for post in postslist | reverse %}
+	{# <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}"> #}
+	
+	{# <div class="postlist-item">
+		<a href="{{ post.url }}" class="postlist-link">{{ post.data.title }}</a>
+		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+	</div> #}
+
+	{# </li> #}
+
+<div style="border-bottom: 1px dashed var(--color-gray-20); padding-bottom: 20px; margin-bottom: 30px;">
+
+<h2><a href="{{ post.url }}" class="postlist-link">{{ post.data.title }}</h2>
+
+<ul class="post-metadata">
+	<li><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></li>
+	{%- for tag in post.data.tags | filterTagList %}
+	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
+
+	{%- endfor %}
+	{# <p class="">{{ post.data.description | safe  }}</p> #}
+	<p class="">{{ post.content | excerpt | safe  }} <a href="{{ post.url }}">[read more]</a></p>
+</ul>
+
+</div>
+
+{# {{ post.content | safe }} #}
+
+{# <hr /> #}
+
+{%- endfor %}
+{# </ol> #}
