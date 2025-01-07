@@ -474,14 +474,14 @@ header {
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/blog/" class="home-link">Jono&#39;s thoughts</a>
+			<a href="/" class="home-link">Jono&#39;s thoughts</a>
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
-					<li class="nav-item"><a href="/blog/">Home</a></li>
+					<li class="nav-item"><a href="/">Home</a></li>
 					<li class="nav-item"><a href="/blog/">Archive</a></li>
-					<li class="nav-item"><a href="/blog/about/">About</a></li>
-					<li class="nav-item"><a href="/blog/feed/feed.xml">Feed</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -492,15 +492,15 @@ header {
 
 <ul class="post-metadata">
 	<li><time datetime="2015-05-01">01 May 2015</time></li>
-	<li><a href="/blog/tags/work/" class="post-tag">work</a>, </li>
-	<li><a href="/blog/tags/tech/" class="post-tag">tech</a>, </li>
-	<li><a href="/blog/tags/docker/" class="post-tag">docker</a></li>
+	<li><a href="/tags/work/" class="post-tag">work</a>, </li>
+	<li><a href="/tags/tech/" class="post-tag">tech</a>, </li>
+	<li><a href="/tags/docker/" class="post-tag">docker</a></li>
 </ul>
 
 	<heading-anchors>
 		<p><em>This was a post I wrote for the <a href="https://web.archive.org/web/20170608215050/http://blogs.plos.org/tech/testing-made-awesome-with-docker/">PLOS tech blog</a>. I later started writing <a href="https://leanpub.com/u/jonocodes">a book with the same title</a>, but eventually moved on to other projects before finishing it.</em></p>
 <p>As PLOS has grown (in users, articles, and developers) we have put a lot of effort into splitting our original applications into groups of services. My team is responsible for several web services. We have worked on finding open source tools that can help us and the other PLOS development teams across our growing service ecosystem. I would like to tell you about one of our favorite new tools: Docker.</p>
-<p><picture><source type="image/avif" srcset="/blog/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.avif 679w"><img loading="lazy" decoding="async" src="/blog/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.webp" alt="docker whale" width="679" height="320"></picture></p>
+<p><picture><source type="image/avif" srcset="/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.avif 679w"><img loading="lazy" decoding="async" src="/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.webp" alt="docker whale" width="679" height="320"></picture></p>
 <p><a href="https://docker.com">Docker</a> is an open platform for developers and sysadmins to build, ship, and run distributed applications. For our purposes Docker containers give us access to a jailed operating system that any of our services can run in with almost none of the overhead of a virtual machine.</p>
 <p>The many uses of Docker are still being realized and the broader community continues to determine what the best practices are. It is not just used by operations and development. For example, <a href="http://melissagymrek.com/science/2014/08/29/docker-reproducible-research.html">Melissa Gymrek wrote about using Docker to support reproducible research</a>, and used a PLOS Genetics article as a test case.</p>
 <p>Less then a year ago I used Docker on a couple projects which I thought may help with cross team development. We liked Docker, but were not ready to take it to production. Around the same time, our team was without any QA bodies, so us developers had the opportunity to setup our own testing plan. As we thought about it, Docker seemed like a perfect fit for what we needed. We creating test environments that mimic production using Docker containers and quickly found that Docker makes it easy to narrow the gap between production and development.</p>
@@ -543,7 +543,7 @@ header {
 <p>Speaking of QA, we don't need special servers that only QA has access to. Anyone with Docker installed can not only run the whole application stack but can run the full test suite. The same minimal requirements are in place on our continuous integration build server. We don't need to take up any public facing ports. When the build finishes, it brings up a whole stack, tests it inside the local machine, and tears it down. Did I mention the overhead to run these tests against a brand new full stack is only seconds! I probably did. But its worth saying again.</p>
 
 	</heading-anchors>
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/blog/2014-03-13-visit-from-richard-stallman/">A Visit from Richard Stallman</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/blog/2015-05-25-how-to-entertain-a-juggler/">Talk: How to Entertain a Juggler</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2014-03-13-visit-from-richard-stallman/">A Visit from Richard Stallman</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2015-05-25-how-to-entertain-a-juggler/">Talk: How to Entertain a Juggler</a></li>
 </ul>
 
 		</main>
@@ -552,7 +552,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2015-05-01-testing-made-awesome-with-docker/` was built on 2025-01-06T06:52:20.244Z -->
-		<script type="module" src="/blog/dist/rJ3_G-2ArF.js"></script>
+		<!-- This page `/blog/2015-05-01-testing-made-awesome-with-docker/` was built on 2025-01-07T18:51:36.944Z -->
+		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>
