@@ -9,8 +9,8 @@ const numberOfLatestPostsToShow = 4;
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 
-<h2>Welcome</h2>
-<p>This site is a collection of my talks, thoughts, projects, and unpopular opinions.</p>
+{# <h2>Welcome</h2> #}
+<p>Projects, talks, thoughts, and unpopular opinions</p>
 
 
 <h1>Latest Post{% if latestPostsCount != 1 %}s{% endif %}</h1>

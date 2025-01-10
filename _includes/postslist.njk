@@ -25,10 +25,9 @@
 	{%- for tag in post.data.tags | filterTagList %}
 	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
 	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
-
 	{%- endfor %}
-	{# <p class="">{{ post.data.description | safe  }}</p> #}
-	<p class="">{{ post.content | excerpt | safe  }} <a href="{{ post.url }}">[read more]</a></p>
+
+	<p>{{ post.content | excerpt | safe }} <a href="{{ post.url }}">[read more]</a></p>
 </ul>
 
 </div>
