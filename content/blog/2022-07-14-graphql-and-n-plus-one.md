@@ -19,6 +19,6 @@ After my solution was rolled out, I taught my team how to work on our new system
 </div>
 
 
-Not really mentioned in this talk is my real take on GraphQL, which I should probably elaborate on in a separate post. Long story short: GraphQL is a nice-to-have for front end teams. In practice their GraphQL service probably does not really solve the problem they were designed for, and the backend team implementing them almost always does a poor job of it. I am not blaming them for it. Creating a robust backend for this is prohibitively difficult and I dont think I have ever seen an in-house implementation that is secure, efficient, and wont break if used wrong.
+Not really mentioned in this talk is my real take on GraphQL, which I should probably elaborate on in a separate post. Long story short: GraphQL is a nice-to-have for front end teams. In practice their GraphQL service probably does not really solve the problem they were designed for, and the backend team implementing them almost always does a poor job of it. I am not blaming them for it. Creating a robust backend for this is prohibitively difficult and I don't think I have ever seen an in-house implementation that is secure, efficient, and wont break if used wrong.
 
 This is why I always suggest tools like [Hasura](https://hasura.io/), which essentially do all the backend GraphQL work for you. It comes loaded with best practices, efficiency, and extensibility. The takeaway here is: If you are implementing GraphQL yourself, you are probably doing it wrong.

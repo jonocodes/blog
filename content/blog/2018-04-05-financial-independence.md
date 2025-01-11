@@ -15,6 +15,6 @@ After enthusiastically talking with friends about my findings and recommending b
   <iframe width="560" height="315" src="https://www.youtube.com/embed/lmRLp9vvwJg?si=7xZrLhpa80N4YvwK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-This is not the favorite of my talks, but I have given it several times. These day when I present it, I like to focus on [credit card churning](https://www.reddit.com/r/churning/) - since it can be fun and people always have the most questions about it. Its a little more enjoyable then giving blanket financial advice like: Dont buy that Starbucks coffee every morning. Instead you could invest that spending and become a millionaire by the time you are 40.
+This is not the favorite of my talks, but I have given it several times. These day when I present it, I like to focus on [credit card churning](https://www.reddit.com/r/churning/) - since it can be fun and people always have the most questions about it. Its a little more enjoyable then giving blanket financial advice like: Don't buy that Starbucks coffee every morning. Instead you could invest that spending and become a millionaire by the time you are 40.
 
 These days when someone wants to dip their tow in financial independence, I suggest reading [The Simple Path To Wealth](https://www.goodreads.com/book/show/30646587-the-simple-path-to-wealth).

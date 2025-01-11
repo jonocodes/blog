@@ -6,7 +6,7 @@ tags:
   - talks
 title: OWASP Security Workshop 2024
 ---
-At Udemy we had a two day workshop/game given a couple times a year for anyone who wanted to join. It was a fun way of introducing penetration testing to web application developers.
+At [Udemy](https://www.udemy.com/) we had a two day workshop/game given a couple times a year for anyone who wanted to join. It was a fun way of introducing penetration testing to web application developers.
 
 As a developer we may know to use the right database library that prevents things like an SQL injection, but do we really ever get to experience a real SQL injection?
 
