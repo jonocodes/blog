@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Jono&#39;s thoughts</title>
-		<meta name="description" content="thoughts, talks, projects and unpopular opinions">
-		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s thoughts">
+		<title>Jono&#39;s Corner</title>
+		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
 		
 		<style>.postlist { counter-reset: start-from 17 }
 /* This is an arbitrary CSS string added to the bundle */
@@ -38,11 +38,16 @@
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+		/* --text-color-link: #5d99ca;
+		--text-color-link-active: #6969f7; 
+		--text-color-link-visited: #a6a6f8; */
 
-		--background-color: #15202b;
+		--text-color-link: #bebebe;
+		--text-color-link-active: #bebebe;
+		--text-color-link-visited: #bebebe;
+
+		/* --background-color: #15202b; */
+		--background-color: #1a1a1a;
 	}
 }
 
@@ -68,7 +73,9 @@ html {
 	overflow-y: scroll;
 }
 body {
-	max-width: 40em;
+	/* max-width: 40em; */
+
+	max-width: 45em;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -151,10 +158,28 @@ header:after {
 
 table {
 	margin: 1em 0;
+	width: 100%;
 }
 table td,
 table th {
 	padding-right: 1em;
+}
+
+.home-grid hr {
+	margin: -10px 20px -8px 0;
+}
+.home-grid table {
+	/* padding: 20px; */
+}
+.home-grid td {
+	/* border: 1px solid red; */
+	width: 50%;
+	vertical-align: top;
+	padding: 20px 0 5px 0;
+}
+
+.home-grid p {
+	line-height: 2;
 }
 
 pre,
@@ -310,7 +335,7 @@ header {
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">Jono&#39;s thoughts</a>
+			<a href="/" class="home-link">Jono&#39;s Corner</a>
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
@@ -331,7 +356,59 @@ header {
 
 
 
-<p>Projects, talks, thoughts, and unpopular opinions</p>
+
+<p>Thoughts, talks, docs and unpopular opinions</p>
+
+
+<div class="markdown-content">
+<!-- Ahoy! Ya found me. -->
+<!-- [Jono Finger - Professional Info](https://www.notion.so/Jono-Finger-Professional-Info-113025d8c35b80bea249e1de35ae55c4?pvs=21)
+👨🏽‍💻 [Github](https://github.com/jonocodes)
+👨🏽‍💼 [LinkedIn](https://www.linkedin.com/in/jfinger) -->
+<table class="home-grid"><tr><td>
+<h2 id="some-talks">Some talks</h2>
+<hr>
+<p>⌨️ <a href="https://youtu.be/W07djmOesVQ?si=PvmRNflqCvUTLpWU">Computer Keyboards</a> (2024)<br>
+🛡️ <a href="https://www.dgt.is/blog/2024-04-18-owasp-workshop-2024/">The OWASP Juice Shop</a> (2023)<br>
+⛑️ <a href="https://youtu.be/LE6tHglPPXk?si=ZOUAcWBpwoNqbRLL">GraphQL and the n+1 problem</a> (2021)<br>
+💸 <a href="https://youtu.be/lmRLp9vvwJg?si=KGkBkFiiWcIhf5rg">Financial Independence</a> (2018)<br>
+🤹🏽 <a href="https://www.youtube.com/watch?v=65ImZaHIffk">How to Entertain Juggler</a> (2015)<br>
+🧑🏽‍💻 <a href="https://www.youtube.com/watch?v=mn3yNyZZZIc">What is Open Source Software?</a> (2012)</p>
+</td><td>
+<h2 id="some-projects">Some projects</h2>
+<hr>
+<p>🛋️ <a href="https://github.com/jonocodes/savr-android">Save content for reading later</a> (2024)<br>
+🏁 <a href="https://pypi.org/project/mystique">Data matcher for python testing</a> (2023)<br>
+🚐 <a href="https://github.com/jonocodes/sfcarpool">Carpool coordination app</a> (2023)<br>
+👨🏽‍💻 <a href="https://github.com/jonocodes/vscode-tabtext">Tab Text for VScode</a> (2021)<br>
+📄 <a href="https://github.com/jonocodes/pwder">Making docs interactive</a> (2018)<br>
+📊 <a href="https://github.com/jonocodes/branchr">Feature branch monitoring</a> (2016)<br>
+🎨 <a href="https://github.com/jonocodes/GeditSchemer">Gedit Color scheme editor</a> (2010)</p>
+</td></tr>
+<!-- <tr><td style="padding: 20px;"></td><td></td></tr> -->
+<tr>
+<td>
+<h2 id="some-interests">Some interests</h2>
+<hr>
+<p>🍞 <a href="https://www.notion.so/Sourdough-Country-Bread-8bc98dc117fe4f8e91a303d86100b1cc?pvs=21">Baking Sourdough</a> (2021)<br>
+🕺🏼 <a href="http://foodnotblogs.com/dance">Contra Dance</a> (2010)<br>
+📺 <a href="http://www.youtube.com/user/jonojuggles">Videos</a> (2007-2018)<br>
+🌮 <a href="http://recipes.foodnotblogs.com/">Recipes</a> (2005)<br>
+💿 <a href="http://jono.bandcamp.com/">Music</a> (2005)<br>
+🎻 <a href="http://foodnotblogs.com/eligiblebachelors">The Eligible Bachelors</a> (2003)<br>
+🧩 <a href="http://foodnotblogs.com/cube">Rubiks Cube Solution</a> (1997)</p>
+</td><td style="vertical-align: middle;">
+<!-- ![Juggling clubs](../8clubs.gif) -->
+<picture><source type="image/avif" srcset="/dsaVUdz7xF-359.avif 359w"><source type="image/webp" srcset="/dsaVUdz7xF-359.webp 359w"><img loading="lazy" decoding="async" src="/dsaVUdz7xF-359.gif" alt="Juggling clubs" width="359" height="202"></picture>
+<center>
+Passing clubs at a juggling festival
+</center>
+</td>
+</tr></table>
+
+</div>
+
+<hr style="border: 1px dashed var(--color-gray-20);">
 
 
 <h1 id="latest-posts">Latest Posts</h1>
@@ -463,7 +540,7 @@ Key takeaways... <a href="/blog/2024-09-20-computer-keyboards/">[read more]</a><
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/` was built on 2025-01-11T16:41:56.519Z -->
+		<!-- This page `/` was built on 2025-01-12T23:31:38.409Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

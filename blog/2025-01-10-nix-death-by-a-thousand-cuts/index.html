@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Nix - Death by a thousand cuts</title>
-		<meta name="description" content="thoughts, talks, projects and unpopular opinions">
-		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s thoughts">
+		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
 		
 		<style>/**
  * okaidia theme for JavaScript, CSS and HTML
@@ -205,11 +205,16 @@ pre[class*="language-diff-"] {
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+		/* --text-color-link: #5d99ca;
+		--text-color-link-active: #6969f7; 
+		--text-color-link-visited: #a6a6f8; */
 
-		--background-color: #15202b;
+		--text-color-link: #bebebe;
+		--text-color-link-active: #bebebe;
+		--text-color-link-visited: #bebebe;
+
+		/* --background-color: #15202b; */
+		--background-color: #1a1a1a;
 	}
 }
 
@@ -235,7 +240,9 @@ html {
 	overflow-y: scroll;
 }
 body {
-	max-width: 40em;
+	/* max-width: 40em; */
+
+	max-width: 45em;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -318,10 +325,28 @@ header:after {
 
 table {
 	margin: 1em 0;
+	width: 100%;
 }
 table td,
 table th {
 	padding-right: 1em;
+}
+
+.home-grid hr {
+	margin: -10px 20px -8px 0;
+}
+.home-grid table {
+	/* padding: 20px; */
+}
+.home-grid td {
+	/* border: 1px solid red; */
+	width: 50%;
+	vertical-align: top;
+	padding: 20px 0 5px 0;
+}
+
+.home-grid p {
+	line-height: 2;
 }
 
 pre,
@@ -477,7 +502,7 @@ header {
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">Jono&#39;s thoughts</a>
+			<a href="/" class="home-link">Jono&#39;s Corner</a>
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
@@ -508,7 +533,7 @@ header {
 <p>To be clear, I love Nix and have learned a lot from it. I am not giving up on it, but its time for me to take a break and scale back my all-in attitude.</p>
 <h2 id="the-good">The Good</h2>
 <h3 id="declarative-configuration">Declarative configuration</h3>
-<p>What always intrigued me about Nix was its hermetic, reproducibly. In a perfect setup, I can define my whole system in a single succulent config file and know that I will get that exact system and nothing more whenever I build it.</p>
+<p>What always intrigued me about Nix was its hermetic, reproducibly. In a perfect setup, I can define my whole system in a single succinct config file and know that I will get that exact system and nothing more whenever I build it.</p>
 <p>A great example of its use is when I was going to a conference and needed to bring a laptop. I had two laptops at home, running Nix. The more capable one was serving some files in my network. The other one was was for taking notes on, but at the time was having batter problems - so not great for working outside the house.</p>
 <p>So I simply swapped the Nix configs on the two machines - just for a week. This allowed me to keep a server up at home with the same services/dns/etc as before, while being able to bring a working laptop to the conference.</p>
 <p>This was so easy - I could not have dreamed up something like this before Nix.</p>
@@ -711,6 +736,8 @@ boot<span class="token punctuation">.</span>binfmt<span class="token punctuation
 <p>What I learned from Nix is we should have good reproducible systems by now. We are past having to rely on heavy golden images or VMs. But this should be doable with standard (or mature) Linux tooling.</p>
 <p>I could cobble some things together with Docker, <a href="https://www.gnu.org/software/stow/">stow</a>/<a href="https://www.chezmoi.io/">chezmoi</a>, Ansible, Flatpack but none of that would light a candle to the promise of Nix - and it would <a href="#simple-services">not be truly reproducible</a>. I don't know of any other system where config files are absolute - in that if I remove a program from the package list, it uninstalls it.</p>
 <p>For now I will likely keep NixOS on some home servers. On more active workstations I may switch to using the Nix package manager and home-manager. Or maybe I will just go back to the old days for a while, before taking the red pill. Its gonna hurt, but at least I'll get some work done.</p>
+<hr>
+<p>See discussion on <a href="https://news.ycombinator.com/item?id=42666851">Hacker News</a></p>
 
 	</heading-anchors>
 </p>
@@ -723,7 +750,7 @@ boot<span class="token punctuation">.</span>binfmt<span class="token punctuation
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2025-01-10-nix-death-by-a-thousand-cuts/` was built on 2025-01-11T16:41:56.518Z -->
+		<!-- This page `/blog/2025-01-10-nix-death-by-a-thousand-cuts/` was built on 2025-01-12T23:31:38.409Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>

@@ -4,8 +4,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Charitable Giving in 2024</title>
-		<meta name="description" content="thoughts, talks, projects and unpopular opinions">
-		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s thoughts">
+		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
 		
 		<style>/**
  * okaidia theme for JavaScript, CSS and HTML
@@ -205,11 +205,16 @@ pre[class*="language-diff-"] {
 		--color-gray-90: #dad8d8;
 
 		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+		/* --text-color-link: #5d99ca;
+		--text-color-link-active: #6969f7; 
+		--text-color-link-visited: #a6a6f8; */
 
-		--background-color: #15202b;
+		--text-color-link: #bebebe;
+		--text-color-link-active: #bebebe;
+		--text-color-link-visited: #bebebe;
+
+		/* --background-color: #15202b; */
+		--background-color: #1a1a1a;
 	}
 }
 
@@ -235,7 +240,9 @@ html {
 	overflow-y: scroll;
 }
 body {
-	max-width: 40em;
+	/* max-width: 40em; */
+
+	max-width: 45em;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -318,10 +325,28 @@ header:after {
 
 table {
 	margin: 1em 0;
+	width: 100%;
 }
 table td,
 table th {
 	padding-right: 1em;
+}
+
+.home-grid hr {
+	margin: -10px 20px -8px 0;
+}
+.home-grid table {
+	/* padding: 20px; */
+}
+.home-grid td {
+	/* border: 1px solid red; */
+	width: 50%;
+	vertical-align: top;
+	padding: 20px 0 5px 0;
+}
+
+.home-grid p {
+	line-height: 2;
 }
 
 pre,
@@ -477,7 +502,7 @@ header {
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
-			<a href="/" class="home-link">Jono&#39;s thoughts</a>
+			<a href="/" class="home-link">Jono&#39;s Corner</a>
 			<nav>
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
@@ -555,7 +580,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2024-12-28-charitable-giving-in-2024/` was built on 2025-01-11T16:41:56.518Z -->
+		<!-- This page `/blog/2024-12-28-charitable-giving-in-2024/` was built on 2025-01-12T23:31:38.409Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>
