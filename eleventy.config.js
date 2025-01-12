@@ -3,10 +3,9 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-// import { markdownItPlugin } from "eleventy-markdown-it";
 import markdownIt from "markdown-it";
 import markdownItFootnote from "markdown-it-footnote";
-
+import fs from "fs";
 import pluginFilters from "./_config/filters.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
@@ -65,12 +64,13 @@ export default async function(eleventyConfig) {
 			limit: 10,
 		},
 		metadata: {
+			// This should be sourced from metadata.js 
 			language: "en",
-			title: "Jono's Blog",
+			title: "Jono's Corner",
 			subtitle: "thoughts, talks, projects and unpopular opinions",
 			base: "https://www.dgt.is",
 			author: {
-				name: "Jono"
+				name: "Jono Finger"
 			}
 		}
 	});
@@ -128,10 +128,36 @@ export default async function(eleventyConfig) {
 	linkify: true // Autoconvert URL-like text to links
 	};
 	
+
+
+
+
 	// configure the library with options
 	let markdownLib =  markdownIt(options).use(markdownItFootnote);
 	// set the library to process markdown files
 	eleventyConfig.setLibrary("md", markdownLib);
+
+
+
+
+	// Add a Markdown-it instance for custom rendering
+	const md = new markdownIt(options);
+
+	// Custom filter to read file and convert to Markdown
+	eleventyConfig.addFilter("fileToString", function (filePath) {
+		try {
+			return fs.readFileSync(filePath, "utf8");
+		  } catch (error) {
+			console.error(`Error reading file: ${filePath}`, error);
+			return `Error: Unable to read file: ${filePath}`;
+		  }
+	});
+
+	// Custom filter to render Markdown
+	eleventyConfig.addFilter("markdown", function (content) {
+		return md.render(content);
+	});
+
 };
 
 export const config = {

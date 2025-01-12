@@ -10,7 +10,15 @@ const numberOfLatestPostsToShow = 4;
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 
 {# <h2>Welcome</h2> #}
-<p>Projects, talks, thoughts, and unpopular opinions</p>
+{# This should be sourced from metadata.js #}
+<p>Thoughts, talks, docs and unpopular opinions</p>
+
+
+<div class="markdown-content">
+{{ "content/home-content.md" | fileToString | markdown | safe }}
+</div>
+
+<hr style="border: 1px dashed var(--color-gray-20);">
 
 
 <h1>Latest Post{% if latestPostsCount != 1 %}s{% endif %}</h1>

@@ -20,7 +20,7 @@ To be clear, I love Nix and have learned a lot from it. I am not giving up on it
 
 ### Declarative configuration
 
-What always intrigued me about Nix was its hermetic, reproducibly. In a perfect setup, I can define my whole system in a single succulent config file and know that I will get that exact system and nothing more whenever I build it.
+What always intrigued me about Nix was its hermetic, reproducibly. In a perfect setup, I can define my whole system in a single succinct config file and know that I will get that exact system and nothing more whenever I build it.
 
 A great example of its use is when I was going to a conference and needed to bring a laptop. I had two laptops at home, running Nix. The more capable one was serving some files in my network. The other one was was for taking notes on, but at the time was having batter problems - so not great for working outside the house.
 
@@ -394,3 +394,7 @@ What I learned from Nix is we should have good reproducible systems by now. We a
 I could cobble some things together with Docker, [stow](https://www.gnu.org/software/stow/)/[chezmoi](https://www.chezmoi.io/), Ansible, Flatpack but none of that would light a candle to the promise of Nix - and it would [not be truly reproducible](#simple-services). I don't know of any other system where config files are absolute - in that if I remove a program from the package list, it uninstalls it.
 
 For now I will likely keep NixOS on some home servers. On more active workstations I may switch to using the Nix package manager and home-manager. Or maybe I will just go back to the old days for a while, before taking the red pill. Its gonna hurt, but at least I'll get some work done.
+
+---
+
+See discussion on [Hacker News](https://news.ycombinator.com/item?id=42666851)
