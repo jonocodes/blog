@@ -242,7 +242,7 @@ html {
 body {
 	/* max-width: 40em; */
 
-	max-width: 45em;
+	max-width: 50em;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -507,7 +507,7 @@ header {
 				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
 				<ul class="nav">
 					<li class="nav-item"><a href="/">Home</a></li>
-					<li class="nav-item"><a href="/blog/">Archive</a></li>
+					<li class="nav-item"><a href="/blog/">Posts</a></li>
 					<li class="nav-item"><a href="/about/">About</a></li>
 					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
 				</ul>
@@ -529,7 +529,7 @@ header {
 <p>TLDR: In its current state (2025), I don't generally recommend <strong>desktop</strong> use of Nix(OS), even for seasoned Linux users.</p>
 <p><picture><source type="image/avif" srcset="/blog/2025-01-10-nix-death-by-a-thousand-cuts/ep3anNWC0B-1050.avif 1050w"><img loading="lazy" decoding="async" src="/blog/2025-01-10-nix-death-by-a-thousand-cuts/ep3anNWC0B-1050.webp" alt="Nix trinity" width="1050" height="965"></picture></p>
 <p>I had tried Nix several times <a href="https://github.com/NixOS/nixpkgs/issues/12757">over a decade</a>, and two years ago I again went all in on my general purpose desktop. My use is not too complex. I have decades of software engineering and devops experience, and was hoping to encode my needs with Nix configs. There were many ups and downs in the process of making NixOS work, but in the end I could never really get ahead of/with Nix. I spent so much time cobbling together hacky configs that when I step back and look at the house of cards I have built, it is apparent Nix has created more problems then solutions for me.</p>
-<p>Many of us have grappled with <a href="https://en.wikipedia.org/wiki/Sunk_cost#Fallacy_effect">the sunk cast fallacy</a> as we address our love/hate relationship with Nix. It's hard to know when to quit, so I wrote this tear filled break up to give me some closure. <a href="https://nix.dev/manual/nix/2.17/command-ref/nix-copy-closure">Pun intended</a>.</p>
+<p>Many of us have grappled with <a href="https://en.wikipedia.org/wiki/Sunk_cost#Fallacy_effect">the sunk cost fallacy</a> as we address our love/hate relationship with Nix. It's hard to know when to quit, so I wrote this tear filled break up to give me some closure. <a href="https://nix.dev/manual/nix/2.17/command-ref/nix-copy-closure">Pun intended</a>.</p>
 <p>To be clear, I love Nix and have learned a lot from it. I am not giving up on it, but its time for me to take a break and scale back my all-in attitude.</p>
 <h2 id="the-good">The Good</h2>
 <h3 id="declarative-configuration">Declarative configuration</h3>
@@ -590,7 +590,7 @@ nixpkgs<span class="token operator">-</span>unstable<span class="token punctuati
 <p>And even if the failure happens after build, I find it better to fail forward and fix the problem or remove the broken package then rolling back the whole system.</p>
 <h2 id="the-bad">The Bad</h2>
 <p>First off, I am well aware that some of these issues mentioned below are likely exacerbated by my own faults.</p>
-<p>I have been using Linux every day for everything since it began in the 1990's. I love to distro hop, but Nix is like no other. It's very much an abstraction layer on top Linux. It's possible that the fact that Nix is always &quot;in the way&quot; between me and Linux, it may have soured me.</p>
+<p>I have been using Linux every day for everything since it began in the 1990s. I love to distro hop, but Nix is like no other. It's very much an abstraction layer on top Linux. It's possible that the fact that Nix is always &quot;in the way&quot; between me and Linux, it may have soured me.</p>
 <p>I'm on the fence is Nix is better for experienced or new Linux users. But this point is driven home when I find at Nix conferences a bunch of high-schoolers who package Nix derivations for fun. Perhaps I'm not the best developer, or maybe my experience is whats actually in the way.</p>
 <p>Also the fact that I don't like the Nix language may be due to my middle aged brain being hard to teach new tricks? I don't know.</p>
 <h3 id="too-many-ways-to-do-the-same-thing">Too many ways to do the same thing</h3>
@@ -750,7 +750,7 @@ boot<span class="token punctuation">.</span>binfmt<span class="token punctuation
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2025-01-10-nix-death-by-a-thousand-cuts/` was built on 2025-01-12T23:31:38.409Z -->
+		<!-- This page `/blog/2025-01-10-nix-death-by-a-thousand-cuts/` was built on 2025-01-15T17:34:06.670Z -->
 		<script type="module" src="/dist/rJ3_G-2ArF.js"></script>
 	</body>
 </html>
