@@ -12,7 +12,7 @@ TLDR: In its current state (2025), I don't generally recommend __desktop__ use o
 
 I had tried Nix several times [over a decade](https://github.com/NixOS/nixpkgs/issues/12757), and two years ago I again went all in on my general purpose desktop. My use is not too complex. I have decades of software engineering and devops experience, and was hoping to encode my needs with Nix configs. There were many ups and downs in the process of making NixOS work, but in the end I could never really get ahead of/with Nix. I spent so much time cobbling together hacky configs that when I step back and look at the house of cards I have built, it is apparent Nix has created more problems then solutions for me.
 
-Many of us have grappled with [the sunk cast fallacy](https://en.wikipedia.org/wiki/Sunk_cost#Fallacy_effect) as we address our love/hate relationship with Nix. It's hard to know when to quit, so I wrote this tear filled break up to give me some closure. [Pun intended](https://nix.dev/manual/nix/2.17/command-ref/nix-copy-closure).
+Many of us have grappled with [the sunk cost fallacy](https://en.wikipedia.org/wiki/Sunk_cost#Fallacy_effect) as we address our love/hate relationship with Nix. It's hard to know when to quit, so I wrote this tear filled break up to give me some closure. [Pun intended](https://nix.dev/manual/nix/2.17/command-ref/nix-copy-closure).
 
 To be clear, I love Nix and have learned a lot from it. I am not giving up on it, but its time for me to take a break and scale back my all-in attitude.
 
@@ -129,7 +129,7 @@ And even if the failure happens after build, I find it better to fail forward an
 
 First off, I am well aware that some of these issues mentioned below are likely exacerbated by my own faults.
 
-I have been using Linux every day for everything since it began in the 1990's. I love to distro hop, but Nix is like no other. It's very much an abstraction layer on top Linux. It's possible that the fact that Nix is always "in the way" between me and Linux, it may have soured me.
+I have been using Linux every day for everything since it began in the 1990s. I love to distro hop, but Nix is like no other. It's very much an abstraction layer on top Linux. It's possible that the fact that Nix is always "in the way" between me and Linux, it may have soured me.
 
 I'm on the fence is Nix is better for experienced or new Linux users. But this point is driven home when I find at Nix conferences a bunch of high-schoolers who package Nix derivations for fun. Perhaps I'm not the best developer, or maybe my experience is whats actually in the way.
 
