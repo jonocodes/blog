@@ -130,8 +130,6 @@ export default async function(eleventyConfig) {
 	
 
 
-
-
 	// configure the library with options
 	let markdownLib =  markdownIt(options).use(markdownItFootnote);
 	// set the library to process markdown files

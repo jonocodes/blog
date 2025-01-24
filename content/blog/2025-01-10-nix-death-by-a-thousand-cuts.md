@@ -398,3 +398,6 @@ For now I will likely keep NixOS on some home servers. On more active workstatio
 ---
 
 See discussion on [Hacker News](https://news.ycombinator.com/item?id=42666851)
+
+
+<!-- In the first week this got 15k views and 300+ comments on Hacker News. More tracking stats here: https://namiw.retool.com/p/track_hn-story#story_id=42666851 -->

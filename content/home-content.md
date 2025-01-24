@@ -47,9 +47,11 @@
 
 </td><td style="vertical-align: middle;">
 
-<!-- ![Juggling clubs](../8clubs.gif) -->
 
-<img src="8clubs.gif" alt="Juggling clubs" loading="lazy" decoding="async">
+<!-- NOTE: "ignore" here so the animated gif wont get processes into a static image -->
+
+<img eleventy:ignore src="./img/8clubs.webp" alt="Juggling clubs"> 
+
 <center>
 Passing clubs at a juggling festival
 </center>
