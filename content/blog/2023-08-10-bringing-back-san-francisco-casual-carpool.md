@@ -4,7 +4,7 @@ tags:
   - tech
 title: Bringing Back San Francisco Casual Carpool
 ---
-I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done between September 2022 and August 2023.
+I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done mostly between September 2022 and August 2023.
 
 ### Things I have tried
 
@@ -32,7 +32,9 @@ I have been trying to bring back SF casual carpool since it ended with the pande
 
 - Reached out to officials at MTC and SFMTA to see if we can get historical data for bridge exits to see if there has been a dip in exits at carpool drop sites. No response.
 - [MTC blog post](https://blog.bayareametro.gov/posts/survey-seeks-bay-area-casual-carpool-revival)
-- KQED interview (recording forthcoming)
+- [KQED interview](https://omny.fm/shows/kqed-segmented-audio/what-happened-to-casual-carpool)
+- [SF Chronicle interview](https://www.sfchronicle.com/bayarea/article/traffic-casual-carpool-20218379.php)
+
 
 ### Things I have not yet tried
 

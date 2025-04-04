@@ -18,19 +18,11 @@
         "aarch64-linux",
         "x86_64-darwin",
         "x86_64-linux"
-      ],
-      "allow": {
-        "licenses": []
-      },
-      "semver": {}
+      ]
     },
     "services": {
       "dev": {
-        "command": "npx @11ty/eleventy --serve",
-        "vars": null,
-        "is-daemon": null,
-        "shutdown": null,
-        "systems": null
+        "command": "npx @11ty/eleventy --serve"
       }
     }
   },
