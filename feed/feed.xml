@@ -5,11 +5,38 @@
   <subtitle>thoughts, talks, projects and unpopular opinions</subtitle>
   <link href="https://www.dgt.is/feed/feed.xml" rel="self" />
   <link href="https://www.dgt.is/" />
-  <updated>2025-01-10T00:00:00Z</updated>
+  <updated>2025-04-03T00:00:00Z</updated>
   <id>https://www.dgt.is/</id>
   <author>
     <name>Jono Finger</name>
   </author>
+  <entry>
+    <title>Scamming for Good</title>
+    <link href="https://www.dgt.is/blog/2025-04-03-scamming-for-good/" />
+    <updated>2025-04-03T00:00:00Z</updated>
+    <id>https://www.dgt.is/blog/2025-04-03-scamming-for-good/</id>
+    <content type="html">&lt;p&gt;Back when I was in high school, my grandma got a call from a scammer claiming to be me. The story was I got caught in a bad situation and needed a bunch of money wired right away. To which she responded, &amp;quot;Well, you got yourself into this mess. You can get yourself out.&amp;quot; (click)&lt;/p&gt;
+&lt;p&gt;Yeah, she did not mess with nonsense—scammers or not. But many do fall for these calls. As methods get more sophisticated, scamming is only getting harder to spot. Between lack of social interaction, clouded judgment, and a dated sense of technology, the elderly are often highly targeted. Americans over 60 &lt;a href=&quot;https://abcnews.go.com/Politics/elderly-americans-lost-34-billion-scams-2023-fbi/story?id=109783683&quot;&gt;lost $3.4 billion to scams in 2023&lt;/a&gt;, an 11% increase from the previous year.&lt;/p&gt;
+&lt;h3 id=&quot;do-humans-dream-of-electric-sheep&quot;&gt;Do Humans Dream of Electric Sheep?&lt;/h3&gt;
+&lt;p&gt;I recently came upon this &lt;a href=&quot;https://www.nytimes.com/2025/02/25/podcasts/the-daily/ai-chatgpt-boyfriend-relationship.html&quot;&gt;story about a woman who fell in love with ChatGPT&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To summarize, she was lonely and living long distance from her husband. She heard about others using chat-bots as friends/companions. So she instructed ChatGPT how to behave and, like a good boyfriend, &amp;quot;he&amp;quot; continuously provided her with with niceties and positive encouragement. It eventually got serious and turned from hours a day of conversation to romance. She formed an attachment to the persona she created. This was indeed the caricature of what she asked for. There were emotions, joy, lots of crying ... and love?&lt;/p&gt;
+&lt;p&gt;Sure, there are many Sci-Fi stories that go this way—practically half of &lt;em&gt;Black Mirror&lt;/em&gt; episodes. But this was more akin to &lt;a href=&quot;https://en.wikipedia.org/wiki/Her_(2013_film)&quot;&gt;&lt;em&gt;Her&lt;/em&gt;&lt;/a&gt; than to &lt;a href=&quot;https://en.wikipedia.org/wiki/Ex_Machina_(film)&quot;&gt;&lt;em&gt;Ex Machina&lt;/em&gt;&lt;/a&gt;, because she willingly did this. Probably not trying to fall in love, but at least creating some kind of companionship.&lt;/p&gt;
+&lt;h3 id=&quot;and-now-for-the-bad-idea&quot;&gt;And Now, for the Bad Idea&lt;/h3&gt;
+&lt;p&gt;If people want to be fooled into loving a bot, could a bot be directed as a force for good in their lives?&lt;/p&gt;
+&lt;p&gt;Let’s create a bot that calls the elderly but talks them into doing good for themselves. Listening to their troubles, making uplifting conversations about the day, encouraging them to go outside and touch grass, etc.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2025-04-03-scamming-for-good/0sZffB-iJe-832.avif 832w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2025-04-03-scamming-for-good/0sZffB-iJe-832.webp&quot; alt=&quot;Robocall&quot; width=&quot;832&quot; height=&quot;448&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;h3 id=&quot;seriously&quot;&gt;Seriously?&lt;/h3&gt;
+&lt;p&gt;Probably not? I don’t know. These are shower thoughts.&lt;/p&gt;
+&lt;p&gt;But what might this look like in practice?&lt;/p&gt;
+&lt;p&gt;Using computers for therapy has been discussed and experimented with for decades, but I’m not sure if this would be considered therapy. My layman’s understanding thinks this could be helpful for many people, but certainly not for everyone.&lt;/p&gt;
+&lt;p&gt;As a programmer, I am a little concerned when LLMs can still hallucinate and lead me down a rabbit hole. So having some real licensed therapists reviewing interaction summaries, and guiding the bots would probably be good.&lt;/p&gt;
+&lt;h3 id=&quot;how-would-this-work&quot;&gt;How Would This Work?&lt;/h3&gt;
+&lt;p&gt;A relative of the patient, or (if they have no family) a care provider, would order this &amp;quot;treatment.&amp;quot; They would set up some kind of AI persona that the patient would find favorable. Then the bot would start making regular calls. Depending on the patient, you may even be able to tell them this is a bot. But for the skeptical, they would get &amp;quot;scammed&amp;quot; into it.&lt;/p&gt;
+&lt;p&gt;Dystopian? Kind of.&lt;/p&gt;
+&lt;p&gt;I think the elderly are an easy population to start with. Who knows? In the future, this could help people isolated in a &lt;a href=&quot;https://www.youtube.com/watch?v=Ufmu1WD2TSk&quot;&gt;dwindling population&lt;/a&gt;, or help prevent things like teen suicide instead of &lt;a href=&quot;https://apnews.com/article/chatbot-ai-lawsuit-suicide-teen-artificial-intelligence-9d48adc572100822fdbc3c90d1456bd0&quot;&gt;causing it&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;AI is being used for everything from &lt;a href=&quot;https://evidence.nihr.ac.uk/collection/artificial-intelligence-10-promising-interventions-for-healthcare/&quot;&gt;good&lt;/a&gt; to &lt;a href=&quot;https://80000hours.org/podcast/on-artificial-intelligence/&quot;&gt;bad&lt;/a&gt; and everything &lt;a href=&quot;https://www.youtube.com/watch?v=ZDpo_o7dR8c&quot;&gt;in between&lt;/a&gt;. Either way, we can’t ignore the effect will continue to have on society. Here’s to brainstorming more bad ideas of doing good things.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Nix - Death by a thousand cuts</title>
     <link href="https://www.dgt.is/blog/2025-01-10-nix-death-by-a-thousand-cuts/" />
@@ -431,7 +458,7 @@ If you don&#39;t happen to know the answer from previously doing the same one or
     <link href="https://www.dgt.is/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/" />
     <updated>2023-08-10T00:00:00Z</updated>
     <id>https://www.dgt.is/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/</id>
-    <content type="html">&lt;p&gt;I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done between September 2022 and August 2023.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done mostly between September 2022 and August 2023.&lt;/p&gt;
 &lt;h3 id=&quot;things-i-have-tried&quot;&gt;Things I have tried&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Waiting at the North Berkeley passenger line daily, using both &lt;a href=&quot;http://sfcarpool.app&quot;&gt;sfcarpool.app&lt;/a&gt; and the &lt;a href=&quot;https://rapidcarpool.com/&quot;&gt;RapidCarpool&lt;/a&gt; app
@@ -467,7 +494,8 @@ If you don&#39;t happen to know the answer from previously doing the same one or
 &lt;ul&gt;
 &lt;li&gt;Reached out to officials at MTC and SFMTA to see if we can get historical data for bridge exits to see if there has been a dip in exits at carpool drop sites. No response.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://blog.bayareametro.gov/posts/survey-seeks-bay-area-casual-carpool-revival&quot;&gt;MTC blog post&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;KQED interview (recording forthcoming)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://omny.fm/shows/kqed-segmented-audio/what-happened-to-casual-carpool&quot;&gt;KQED interview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.sfchronicle.com/bayarea/article/traffic-casual-carpool-20218379.php&quot;&gt;SF Chronicle interview&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;things-i-have-not-yet-tried&quot;&gt;Things I have not yet tried&lt;/h3&gt;
 &lt;ul&gt;
@@ -535,18 +563,5 @@ If you don&#39;t happen to know the answer from previously doing the same one or
 &lt;p&gt;That is most of how we use it at PLOS, but Swagger can do much more. For example you can write an OpenAPI spec and use a code generator to create scaffolding for a new API. Or even mock parts of your API.&lt;/p&gt;
 &lt;p&gt;Additionally the community behind swagger is an open group of API enthusiasts. I have found that most of the problems I might have with APIs they have solved, or are working on it.&lt;/p&gt;
 </content>
-  </entry>
-  <entry>
-    <title>Talk: How to Entertain a Juggler</title>
-    <link href="https://www.dgt.is/blog/2015-05-25-how-to-entertain-a-juggler/" />
-    <updated>2015-05-25T00:00:00Z</updated>
-    <id>https://www.dgt.is/blog/2015-05-25-how-to-entertain-a-juggler/</id>
-    <content type="html">&lt;p&gt;This is a presentation I seem to give every couple years. It can be 30 minutes to an hour depending on the venue, and if there is a hands on juggling lesson at the end.&lt;/p&gt;
-&lt;p&gt;In 2015 I went to see a friend do a presentation at  &lt;a href=&quot;https://www.facebook.com/NerdNiteEB/&quot;&gt;Nerd Nite East Bay&lt;/a&gt; about Native Bees. There were some other interesting talks and one was about competitive dodgeball leagues. The audience was very entertained with the idea that a kids playground game would be turned so seriously by adults.&lt;/p&gt;
-&lt;p&gt;I had been going to juggling festivals most of my life at this point and while watching the dodgeball talk, I thought this is pretty tame compared to &lt;a href=&quot;https://www.thewjf.com/combat-juggling/&quot;&gt;full contact combat juggling&lt;/a&gt; competitions. And combat is only one of dozens of other events one may find at a juggling festival.&lt;/p&gt;
-&lt;p&gt;So I started working on my own talk. But since combat is not really my jam, I focus on showing all the fun things jugglers like to do when they get together and are not focused on entertaining non-jugglers. And there is a LOT. Find the &lt;a href=&quot;http://jonocodes.github.io/howToEntertainAJuggler/#/&quot;&gt;slides here&lt;/a&gt; and &lt;a href=&quot;https://github.com/jonocodes/howToEntertainAJuggler&quot;&gt;source here&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;youtube-video&quot;&gt;
-  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/65ImZaHIffk?si=nsT47dI8SqfrUW20&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>
