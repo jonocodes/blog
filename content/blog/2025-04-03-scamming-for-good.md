@@ -22,7 +22,7 @@ Sure, there are many Sci-Fi stories that go this way—practically half of _Blac
 
 If people want to be fooled into loving a bot, could a bot be directed as a force for good in their lives?
 
-Let’s create a bot that calls the elderly but talks them into doing good for themselves. Listening to their troubles, making uplifting conversations about the day, encouraging them to go outside and touch grass, etc.
+Let’s create a bot that calls the elderly but talks them into doing good for themselves. Sometimes they just need [someone to chat with](https://www.youtube.com/watch?v=JFIiqfeBzTU), listen to their troubles, make uplifting conversations about the day, or encourage them to go outside and touch grass. This may be generally helpful and improve their quality of life.
 
 ![Robocall](assets/robocall.webp)
 
@@ -42,6 +42,14 @@ A relative of the patient, or (if they have no family) a care provider, would or
 
 Dystopian? Kind of.
 
-I think the elderly are an easy population to start with. Who knows? In the future, this could help people isolated in a [dwindling population](https://www.youtube.com/watch?v=Ufmu1WD2TSk), or help prevent things like teen suicide instead of [causing it](https://apnews.com/article/chatbot-ai-lawsuit-suicide-teen-artificial-intelligence-9d48adc572100822fdbc3c90d1456bd0).
+The elderly could population to start with, but once we have a grip on these kind bots, we can probably use the same technology to uplift other populations.
 
-AI is being used for everything from [good](https://evidence.nihr.ac.uk/collection/artificial-intelligence-10-promising-interventions-for-healthcare/) to [bad](https://80000hours.org/podcast/on-artificial-intelligence/) and everything [in between](https://www.youtube.com/watch?v=ZDpo_o7dR8c). Either way, we can’t ignore the effect will continue to have on society. Here’s to brainstorming more bad ideas of doing good things.
+In the future, this could be use for other things like:
+
+- anglers who spend lonely months at sea
+- scientists who spend long stretches in the field away from their families
+- astronauts in space
+- people isolated in a [dwindling populations](https://www.youtube.com/watch?v=Ufmu1WD2TSk)
+- preventing teen suicide instead of [being the cause of it](https://apnews.com/article/chatbot-ai-lawsuit-suicide-teen-artificial-intelligence-9d48adc572100822fdbc3c90d1456bd0)
+
+AI is being used for everything from [good](https://evidence.nihr.ac.uk/collection/artificial-intelligence-10-promising-interventions-for-healthcare/) to [bad](https://80000hours.org/podcast/on-artificial-intelligence/) and everything [in between](https://www.youtube.com/watch?v=ZDpo_o7dR8c). Either way, we can’t ignore the effect it will continue to have on society. Here’s to brainstorming more bad ideas of doing good things.
