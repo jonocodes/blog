@@ -5,6 +5,7 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import markdownIt from "markdown-it";
 import markdownItFootnote from "markdown-it-footnote";
+import {full as emoji }from "markdown-it-emoji"; 
 import fs from "fs";
 import pluginFilters from "./_config/filters.js";
 
@@ -127,16 +128,12 @@ export default async function(eleventyConfig) {
 	breaks: true,  // Convert '\n' in paragraphs into <br>
 	linkify: true // Autoconvert URL-like text to links
 	};
-	
 
 
 	// configure the library with options
-	let markdownLib =  markdownIt(options).use(markdownItFootnote);
+	let markdownLib =  markdownIt(options).use(markdownItFootnote).use(emoji);
 	// set the library to process markdown files
 	eleventyConfig.setLibrary("md", markdownLib);
-
-
-
 
 	// Add a Markdown-it instance for custom rendering
 	const md = new markdownIt(options);
