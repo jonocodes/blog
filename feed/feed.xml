@@ -5,11 +5,49 @@
   <subtitle>thoughts, talks, projects and unpopular opinions</subtitle>
   <link href="https://www.dgt.is/feed/feed.xml" rel="self" />
   <link href="https://www.dgt.is/" />
-  <updated>2025-04-03T00:00:00Z</updated>
+  <updated>2025-06-04T00:00:00Z</updated>
   <id>https://www.dgt.is/</id>
   <author>
     <name>Jono Finger</name>
   </author>
+  <entry>
+    <title>Using proprietary golinks in Firefox</title>
+    <link href="https://www.dgt.is/blog/2025-06-04-proprietary-golinks-firefox/" />
+    <updated>2025-06-04T00:00:00Z</updated>
+    <id>https://www.dgt.is/blog/2025-06-04-proprietary-golinks-firefox/</id>
+    <content type="html">&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2025-06-04-proprietary-golinks-firefox/BETH4DDJ_2-1200.avif 1200w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://www.dgt.is/blog/2025-06-04-proprietary-golinks-firefox/BETH4DDJ_2-1200.webp 1200w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2025-06-04-proprietary-golinks-firefox/BETH4DDJ_2-1200.jpeg&quot; alt=&quot;glinks&quot; width=&quot;1200&quot; height=&quot;630&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;When I start a new job I often spend the first day bookmarking all the important sites we use (email, ticketing, reporting, documentation, hosting, etc).&lt;/p&gt;
+&lt;p&gt;At my new place of employment, they rely on &lt;a href=&quot;https://meta.wikimedia.org/wiki/Go_links&quot;&gt;go links&lt;/a&gt;. Not my favorite tech, but it is an interesting alternate soultion to my bookmarking workflow. Go links have been around for decades and there are a ton of implementations, including &lt;a href=&quot;https://tailscale.com/blog/golink&quot;&gt;my favorite one from Tailscale&lt;/a&gt; for in-network use.&lt;/p&gt;
+&lt;p&gt;At work, we rely on go links quite a bit. They are mentioned verbally in meetings and are linked to in many documents. Unfortulately, the service they use, &lt;a href=&quot;https://getglinks.com/&quot;&gt;glinks&lt;/a&gt;, is not very functional if you are not using their &lt;a href=&quot;https://chromewebstore.google.com/detail/glinks-go-links/gciegpagokgfonmlmdecellbnhgebdlf&quot;&gt;Chrome extension&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As a longtime Firefox user and lover of freedom I generally avoid Chrome (someday I should write a post about this since there aren&#39;t enough already 😁). I am often able to work around proprietary Chrome solutions by creating bookmarklets. So I created a hacked solution using &lt;a href=&quot;https://kb.mozillazine.org/Using_keyword_searches&quot;&gt;Bookmark Keywords&lt;/a&gt;, but it required some manual intervention to work for each link.&lt;/p&gt;
+&lt;p&gt;Then I started creating a very basic extension that would do this for me. But I figured out an easier way. It gives the same experience as it does for Chrome users, and it is a general purpose solution that can be used for other similar services (and browsers perhaps).&lt;/p&gt;
+&lt;p&gt;Here are the exact instructions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Log into &lt;a href=&quot;http://getglinks.com&quot;&gt;getglinks.com&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In Firefox go to about:config and add the following new value:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;browser.fixup.domainwhitelist.go = true&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Install the Redirector extension&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the extension settings create the following rule:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;   Redirect: http://go/*
+   To: http://getglinks.com/r/$1
+   Example: http://go/data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now you should be able to type in go links (ie - go/data and go/dashboard) and click them in documents. Go for it.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Scamming for Good</title>
     <link href="https://www.dgt.is/blog/2025-04-03-scamming-for-good/" />
@@ -550,26 +588,6 @@ If you don&#39;t happen to know the answer from previously doing the same one or
 &lt;/div&gt;
 &lt;p&gt;This is not the favorite of my talks, but I have given it several times. These day when I present it, I like to focus on &lt;a href=&quot;https://www.reddit.com/r/churning/&quot;&gt;credit card churning&lt;/a&gt; - since it can be fun and people always have the most questions about it. Its a little more enjoyable then giving blanket financial advice like: Don&#39;t buy that Starbucks coffee every morning. Instead you could invest that spending and become a millionaire by the time you are 40.&lt;/p&gt;
 &lt;p&gt;These days when someone wants to dip their tow in financial independence, I suggest reading &lt;a href=&quot;https://www.goodreads.com/book/show/30646587-the-simple-path-to-wealth&quot;&gt;The Simple Path To Wealth&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Supercharging your API with Swagger</title>
-    <link href="https://www.dgt.is/blog/2018-03-22-supercharging-your-api-with-swagger/" />
-    <updated>2018-03-22T00:00:00Z</updated>
-    <id>https://www.dgt.is/blog/2018-03-22-supercharging-your-api-with-swagger/</id>
-    <content type="html">&lt;p&gt;&lt;em&gt;This was a post I wrote for the &lt;a href=&quot;http://blogs.plos.org/tech/supercharging-your-api-with-swagger/&quot;&gt;PLOS tech blog&lt;/a&gt;, which is no longer online.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;If you manage, develop, or use REST APIs I have a tip for you. &lt;a href=&quot;https://www.dgt.is/blog/2018-03-22-supercharging-your-api-with-swagger/%5Bhttps:/swagger.io/%5D(https:/swagger.io/)&quot;&gt;Swagger&lt;/a&gt; is a framework and toolset that greatly eases the pain of documenting and interacting with your APIs. It&#39;s a swiss army knife for all things APIs and in this post I&#39;ll explain why and how it makes APIs more enjoyable to work with.&lt;/p&gt;
-&lt;p&gt;We have quite a few APIs here are PLOS. Some are internal, some are exposed to the world. We have APIs for article content, authors, readers, manuscripts, taxonomies, configuration, metrics, reviewer matching and more. They are developed with a breadth of technologies including Java, Python, and Ruby.&lt;/p&gt;
-&lt;p&gt;Keeping track of how all these APIs work is quite a task. Back when we only had a single API we had it documented in a Wiki. As the API grew, the maintenance cost of that document also increased. As we started splitting our mega service into smaller ones, we needed a better way to keep our documentation up to date. Swagger did that and so much more.&lt;/p&gt;
-&lt;p&gt;At its core, Swagger uses the OpenAPI specification which is a machine readable description of your API. It typically looks like a large JSON or YAML file. The spec itself is not too interesting, but the tooling around it makes the spec incredibly powerful.&lt;/p&gt;
-&lt;p&gt;For example, one of our &lt;a href=&quot;https://github.com/PLOS/named-entity.service/&quot;&gt;internal APIs&lt;/a&gt; implements a well defined &lt;a href=&quot;https://jersey.github.io/&quot;&gt;Java REST specification&lt;/a&gt;. We use a &lt;a href=&quot;https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-Jersey-2.X-Project-Setup-1.5&quot;&gt;library provided by Swagger&lt;/a&gt; to autogenerate the swagger spec into JSON from our API. This spec is regenerated every time our project is updated and hosted in a special namespace of our API.&lt;/p&gt;
-&lt;p&gt;Now that we have a spec, we use the &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI tool&lt;/a&gt; which is simply an HTML/Javascript page that parses the spec and displays it as readable documentation. The documentation is not static though. You can actually interact with it and perform API calls through your browser with it . We deploy these interactive docs with our service and it helps our consumers a lot.&lt;/p&gt;
-&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.avif 1034w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://www.dgt.is/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.webp 1034w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.png&quot; alt=&quot;swagger UI&quot; width=&quot;1034&quot; height=&quot;858&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
-&lt;p&gt;We have done almost no work and our API consumers are greatly benefited. But it doesn&#39;t stop there.&lt;/p&gt;
-&lt;p&gt;We have many APIs and we also have many apps that use those APIs. The consumer apps can also make use of the spec. &lt;a href=&quot;https://swagger.io/swagger-codegen/&quot;&gt;Swagger code generators&lt;/a&gt; parse the spec and generate client libraries for us. This way our apps don&#39;t have to know about REST at all. They just load a client library and interact with it like an object. The generators support dozens of languages and frameworks out of the box. You can extend them or use one of the hundreds of &lt;a href=&quot;https://swagger.io/open-source-integrations/&quot;&gt;community driven ones&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Want a command line tool that can tap into all your APIs at your organization at once? The generators can help with that too.&lt;/p&gt;
-&lt;p&gt;That is most of how we use it at PLOS, but Swagger can do much more. For example you can write an OpenAPI spec and use a code generator to create scaffolding for a new API. Or even mock parts of your API.&lt;/p&gt;
-&lt;p&gt;Additionally the community behind swagger is an open group of API enthusiasts. I have found that most of the problems I might have with APIs they have solved, or are working on it.&lt;/p&gt;
 </content>
   </entry>
 </feed>
