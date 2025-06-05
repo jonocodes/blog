@@ -41,9 +41,9 @@
 &lt;p&gt;In the extension settings create the following rule:&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;   Redirect: http://go/*
-   To: http://getglinks.com/r/$1
-   Example: http://go/data
+&lt;pre&gt;&lt;code&gt;   Redirect: http*://go/*
+   To: http://getglinks.com/r/$2
+   Example: http://go/something
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now you should be able to type in go links (ie - go/data and go/dashboard) and click them in documents. Go for it.&lt;/p&gt;
 </content>
