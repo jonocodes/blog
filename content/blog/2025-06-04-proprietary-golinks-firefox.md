@@ -30,9 +30,9 @@ Here are the exact instructions:
 4. In the extension settings create the following rule:
 
 ```
-   Redirect: http://go/*
-   To: http://getglinks.com/r/$1
-   Example: http://go/data
+   Redirect: http*://go/*
+   To: http://getglinks.com/r/$2
+   Example: http://go/something
 ```
 
 Now you should be able to type in go links (ie - go/data and go/dashboard) and click them in documents. Go for it.
