@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Post: Testing Made Awesome With Docker</title>
+		<title>Jono&#39;s Guide to getting the Southwest Companion Pass</title>
 		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
 		
@@ -516,64 +516,71 @@ header {
 
 		<main id="skip">
 			
-<h1 id="post-testing-made-awesome-with-docker">Post: Testing Made Awesome With Docker</h1>
+<h1 id="jonos-guide-to-getting-the-southwest-companion-pass">Jono&#39;s Guide to getting the Southwest Companion Pass</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2015-05-01">01 May 2015</time></li>
-	<li><a href="/tags/work/" class="post-tag">work</a>, </li>
-	<li><a href="/tags/tech/" class="post-tag">tech</a>, </li>
-	<li><a href="/tags/docker/" class="post-tag">docker</a></li>
+	<li><time datetime="2025-12-10">10 December 2025</time></li>
+	<li><a href="/tags/ideas/" class="post-tag">ideas</a></li>
 </ul>
 
 <p>
 	<heading-anchors>
-		<p><em>This was a post I wrote for the <a href="https://web.archive.org/web/20170608215050/http://blogs.plos.org/tech/testing-made-awesome-with-docker/">PLOS tech blog</a>. I later started writing <a href="https://leanpub.com/u/jonocodes">a book with the same title</a>, but eventually moved on to other projects before finishing it.</em></p>
-<p>As PLOS has grown (in users, articles, and developers) we have put a lot of effort into splitting our original applications into groups of services. My team is responsible for several web services. We have worked on finding open source tools that can help us and the other PLOS development teams across our growing service ecosystem. I would like to tell you about one of our favorite new tools: Docker.</p>
-<p><picture><source type="image/avif" srcset="/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.avif 679w"><img loading="lazy" decoding="async" src="/blog/2015-05-01-testing-made-awesome-with-docker/R0TQMfVgUS-679.webp" alt="docker whale" width="679" height="320"></picture></p>
-<p><a href="https://docker.com">Docker</a> is an open platform for developers and sysadmins to build, ship, and run distributed applications. For our purposes Docker containers give us access to a jailed operating system that any of our services can run in with almost none of the overhead of a virtual machine.</p>
-<p>The many uses of Docker are still being realized and the broader community continues to determine what the best practices are. It is not just used by operations and development. For example, <a href="http://melissagymrek.com/science/2014/08/29/docker-reproducible-research.html">Melissa Gymrek wrote about using Docker to support reproducible research</a>, and used a PLOS Genetics article as a test case.</p>
-<p>Less then a year ago I used Docker on a couple projects which I thought may help with cross team development. We liked Docker, but were not ready to take it to production. Around the same time, our team was without any QA bodies, so us developers had the opportunity to setup our own testing plan. As we thought about it, Docker seemed like a perfect fit for what we needed. We creating test environments that mimic production using Docker containers and quickly found that Docker makes it easy to narrow the gap between production and development.</p>
-<h2 id="consistent-environments">Consistent Environments</h2>
-<p>With <a href="https://docs.docker.com/reference/dockerfile/">Dockerfiles</a> we can define an exact template for what each application needs, from operating system to libraries to open ports. In the git repository for each of our projects we can include a Dockerfile right along with the source code. This way anyone who pulls the project can get it up and running with a few simple commands. They don't need to install all the dependencies manually and hope it works on their own computer, since this will all be taken care of in the Docker container. This means getting up and running is fast since the host machine requires nothing installed but the Docker service itself.</p>
-<p>Docker containers are so lightweight that it is beneficial to run only one application per container. Since your application very likely has dependencies on other services (database, caching server, message queue, etc), you will need multiple Docker files to bring up a working stack. This is where Docker Compose comes in.</p>
-<p><a href="https://docs.docker.com/compose/">Docker Compose</a> gives a way to bring up a collection of containers. In a short yaml file we can define our entire stack. With a 'docker-compose up', our entire stack is up and running in few seconds. Here is a sample compose.yml file:</p>
-<pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">web</span><span class="token punctuation">:</span>
-  build<span class="token punctuation">:</span> webserviceapi    <span class="token comment"># location of our Dockerfile</span>
-  volumes<span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> ../target<span class="token punctuation">:</span>/build    <span class="token comment"># share directory to get compiled build from</span>
-  links<span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> database<span class="token punctuation">:</span>database   <span class="token comment"># network link between containers</span>
-  ports<span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> "8080<span class="token punctuation">:</span>8080"         <span class="token comment"># expose port 8080 to host</span>
-
-<span class="token key atrule">database</span><span class="token punctuation">:</span>
-  image<span class="token punctuation">:</span> mysql<span class="token punctuation">:</span>5.5        <span class="token comment"># name of community a supported image</span>
-  environment<span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> MYSQL_ROOT_PASSWORD=verycomplexpassword</code></pre>
-<h2 id="black-box-testing">Black Box Testing</h2>
-<p>Our web service container exposes port 8080 so it can be reached from the host. To run our API integration tests all we have to do is point them at that port, and we are testing the Dockerized API instead of a service running directly on the host. I wrote a few small scripts that orchestrate bringing those containers up and down as needed between various tests and now we have a very fast and comprehensive integration testing system.</p>
-<h2 id="scalability-testing">Scalability Testing</h2>
-<p>You can use compose to bring up any number of instances of the services in your stack with something like:</p>
-<blockquote>
-<p>docker-compose scale web=10 database=3</p>
-</blockquote>
-<p>This is great for testing things like database clusters or load balancers. I have seen hundreds of database containers run on a single laptop with no problem. Try doing that with a virtual machine.</p>
-<h2 id="configuration-testing">Configuration Testing</h2>
-<p>It is easy to add very invasive automated tests here as well. Let's say we want to automate the testing of different system configurations. We usually use MySQL, but this service also can work with a Postgres backend. This test can be added in a few minutes. Just create a Postgres container (<a href="https://registry.hub.docker.com/_/postgres/">or find an existing one on Dockerhub</a>), and modify our test script to run as follows:</p>
+		<p><picture><source type="image/avif" srcset="/blog/2025-12-10-southwest-companion-pass/4UIXhQxlBi-682.avif 682w"><source type="image/webp" srcset="/blog/2025-12-10-southwest-companion-pass/4UIXhQxlBi-682.webp 682w"><img loading="lazy" decoding="async" src="/blog/2025-12-10-southwest-companion-pass/4UIXhQxlBi-682.jpeg" alt="companion pass cards" width="682" height="682"></picture></p>
+<p><strong>TLDR: The Companion Pass is a low effort way to get a bunch of free flights on Southwest.</strong></p>
+<p>For the past 10+ years, around this time I either present <a href="https://www.dgt.is/blog/2018-04-05-financial-independence/">my talk on financial independence</a> at work or give this spiel for friends and family. So I figured I would codify it once and for all here. You can find <a href="https://thepointsguy.com/loyalty-programs/earn-southwest-companion-pass-new-year/">more current and detailed guides</a>, but here is my concise bullet point version.</p>
+<p><a href="#what-is-churning-exactly">Credit card churning</a> is not for everyone, but most people can see great benefits with some minimal effort and without getting too deep into the weeds. For a long time, the holy grail of these benefits has been the Southwest Companion pass.</p>
+<p>I get the same questions every year, so read this in full to get yours answered.</p>
+<h2 id="why-get-the-companion-pass">Why get the companion pass?</h2>
+<p>The Southwest Companion pass is a way to bring a friend with you on all Southwest trips you take for free, for around 2 years. For many travelers this adds up to a savings of hundreds to thousands of dollars.</p>
+<p>Most other credit card bonuses allow for only one to two flights total.</p>
+<p>If you live close to a <a href="https://www.southwest.com/route-map/">southwest hub</a> (most people in the US do), it's quite worth the effort.</p>
+<p>In the process of getting the companion pass you also get thousands of Southwest Rapids Rewards points, worth over $1000. I use these points to pay for the first traveler on a flight. Then use the companion pass to pay for the next traveler.</p>
+<h2 id="how-to-get-it">How to get it</h2>
+<p>Note that these details change regluarly, so this uses the current (December 2025) deals. However I have done this consecutivly for many years, and the deals have been comparable every time. I have had 5+ of these companion passes over time.</p>
 <ul>
-<li>Bring up new stack (with MySQL backend), seed with data, Run API tests, Tear down stack.</li>
-<li>Bring up new stack (with Postgres backend), seed with data, Run API tests, Tear down stack.</li>
-<li>Report on any differences in test results between MySQL and Postgres backends.</li>
+<li>Apply in December for a Southwest Business card (currently 60k bonus)</li>
+<li>Once approved for the business card apply the next day for a Southwest Personal card (85k bonus)</li>
+<li>Don't use the card at all until January 1</li>
+<li>Spend $3k on each card by March</li>
+<li>Pay them off in full as soon as you get the bill</li>
 </ul>
-<h2 id="simplifying-development">Simplifying Development</h2>
-<p>In the past, some of our system tests used a different database technology than the production deployment. These tests used in-memory H2 databases since it is faster to bring up then a full database server. This has given us problems since we need to manage drivers additional specific to testing, and <a href="http://h2database.com/html/features.html#compatibility">H2's compatibility mode for MySQL only implements some of the MySQL feature set</a>. Since Docker allows us to quickly create production-like systems we have completely removed H2 and test right on a MySQL container. Now that we have fewer dependencies, we have less code, and fewer points of failure.</p>
-<h2 id="simplifying-testing">Simplifying Testing</h2>
-<p>Now that our stack is Dockerized, anyone can easily run the tests. New developers can run tests against their new code right away, leading to fewer checked in bugs. And QA can focus on tasks beyond regression testing.</p>
-<p>Speaking of QA, we don't need special servers that only QA has access to. Anyone with Docker installed can not only run the whole application stack but can run the full test suite. The same minimal requirements are in place on our continuous integration build server. We don't need to take up any public facing ports. When the build finishes, it brings up a whole stack, tests it inside the local machine, and tears it down. Did I mention the overhead to run these tests against a brand new full stack is only seconds! I probably did. But its worth saying again.</p>
+<p>The companion pass spans two calendar years and always ends in December. So the sooner you get the pass, the longer you can use it. I typically manage to spend the whole $6k in January, so for this year that would mean I have the pass from Feb 2025 to December 2026 - about 2 years.</p>
+<h1 id="faq">FAQ</h1>
+<h2 id="what-is-churning-exactly">What is churning exactly?</h2>
+<p>The short of it is: regularly opening new credit cards to only get the sign up bonus. Once you get the bonus, don't use that card again. In practice this means you are always getting 10-20% back on spending, instead of the 1-2% most cards provide.</p>
+<p>It's not for everyone, but there are thousands of people who do. It mostly just takes a little bookkeeping.</p>
+<h2 id="how-can-i-get-a-business-card-if-i-dont-run-a-business">How can I get a business card if I don't run a business?</h2>
+<p>Sure you do. Or maybe you are about to start a business giving people advice on how to use credit cards? It doesnt matter. There is no business police here.</p>
+<h2 id="is-it-worth-paying-the-yearly-fee-for-these-cards">Is it worth paying the yearly fee for these cards?</h2>
+<p>Yes, but I only pay for the first year. Once the year is up I close the cards. The points you earn alone from these cards, without even using the companion pass are worth $1000-$2000. That much more then the $250 spend to open these cards.</p>
+<h2 id="will-this-affect-my-credit-score">Will this affect my credit score?</h2>
+<p>Short answer: No</p>
+<p>Longer answer: Closing personal cards can cause a short negledgable dip in your score. It typically recovers in a couple months. I have been doing this for over a decade and never gone much below 800.</p>
+<h2 id="why-do-you-personally-like-the-companion-pass">Why do you personally like the companion pass?</h2>
+<ul>
+<li>Even though i'm not that into travel, my family does quite a bit and I like to save money.</li>
+<li>Southwest flies to most places I go to.</li>
+<li>Churning happens to be fun for me, since its kind of like a game.</li>
+<li>It is biggest bang for your buck and far less complex then other churning methods.</li>
+<li>You also get a ton of southwest points that pay for the non-companion to fly free in the first place.</li>
+</ul>
+<h2 id="how-do-you-manage-to-spend-so-much-to-get-the-sign-up-bonus">How do you manage to spend so much to get the sign up bonus?</h2>
+<p>This is part of the reason why churning is not for everyone. For me, I try to line up a bunch of expenses for Jan 1. For example:</p>
+<ul>
+<li>Large expenses like new furnatiure, or fixing some appliance.</li>
+<li>Upfront summer expenses. Travel, lodging, camps, etc.</li>
+<li><a href="https://www.dgt.is/blog/2024-12-28-charitable-giving-in-2024/">Yearly donations</a></li>
+<li>Gift cards for myself for future spending.</li>
+</ul>
+<h2 id="this-is-too-complicated-is-there-a-simpler-way">This is too complicated. Is there a simpler way?</h2>
+<p>Southwest often offers a &quot;Companion pass&quot; credit card. This is no mess since you dont need to collect points or apply for multiple cards. However these cards give you the pass for 1 year, not 2.</p>
+<h2 id="this-is-not-complicated-enough-where-can-i-find-more-details">This is not complicated enough. Where can I find more details?</h2>
+<p>The rules and rates change year to year, but there are online communities that take it upon their selves to collect and advice. Here is my favorite:<br>
+<a href="https://www.reddit.com/r/churning/comments/1d9wey2/southwest_companion_pass_megathread/">https://www.reddit.com/r/churning/comments/1d9wey2/southwest_companion_pass_megathread/</a></p>
 
 	</heading-anchors>
 </p>
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2014-03-13-visit-from-richard-stallman/">A Visit from Richard Stallman</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2015-05-25-how-to-entertain-a-juggler/">Talk: How to Entertain a Juggler</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2025-06-04-proprietary-golinks-firefox/">Using proprietary golinks in Firefox</a></li>
 </ul>
 
 		</main>
@@ -582,7 +589,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2015-05-01-testing-made-awesome-with-docker/` was built on 2025-12-10T19:21:37.028Z -->
+		<!-- This page `/blog/2025-12-10-southwest-companion-pass/` was built on 2025-12-10T19:21:37.030Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
