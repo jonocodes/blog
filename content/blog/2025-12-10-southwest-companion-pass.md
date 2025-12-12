@@ -27,7 +27,7 @@ In the process of getting the companion pass you also get thousands of Southwest
 
 ## How to get it
 
-Note that these details change regluarly, so this uses the current (December 2025) deals. However I have done this consecutivly for many years, and the deals have been comparable every time. I have had 5+ of these companion passes over time.
+Note that these details change regularly, so this uses the current (December 2025) deals. However I have done this consecutively for many years, and the deals have been comparable every time. I have had 5+ of these companion passes over time.
 
 * Apply in December for a Southwest Business card (currently 60k bonus)
 * Once approved for the business card apply the next day for a Southwest Personal card (85k bonus)
@@ -47,7 +47,7 @@ It's not for everyone, but there are thousands of people who do. It mostly just 
 
 ## How can I get a business card if I don't run a business?
 
-Sure you do. Or maybe you are about to start a business giving people advice on how to use credit cards? It doesnt matter. There is no business police here.
+Sure you do. Or maybe you are about to start a business giving people advice on how to use credit cards? It does not matter. There is no business police here.
 
 ## Is it worth paying the yearly fee for these cards?
 
@@ -58,7 +58,7 @@ Yes, but I only pay for the first year. Once the year is up I close the cards. T
 
 Short answer: No
 
-Longer answer: Closing personal cards can cause a short negledgable dip in your score. It typically recovers in a couple months. I have been doing this for over a decade and never gone much below 800.
+Longer answer: Closing personal cards can cause a short negligible dip in your score. It typically recovers in a couple months. I have been doing this for over a decade and never gone much below 800.
 
 ## Why do you personally like the companion pass?
 
@@ -72,7 +72,7 @@ Longer answer: Closing personal cards can cause a short negledgable dip in your 
 
 This is part of the reason why churning is not for everyone. For me, I try to line up a bunch of expenses for Jan 1. For example:
 
-* Large expenses like new furnatiure, or fixing some appliance.
+* Large expenses like new furniture, or fixing some appliance.
 * Upfront summer expenses. Travel, lodging, camps, etc.
 * [Yearly donations](https://www.dgt.is/blog/2024-12-28-charitable-giving-in-2024/)
 * Gift cards for myself for future spending.
@@ -80,7 +80,7 @@ This is part of the reason why churning is not for everyone. For me, I try to li
 
 ## This is too complicated. Is there a simpler way?
 
-Southwest often offers a "Companion pass" credit card. This is no mess since you dont need to collect points or apply for multiple cards. However these cards give you the pass for 1 year, not 2.
+Southwest often offers a "Companion pass" credit card. This is no mess since you don't need to collect points or apply for multiple cards. However these cards give you the pass for 1 year, not 2.
 
 ## This is not complicated enough. Where can I find more details?
 
