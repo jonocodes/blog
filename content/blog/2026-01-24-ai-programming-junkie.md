@@ -91,4 +91,5 @@ Sure the product manager can't run our stack or knows what a unit test is, but h
 
 There will be professional programmers for a while yet, but fewer and fewer will be needed or employable.
 
-What a blow it will be when it is taken away from us. I guess we will join the other droves of white collar workers being forced into an early retirement. I'll still be happily coding away, but my run of making a living from it will have run its course.
+What a blow it will be when it is taken away from us. I guess we will join the other droves of white collar workers being forced into an early retirement. Even if my run of making a living from it has run its course, 
+I'll still be happily coding away.
