@@ -6,7 +6,7 @@ title: Thoughts on LLM use from a programming junkie
 
 I am an addict. No joke.
 
-After a full workday of writing code, I come home and and hack on side projects. It's not healthy and I’m the first to acknowledge it. This is a real addiction, but is not taken seriously since its seen as “one of the good ones”.
+After a full workday of writing code, I come home and hack on side projects. It's not healthy and I’m the first to acknowledge it. This is a real addiction, but is not taken seriously since its seen as “one of the good ones”.
 
 What’s changed recently isn’t how much I build, but _how_ I build.
 
@@ -26,11 +26,11 @@ Software removed waiting. The internet was an endless playground of toys to try.
 
 # New builders, new entry points
 
-One of the great things LLMs have done is empower non-developers. People can now build tools for their own needs without years of training, and you dont need to be a super nerd like me.
+One of the great things LLMs have done is empower non-developers. People can now build tools for their own needs without years of training, and you don't need to be a super nerd like me.
 
-I love seeing what this new community has come up with, even if that [accessibility may not last for ever](https://80000hours.org/podcast/episodes/toby-ord-inference-scaling-ai-governance/)
+I love seeing what this new community has come up with, even if that [accessibility may not last for ever.](https://80000hours.org/podcast/episodes/toby-ord-inference-scaling-ai-governance/)
 
-## The journey is shrinking
+# The journey is shrinking
 
 For me, programming used to be mostly about the journey. I would make incremental changes, hit dead ends, rethink abstractions, and slowly converge on something solid. We love to solve puzzles.
 
@@ -38,16 +38,15 @@ Lately, I spend more time iterating on design documents with an LLM than writing
 
 I get more done, but I spend less time _thinking in code_.
 
-
-## Making beautiful code or an elegant abstraction
+# Making beautiful code or an elegant abstraction
 
 I have tried being very descriptive to the LLMs about how I want my code to be written, but it can only get you so far. And why bother? The better these tools get, the less time I spend actually looking at the code itself.
 
-You can spend a lot of time curating you Claude hooks, skills, tweaking tests runners, etc. But these are just stopgaps while Claude gets smarter with each release. In a few months' time no one will be context hacking as these models get smarter then us seasoned engineers.
+You can spend a lot of time curating you Claude hooks, skills, tweaking tests runners, etc. But these are just stopgaps while Claude gets smarter with each release. In a few months' time no one will be context hacking as these models get smarter than us seasoned engineers.
 
 At the time of this writing I am using Opus 4.5 and it needs dramatically less hand-holding then its predecessors.
 
-## Productivity and its cost
+# Productivity and its cost
 
 I’ve shipped more side projects in the last couple of years than ever before. I don’t even write ideas down anymore — I can spin up a discussion with Claude Code Web and pick it up later on my phone when walking the dog.
 
@@ -59,7 +58,7 @@ This kind of productivity has a different cost profile than manual work.
 
 Any developer who’s become a manager knows the feeling: distance from the code reshapes how you think. I’m learning new skills, but spending less time in syntax and implementation can _feel_ like a kind of intellectual atrophy — fewer sharp edges, less resistance. At the same time, this new over-productivity feels almost greedy.
 
-## Innovation for humans?
+# Innovation for humans?
 
 I feel less excited by new languages or frameworks than I used to, possibly because I spend less time reading and writing code directly. If humans stop being the primary audience, it’s unclear what happens to ergonomics, fun, or beauty as design goals.
 
@@ -67,7 +66,7 @@ It is kind of funny to think our future super-intelligent AI may still be progra
 
 ![trends graph of "new js frameworks" vs "coding with AI"](assets/jsframework-vs-ai.png)
 
-What language innovations do I see these days? LLM focused ones that __focus__ on using string compression to deal with limited context windows. This is early days, so I dont find this terribly interesting.
+What language innovations do I see these days? LLM focused ones that __focus__ on using string compression to deal with limited context windows. This is early days, so I don't find this terribly interesting.
 
 I think LLMs would do better creating their own i-code that makes the most sense to them. Maybe its all [Sanskrit and emoji](https://experiencemachines.substack.com/p/machines-of-loving-bliss). Who knows.
 
@@ -75,7 +74,12 @@ At some point, LLMs became generally _good enough_ at writing programs. And that
 
 Early in your career, it’s natural to obsess over unnecessary details — naming, structure, theoretical purity. Over time, you learn a different lesson: most of the code you write will be replaced in a year or two anyway. Given that reality, “good enough” isn’t a failure of standards; it’s an acknowledgment of impermanence.
 
-(generated "good enough" image)
+
+<center>
+
+!["good enough" image](assets/good-enough.png)
+
+</center>
 
 # Whats next for us?
 
@@ -87,4 +91,4 @@ Sure the product manager can't run our stack or knows what a unit test is, but h
 
 There will be professional programmers for a while yet, but fewer and fewer will be needed or employable.
 
-What a blow it will be when it is taken away from us. I guess we will join the other droves of white color workers being forced into an early retirement. I'll still be happily coding away, but my run of making a living from it will have run its course.
+What a blow it will be when it is taken away from us. I guess we will join the other droves of white collar workers being forced into an early retirement. I'll still be happily coding away, but my run of making a living from it will have run its course.
