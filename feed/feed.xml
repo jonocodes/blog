@@ -5,11 +5,62 @@
   <subtitle>thoughts, talks, projects and unpopular opinions</subtitle>
   <link href="https://www.dgt.is/feed/feed.xml" rel="self" />
   <link href="https://www.dgt.is/" />
-  <updated>2025-12-10T00:00:00Z</updated>
+  <updated>2026-01-24T00:00:00Z</updated>
   <id>https://www.dgt.is/</id>
   <author>
     <name>Jono Finger</name>
   </author>
+  <entry>
+    <title>Thoughts on LLM use from a programming junkie</title>
+    <link href="https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/" />
+    <updated>2026-01-24T00:00:00Z</updated>
+    <id>https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/</id>
+    <content type="html">&lt;p&gt;I am an addict. No joke.&lt;/p&gt;
+&lt;p&gt;After a full workday of writing code, I come home and hack on side projects. It&#39;s not healthy and I’m the first to acknowledge it. This is a real addiction, but is not taken seriously since its seen as “one of the good ones”.&lt;/p&gt;
+&lt;p&gt;What’s changed recently isn’t how much I build, but &lt;em&gt;how&lt;/em&gt; I build.&lt;/p&gt;
+&lt;p&gt;For builders, there is that dopamine hit when many hours of effort turns into something that works. But now those hours can be compressed into minutes with almost no effort. All the dopamine you could ever want.&lt;/p&gt;
+&lt;p&gt;But I’m not here to talk about addiction.&lt;/p&gt;
+&lt;h1 id=&quot;waiting-used-to-be-optional&quot;&gt;Waiting used to be optional&lt;/h1&gt;
+&lt;p&gt;Discovering Linux and open source was a revelation to me when I was younger. The idea that most of the world’s software was freely available, constantly improving, and instantly accessible felt almost unreal.&lt;/p&gt;
+&lt;p&gt;My father was an architect. He would spend months — sometimes years — designing buildings, and only much later see the result. I couldn’t imagine waiting that long to experience the payoff of my work.&lt;/p&gt;
+&lt;p&gt;I see a similar dynamic with my kids. They build and rebuild the same LEGO sets, but the desire for the &lt;em&gt;next&lt;/em&gt; thing is always there. Once you’ve assembled everything you own, you have to wait — or save — before you can build something new.&lt;/p&gt;
+&lt;p&gt;Software removed waiting. The internet was an endless playground of toys to try. That immediacy shaped how I learned, how I worked, and what I found satisfying.&lt;/p&gt;
+&lt;h1 id=&quot;new-builders-new-entry-points&quot;&gt;New builders, new entry points&lt;/h1&gt;
+&lt;p&gt;One of the great things LLMs have done is empower non-developers. People can now build tools for their own needs without years of training, and you don&#39;t need to be a super nerd like me.&lt;/p&gt;
+&lt;p&gt;I love seeing what this new community has come up with, even if that &lt;a href=&quot;https://80000hours.org/podcast/episodes/toby-ord-inference-scaling-ai-governance/&quot;&gt;accessibility may not last for ever.&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;the-journey-is-shrinking&quot;&gt;The journey is shrinking&lt;/h1&gt;
+&lt;p&gt;For me, programming used to be mostly about the journey. I would make incremental changes, hit dead ends, rethink abstractions, and slowly converge on something solid. We love to solve puzzles.&lt;/p&gt;
+&lt;p&gt;Lately, I spend more time iterating on design documents with an LLM than writing code directly. The destination is cheap, so the journey matters less. That’s especially tempting for things I’ve built so many times before (auth flows, CRUD APIs, server caching).&lt;/p&gt;
+&lt;p&gt;I get more done, but I spend less time &lt;em&gt;thinking in code&lt;/em&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;making-beautiful-code-or-an-elegant-abstraction&quot;&gt;Making beautiful code or an elegant abstraction&lt;/h1&gt;
+&lt;p&gt;I have tried being very descriptive to the LLMs about how I want my code to be written, but it can only get you so far. And why bother? The better these tools get, the less time I spend actually looking at the code itself.&lt;/p&gt;
+&lt;p&gt;You can spend a lot of time curating you Claude hooks, skills, tweaking tests runners, etc. But these are just stopgaps while Claude gets smarter with each release. In a few months&#39; time no one will be context hacking as these models get smarter than us seasoned engineers.&lt;/p&gt;
+&lt;p&gt;At the time of this writing I am using Opus 4.5 and it needs dramatically less hand-holding then its predecessors.&lt;/p&gt;
+&lt;h1 id=&quot;productivity-and-its-cost&quot;&gt;Productivity and its cost&lt;/h1&gt;
+&lt;p&gt;I’ve shipped more side projects in the last couple of years than ever before. I don’t even write ideas down anymore — I can spin up a discussion with Claude Code Web and pick it up later on my phone when walking the dog.&lt;/p&gt;
+&lt;p&gt;That acceleration has pushed me toward building more feature-complete apps. On a &lt;a href=&quot;https://github.com/jonocodes/stashcast&quot;&gt;recent project&lt;/a&gt;, I was so satisfied with its performance that I had it translate the entire application into multiple languages. I am the only user. I only speak one language.&lt;/p&gt;
+&lt;p&gt;The downside is cognitive. When you have a cloud of minions waiting to execute your every command, downtime can feel outright senseless. Managing parallel agents and half-started ideas takes real mental space. Productivity becomes &lt;a href=&quot;https://www.tabulamag.com/p/too-fast-to-think-the-hidden-fatigue&quot;&gt;something you have to manage&lt;/a&gt;, not just enjoy.&lt;/p&gt;
+&lt;p&gt;This kind of productivity has a different cost profile than manual work.&lt;/p&gt;
+&lt;p&gt;Any developer who’s become a manager knows the feeling: distance from the code reshapes how you think. I’m learning new skills, but spending less time in syntax and implementation can &lt;em&gt;feel&lt;/em&gt; like a kind of intellectual atrophy — fewer sharp edges, less resistance. At the same time, this new over-productivity feels almost greedy.&lt;/p&gt;
+&lt;h1 id=&quot;innovation-for-humans&quot;&gt;Innovation for humans?&lt;/h1&gt;
+&lt;p&gt;I feel less excited by new languages or frameworks than I used to, possibly because I spend less time reading and writing code directly. If humans stop being the primary audience, it’s unclear what happens to ergonomics, fun, or beauty as design goals.&lt;/p&gt;
+&lt;p&gt;It is kind of funny to think our future super-intelligent AI may still be programming on ancient 21st century technology. Forget Python 4. We can work around anything with just pseudocode.&lt;/p&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/cHAFV6Eh8S-903.avif 903w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/cHAFV6Eh8S-903.webp 903w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/cHAFV6Eh8S-903.png&quot; alt=&quot;trends graph of &amp;quot;new js frameworks&amp;quot; vs &amp;quot;coding with AI&amp;quot;&quot; width=&quot;903&quot; height=&quot;339&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;p&gt;What language innovations do I see these days? LLM focused ones that &lt;strong&gt;focus&lt;/strong&gt; on using string compression to deal with limited context windows. This is early days, so I don&#39;t find this terribly interesting.&lt;/p&gt;
+&lt;p&gt;I think LLMs would do better creating their own i-code that makes the most sense to them. Maybe its all &lt;a href=&quot;https://experiencemachines.substack.com/p/machines-of-loving-bliss&quot;&gt;Sanskrit and emoji&lt;/a&gt;. Who knows.&lt;/p&gt;
+&lt;p&gt;At some point, LLMs became generally &lt;em&gt;good enough&lt;/em&gt; at writing programs. And that’s fine.&lt;/p&gt;
+&lt;p&gt;Early in your career, it’s natural to obsess over unnecessary details — naming, structure, theoretical purity. Over time, you learn a different lesson: most of the code you write will be replaced in a year or two anyway. Given that reality, “good enough” isn’t a failure of standards; it’s an acknowledgment of impermanence.&lt;/p&gt;
+&lt;center&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/xmIHRSN6Vr-450.avif 450w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/xmIHRSN6Vr-450.webp 450w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/xmIHRSN6Vr-450.png&quot; alt=&quot;&amp;quot;good enough&amp;quot; image&quot; width=&quot;450&quot; height=&quot;450&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
+&lt;/center&gt;
+&lt;h1 id=&quot;whats-next-for-us&quot;&gt;Whats next for us?&lt;/h1&gt;
+&lt;p&gt;There have always been programming hobbyists who don&#39;t do it for their job. They are the minority, but not for long.&lt;/p&gt;
+&lt;p&gt;I have been so lucky to have a career where I get paid for doing what I love. And its been an honor to work at some great companies. These days at work I am getting pull requests from non technical co-workers.&lt;/p&gt;
+&lt;p&gt;Sure the product manager can&#39;t run our stack or knows what a unit test is, but he can fire off an agent to make changes to widgets or even vibe code a whole new product idea. And why not? Much of this is boiler plate grunt work we would rather not do anyway.&lt;/p&gt;
+&lt;p&gt;There will be professional programmers for a while yet, but fewer and fewer will be needed or employable.&lt;/p&gt;
+&lt;p&gt;What a blow it will be when it is taken away from us. I guess we will join the other droves of white collar workers being forced into an early retirement. I&#39;ll still be happily coding away, but my run of making a living from it will have run its course.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Jono&#39;s Guide to getting the Southwest Companion Pass</title>
     <link href="https://www.dgt.is/blog/2025-12-10-southwest-companion-pass/" />
@@ -616,22 +667,6 @@ If you don&#39;t happen to know the answer from previously doing the same one or
 &lt;li&gt;Posting physical flyers with various web addresses at BART stations.&lt;/li&gt;
 &lt;li&gt;Reviewing &lt;a href=&quot;https://www.researchgate.net/publication/292208482_Casual_Carpooling_in_The_San_Francisco_Bay_Area_Understanding_User_Characteristics_Behaviors_and_Motivations&quot;&gt;previous research&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Talk: GraphQL and the n+1 problem</title>
-    <link href="https://www.dgt.is/blog/2022-07-14-graphql-and-n-plus-one/" />
-    <updated>2022-07-14T00:00:00Z</updated>
-    <id>https://www.dgt.is/blog/2022-07-14-graphql-and-n-plus-one/</id>
-    <content type="html">&lt;p&gt;When I was working at &lt;a href=&quot;https://www.udemy.com/&quot;&gt;Udemy&lt;/a&gt;, there was a new charter for all services to communicate internally via grpc, and all for public facing traffic to use GraphQL.&lt;/p&gt;
-&lt;p&gt;Some teams were using these technologies a bit, but for most of them these were both new technologies to learn. Since I had GraphQL experience from previous jobs, I was tasked with doing this work for my team, Adaptive Assessments.&lt;/p&gt;
-&lt;p&gt;This was one of the first projects to migrate in the company and best practices were not yet established. As someone with experience and opinions of how to implement GraphQL well, I experimented and proposed several ways to meet these requirements.&lt;/p&gt;
-&lt;p&gt;After my solution was rolled out, I taught my team how to work on our new system going forward. I then delivered a company wide presentation on my findings and best practices.&lt;/p&gt;
-&lt;div class=&quot;youtube-video&quot;&gt;
-  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/LE6tHglPPXk?si=PVUpuJDZWnFSb5ps&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;p&gt;Not really mentioned in this talk is my real take on GraphQL, which I should probably elaborate on in a separate post. Long story short: GraphQL is a nice-to-have for front end teams. In practice their GraphQL service probably does not really solve the problem they were designed for, and the backend team implementing them almost always does a poor job of it. I am not blaming them for it. Creating a robust backend for this is prohibitively difficult and I don&#39;t think I have ever seen an in-house implementation that is secure, efficient, and wont break if used wrong.&lt;/p&gt;
-&lt;p&gt;This is why I always suggest tools like &lt;a href=&quot;https://hasura.io/&quot;&gt;Hasura&lt;/a&gt;, which essentially do all the backend GraphQL work for you. It comes loaded with best practices, efficiency, and extensibility. The takeaway here is: If you are implementing GraphQL yourself, you are probably doing it wrong.&lt;/p&gt;
 </content>
   </entry>
 </feed>

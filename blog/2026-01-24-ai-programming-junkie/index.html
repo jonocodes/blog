@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Talk: Financial Independence</title>
+		<title>Thoughts on LLM use from a programming junkie</title>
 		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
 		
@@ -516,28 +516,63 @@ header {
 
 		<main id="skip">
 			
-<h1 id="talk-financial-independence">Talk: Financial Independence</h1>
+<h1 id="thoughts-on-llm-use-from-a-programming-junkie">Thoughts on LLM use from a programming junkie</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2018-04-05">05 April 2018</time></li>
-	<li><a href="/tags/finance/" class="post-tag">finance</a>, </li>
-	<li><a href="/tags/talks/" class="post-tag">talks</a></li>
+	<li><time datetime="2026-01-24">24 January 2026</time></li>
+	<li><a href="/tags/tech/" class="post-tag">tech</a></li>
 </ul>
 
 <p>
 	<heading-anchors>
-		<p>In 2018, my buddy <a href="http://www.joryjohn.com/">Jory John</a> was nudging me to <a href="https://www.mrmoneymustache.com/">read</a> and <a href="https://choosefi.com/listen">listen</a> to some personal finance stuff that was going around. I enjoyed it, and it was a wake up call for me to get my ducks in order.</p>
-<p>I made plans to aggressively pay off our debts, learned how to methodically save, consolidated my accounts, and figured out index fund investing for retirement (which I had always felt daunted by).</p>
-<p>After enthusiastically talking with friends about my findings and recommending books, my co-worked suggested I make a brown bag talk about it for the office. <a href="https://jonocodes.github.io/whyfi/static/index.html#/">Slides</a> and <a href="https://github.com/jonocodes/whyfi?tab=readme-ov-file">source</a> here.</p>
-<div class="youtube-video">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/lmRLp9vvwJg?si=7xZrLhpa80N4YvwK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-</div>
-<p>This is not the favorite of my talks, but I have given it several times. These day when I present it, I like to focus on <a href="https://www.reddit.com/r/churning/">credit card churning</a> - since it can be fun and people always have the most questions about it. Its a little more enjoyable then giving blanket financial advice like: Don't buy that Starbucks coffee every morning. Instead you could invest that spending and become a millionaire by the time you are 40.</p>
-<p>These days when someone wants to dip their tow in financial independence, I suggest reading <a href="https://www.goodreads.com/book/show/30646587-the-simple-path-to-wealth">The Simple Path To Wealth</a>.</p>
+		<p>I am an addict. No joke.</p>
+<p>After a full workday of writing code, I come home and hack on side projects. It's not healthy and I’m the first to acknowledge it. This is a real addiction, but is not taken seriously since its seen as “one of the good ones”.</p>
+<p>What’s changed recently isn’t how much I build, but <em>how</em> I build.</p>
+<p>For builders, there is that dopamine hit when many hours of effort turns into something that works. But now those hours can be compressed into minutes with almost no effort. All the dopamine you could ever want.</p>
+<p>But I’m not here to talk about addiction.</p>
+<h1 id="waiting-used-to-be-optional">Waiting used to be optional</h1>
+<p>Discovering Linux and open source was a revelation to me when I was younger. The idea that most of the world’s software was freely available, constantly improving, and instantly accessible felt almost unreal.</p>
+<p>My father was an architect. He would spend months — sometimes years — designing buildings, and only much later see the result. I couldn’t imagine waiting that long to experience the payoff of my work.</p>
+<p>I see a similar dynamic with my kids. They build and rebuild the same LEGO sets, but the desire for the <em>next</em> thing is always there. Once you’ve assembled everything you own, you have to wait — or save — before you can build something new.</p>
+<p>Software removed waiting. The internet was an endless playground of toys to try. That immediacy shaped how I learned, how I worked, and what I found satisfying.</p>
+<h1 id="new-builders-new-entry-points">New builders, new entry points</h1>
+<p>One of the great things LLMs have done is empower non-developers. People can now build tools for their own needs without years of training, and you don't need to be a super nerd like me.</p>
+<p>I love seeing what this new community has come up with, even if that <a href="https://80000hours.org/podcast/episodes/toby-ord-inference-scaling-ai-governance/">accessibility may not last for ever.</a></p>
+<h1 id="the-journey-is-shrinking">The journey is shrinking</h1>
+<p>For me, programming used to be mostly about the journey. I would make incremental changes, hit dead ends, rethink abstractions, and slowly converge on something solid. We love to solve puzzles.</p>
+<p>Lately, I spend more time iterating on design documents with an LLM than writing code directly. The destination is cheap, so the journey matters less. That’s especially tempting for things I’ve built so many times before (auth flows, CRUD APIs, server caching).</p>
+<p>I get more done, but I spend less time <em>thinking in code</em>.</p>
+<h1 id="making-beautiful-code-or-an-elegant-abstraction">Making beautiful code or an elegant abstraction</h1>
+<p>I have tried being very descriptive to the LLMs about how I want my code to be written, but it can only get you so far. And why bother? The better these tools get, the less time I spend actually looking at the code itself.</p>
+<p>You can spend a lot of time curating you Claude hooks, skills, tweaking tests runners, etc. But these are just stopgaps while Claude gets smarter with each release. In a few months' time no one will be context hacking as these models get smarter than us seasoned engineers.</p>
+<p>At the time of this writing I am using Opus 4.5 and it needs dramatically less hand-holding then its predecessors.</p>
+<h1 id="productivity-and-its-cost">Productivity and its cost</h1>
+<p>I’ve shipped more side projects in the last couple of years than ever before. I don’t even write ideas down anymore — I can spin up a discussion with Claude Code Web and pick it up later on my phone when walking the dog.</p>
+<p>That acceleration has pushed me toward building more feature-complete apps. On a <a href="https://github.com/jonocodes/stashcast">recent project</a>, I was so satisfied with its performance that I had it translate the entire application into multiple languages. I am the only user. I only speak one language.</p>
+<p>The downside is cognitive. When you have a cloud of minions waiting to execute your every command, downtime can feel outright senseless. Managing parallel agents and half-started ideas takes real mental space. Productivity becomes <a href="https://www.tabulamag.com/p/too-fast-to-think-the-hidden-fatigue">something you have to manage</a>, not just enjoy.</p>
+<p>This kind of productivity has a different cost profile than manual work.</p>
+<p>Any developer who’s become a manager knows the feeling: distance from the code reshapes how you think. I’m learning new skills, but spending less time in syntax and implementation can <em>feel</em> like a kind of intellectual atrophy — fewer sharp edges, less resistance. At the same time, this new over-productivity feels almost greedy.</p>
+<h1 id="innovation-for-humans">Innovation for humans?</h1>
+<p>I feel less excited by new languages or frameworks than I used to, possibly because I spend less time reading and writing code directly. If humans stop being the primary audience, it’s unclear what happens to ergonomics, fun, or beauty as design goals.</p>
+<p>It is kind of funny to think our future super-intelligent AI may still be programming on ancient 21st century technology. Forget Python 4. We can work around anything with just pseudocode.</p>
+<p><picture><source type="image/avif" srcset="/blog/2026-01-24-ai-programming-junkie/cHAFV6Eh8S-903.avif 903w"><source type="image/webp" srcset="/blog/2026-01-24-ai-programming-junkie/cHAFV6Eh8S-903.webp 903w"><img loading="lazy" decoding="async" src="/blog/2026-01-24-ai-programming-junkie/cHAFV6Eh8S-903.png" alt="trends graph of &quot;new js frameworks&quot; vs &quot;coding with AI&quot;" width="903" height="339"></picture></p>
+<p>What language innovations do I see these days? LLM focused ones that <strong>focus</strong> on using string compression to deal with limited context windows. This is early days, so I don't find this terribly interesting.</p>
+<p>I think LLMs would do better creating their own i-code that makes the most sense to them. Maybe its all <a href="https://experiencemachines.substack.com/p/machines-of-loving-bliss">Sanskrit and emoji</a>. Who knows.</p>
+<p>At some point, LLMs became generally <em>good enough</em> at writing programs. And that’s fine.</p>
+<p>Early in your career, it’s natural to obsess over unnecessary details — naming, structure, theoretical purity. Over time, you learn a different lesson: most of the code you write will be replaced in a year or two anyway. Given that reality, “good enough” isn’t a failure of standards; it’s an acknowledgment of impermanence.</p>
+<center>
+<p><picture><source type="image/avif" srcset="/blog/2026-01-24-ai-programming-junkie/xmIHRSN6Vr-450.avif 450w"><source type="image/webp" srcset="/blog/2026-01-24-ai-programming-junkie/xmIHRSN6Vr-450.webp 450w"><img loading="lazy" decoding="async" src="/blog/2026-01-24-ai-programming-junkie/xmIHRSN6Vr-450.png" alt="&quot;good enough&quot; image" width="450" height="450"></picture></p>
+</center>
+<h1 id="whats-next-for-us">Whats next for us?</h1>
+<p>There have always been programming hobbyists who don't do it for their job. They are the minority, but not for long.</p>
+<p>I have been so lucky to have a career where I get paid for doing what I love. And its been an honor to work at some great companies. These days at work I am getting pull requests from non technical co-workers.</p>
+<p>Sure the product manager can't run our stack or knows what a unit test is, but he can fire off an agent to make changes to widgets or even vibe code a whole new product idea. And why not? Much of this is boiler plate grunt work we would rather not do anyway.</p>
+<p>There will be professional programmers for a while yet, but fewer and fewer will be needed or employable.</p>
+<p>What a blow it will be when it is taken away from us. I guess we will join the other droves of white collar workers being forced into an early retirement. I'll still be happily coding away, but my run of making a living from it will have run its course.</p>
 
 	</heading-anchors>
 </p>
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2018-03-22-supercharging-your-api-with-swagger/">Supercharging your API with Swagger</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2022-07-14-graphql-and-n-plus-one/">Talk: GraphQL and the n+1 problem</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2025-12-10-southwest-companion-pass/">Jono&#39;s Guide to getting the Southwest Companion Pass</a></li>
 </ul>
 
 		</main>
@@ -546,7 +581,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2018-04-05-financial-independence/` was built on 2026-01-24T05:46:32.140Z -->
+		<!-- This page `/blog/2026-01-24-ai-programming-junkie/` was built on 2026-01-24T05:46:32.142Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
