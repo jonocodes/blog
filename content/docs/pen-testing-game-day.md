@@ -34,6 +34,7 @@ The intended audience is web developers with no pen testing experience. You will
 
 Some of the later parts include coding challenges, but in this one-day version you will likely not get to those.
 
+![Juice Shop](https://raw.githubusercontent.com/juice-shop/juice-shop/master/screenshots/screenshot04.png)
 
 # The Challenges
 
@@ -55,7 +56,9 @@ Try to keep communication on Slack since not everyone is in office.
 
 Note that some if the instructions here have a lot of details while others are purposefully lacking. Thats part of the challenge. Please read/skim the whole document before getting started so you know how to pace yourself.
 
-![Juice shop in action](https://raw.githubusercontent.com/juice-shop/juice-shop/master/screenshots/slideshow.gif)
+<!-- NOTE: "ignore" here so the animated gif wont get processes into a static image -->
+
+<img eleventy:ignore src="https://raw.githubusercontent.com/juice-shop/juice-shop/master/screenshots/slideshow.gif" alt="juice shop slide show">
 
 ---
 
