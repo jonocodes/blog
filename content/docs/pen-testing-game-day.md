@@ -77,18 +77,18 @@ Find the scoreboard.
 
 Using your browser dev tools complete three challenges: DOM XSS, Bonus Payload, Privacy Policy
 
-You should not spend more then an hour on part 1. If it does, ask for help.
+You should not spend more then an hour on part 1. If it takes longer, ask for help.
 
 ## Part 2 - Tooling
 
 We are going to use an open source tool called the [Zed Attack Proxy](https://www.zaproxy.org/)
 (Zap) to help automate some attacks.
 
-Install Zap. If using a Mac, I recommend installing through Homebrew instead from the website. Also it may be helpful to have Firefox installed.
+![ZAP](assets/zap-script.png)
 
-Enable the "Community scripts" and "Python support" add-ons.
+Start by enabling the "Community scripts" and "Python support" add-ons.
 
-Poke around in the app and check out a video or two from the [Zap in Ten](https://www.zaproxy.org/zap-in-ten/)page to get to know some of its capabilities.
+Poke around in the app and check out a video or two from the their [videos archive](https://www.zaproxy.org/videos-list/) page to get to know some of its capabilities.
 
 Now lets try to use a simple script to change something on pages throughout the site. Open the script tab. Http Sender -> change_response.py
 Change the title of the site to something different like "Hacker Fun Party"
@@ -96,26 +96,27 @@ Start the proxied browser through Zap. Now browse the site and click various lin
 
 Run the "automated scan" with "ajax spider" enabled. Let it run long enough and it may automatically solve some of the challenges for you!
 
-Do the "Password strength" challenge using Zap's "fuzzer". For this you will need to use a password list. You can create your own, or find one online like [this one](https://github.com/danielmiessler/SecLists/blob/master/Passwords/cirt-default-passwords.txt).
+Do the "Password strength" challenge using Zap's "fuzzer". For this you will need to use a password list. You can create your own, or find one online like [this one](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/Pwdb_top-1000.txt).
 
 [This doc](https://www.zaproxy.org/docs/guides/zapping-the-top-10-2021/) presents a high level starting point of how you can use Zap to treat the OWASP TOP 10.
 
-You should not spend more then an hour on part 2. If it does, ask for help.
+You have only scratched the surface of what these kinds of tools can do, but this should give you a feel for the basics of what an attacker has in their toolbelt.
+
+Spend no more than 2 hours on this section.
 
 ## Part 3 - Challenges
 
-Solve the next few hacking challenges. Once you solve the first group of about 7 tutorial questions, it will show you another 100+ challenges. Now you can you can hunt around or filter by type or difficulty for your next challenges.
+Solve the next few hacking challenges. Once you solve the first group of about 10 tutorial questions, it will show you another 100+ challenges. Now you can you can hunt around or filter by type or difficulty for your next challenges.
 
 Also answer the coding challenges for the ones you already completed. They are very quick and dont actually involve writing code. And it boosts your score.
 
-Once you have a feel for things, start tackling harder ones. Some of them I was able to crack on my own. I had to fall back to using a walkthrough online for others, but I learned a lot.
+Once you have a feel for things, start tackling harder ones. If you really get stuck search online for a walkthrough. You will still learn a lot this way.
 
+Pens down at 3:30pm PST. Just kidding - keep working on it if you are having fun.
 
 ---
 
 # Closing
-
-Pens down at 3:30pm PST. Just kidding - keep working on it if you are having fun.
 
 Congratulations! You have now defeated the internet with your amazing hacking skills. Now use those skills for good. Code defensively in your web development work.
 
@@ -125,4 +126,4 @@ If you really loved it, you could get paid to do this. This is a computer securi
 ![Hacked](https://i.pcmag.com/imagery/articles/01QQ9TeOzQTbund2V2ymT0k-1.fit_lim.v1698609429.jpg)
 
 
-Document last updated: 04 February 2026
+Document last updated: 09 February 2026
