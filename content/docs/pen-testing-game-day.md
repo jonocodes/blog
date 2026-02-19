@@ -58,7 +58,7 @@ Note that some if the instructions here have a lot of details while others are p
 
 <!-- NOTE: "ignore" here so the animated gif wont get processes into a static image -->
 
-<img eleventy:ignore src="https://raw.githubusercontent.com/juice-shop/juice-shop/master/screenshots/slideshow.gif" alt="juice shop slide show">
+<img eleventy:ignore src="assets/juiceshop-slideshow.gif" alt="juice shop slide show">
 
 ---
 
@@ -67,7 +67,12 @@ Note that some if the instructions here have a lot of details while others are p
 Learn about the OWASP Top 10. [Short read here](https://owasp.org/www-project-top-ten/). [Long read here](https://www.jit.io/blog/the-in-depth-guide-to-owasps-top-10-vulnerabilities) if you want more depth.
 
 Install OWASP Juice Shop locally. The [companion guide](https://pwning.owasp-juice.shop/companion-guide/latest/index.html) has instructions for running it in various ways. I recommend using [Docker](https://pwning.owasp-juice.shop/companion-guide/latest/part1/running.html#_docker_image) which you can start like so:
-`docker run -d -p 3000:3000 -e NODE_ENV=tutorial bkimminich/juice-shop`
+
+```
+docker run -p 3000:3000 \
+           -e NODE_ENV=tutorial \
+           bkimminich/juice-shop
+```
 
 Now visit http://localhost:3000
 
@@ -75,14 +80,35 @@ Browse the application and read about the [happy path](https://pwning.owasp-juic
 
 Find the scoreboard.
 
-Using your browser dev tools complete three challenges: DOM XSS, Bonus Payload, Privacy Policy
+Using your browser dev tools complete 3-5 challenges.
 
 You should not spend more then an hour on part 1. If it takes longer, ask for help.
+
+### When ussing a Capture The Flag server
+
+To make this competion more lively you may be instructed to use a "Capture The Flag" server. This is a shared web app where we can see everyone's progress on the challenges.
+
+<img eleventy:ignore src="assets/hacker-scoreboard.png" alt="capture the flag scores">
+
+For this to work you shoud be given its URL and a CTF_KEY. Additionaly you will need to restart your juice shop in a different mode. This will disable tutorial mode, but your scores should be retained across starts.
+
+```
+docker run -p 3000:3000 \
+           -e CTF_KEY="xxxxxxxx" \
+           -e NODE_ENV=ctf \
+           bkimminich/juice-shop
+```
+
+Now when you look at a challenge you completed there should be a flag next to it. Click that flag to get the key. Then find that challenge on the score server and paste it in. You should stat by backfilling it with the challenges you already completed.
+
 
 ## Part 2 - Tooling
 
 We are going to use an open source tool called the [Zed Attack Proxy](https://www.zaproxy.org/)
 (Zap) to help automate some attacks.
+
+
+Tools like this are super powerful, but also complex. There are many options, modes, and views that can often be hard to find. Just do your best when playing around. When doing a manual scan it sometimes works with Firefox better then Chrome or vice versa. I recommend ignoring the heads up display option in Zap, as it does not always work. 
 
 ![ZAP](assets/zap-script.png)
 
@@ -96,7 +122,7 @@ Start the proxied browser through Zap. Now browse the site and click various lin
 
 Run the "automated scan" with "ajax spider" enabled. Let it run long enough and it may automatically solve some of the challenges for you!
 
-Do the "Password strength" challenge using Zap's "fuzzer". For this you will need to use a password list. You can create your own, or find one online like [this one](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/Pwdb_top-1000.txt).
+Do the "Password strength" challenge using Zap's "fuzzer". For this you will need to use a password list. You can create your own, or find one online like [this one](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/Pwdb_top-1000.txt). Note you will have to find the admin user name first. Look around the site to see if you can find it.
 
 [This doc](https://www.zaproxy.org/docs/guides/zapping-the-top-10-2021/) presents a high level starting point of how you can use Zap to treat the OWASP TOP 10.
 
@@ -126,4 +152,20 @@ If you really loved it, you could get paid to do this. This is a computer securi
 ![Hacked](https://i.pcmag.com/imagery/articles/01QQ9TeOzQTbund2V2ymT0k-1.fit_lim.v1698609429.jpg)
 
 
-Document last updated: 09 February 2026
+# Do you want to run a game day?
+
+There are many resources online for running various workshops. The above should serve as a playbook for most of what you need. Here are some additional tips:
+
+* Run this as a 1-2 day workshop, depending what is allowed since people will not be working those days.
+* The day before the workshop, I give a 30 minute intro presentation. I do this the day before so they have the whole following day to work on it. This also works best if the team is across timezones. Typically this includes:
+  * [5 minutes of high level slides](https://jonocodes.github.io/pen-test-gameday-slides/)
+  * 10 minutes for questions/discussion
+  * 15 minutes for people to read through the doc and/or setup Zap on their machines since that could take some troubleshooting.
+* It is important to make sure everyone has read through this whole doc before starting as it answers a lot of questions that have come up every time I give the workshop.
+* [Setup a capture the flag server](https://pwning.owasp-juice.shop/companion-guide/latest/part4/ctf.html). The focus is on learning, not competing, but I find having the score board up encourages people to make a dent in the challenges. And its fun to watch. I find CTFd to be the simplist to get up and running. You can serve it from your desktop if you want. I use tailscale to expose it publicly for the day. Its also fun to share the score board to other folks at the company so they can watch the competition.
+* I dont really have a specific ending or closing ceremony since it is self paced and some people may want to work on it more the next day. But I do always collect feedback shortly after so I can improve it later.
+
+___
+
+
+Document last updated: 19 February 2026
