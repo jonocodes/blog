@@ -384,8 +384,8 @@ header {
 <p>People are encouraged to be friendly and social, but each person should go through the challenges on their own and at their own pace in order to get the practice. I will be available on Slack to help people who get stuck.</p>
 <p>Try to keep communication on Slack since not everyone is in office.</p>
 <p>Note that some if the instructions here have a lot of details while others are purposefully lacking. Thats part of the challenge. Please read/skim the whole document before getting started so you know how to pace yourself.</p>
-<!-- NOTE: "ignore" here so the animated gif wont get processes into a static image -->
-<img src="assets/juiceshop-slideshow.gif" alt="juice shop slide show">
+<!-- NOTE: "ignore" here so the animated gif wont get processes into a static image. also I could not get a local image to load here -->
+<img src="https://raw.githubusercontent.com/juice-shop/juice-shop/master/screenshots/slideshow.gif" alt="juice shop slide show">
 <hr>
 <h2 id="part-1-getting-started">Part 1 - Getting started</h2>
 <p>Learn about the OWASP Top 10. <a href="https://owasp.org/www-project-top-ten/">Short read here</a>. <a href="https://www.jit.io/blog/the-in-depth-guide-to-owasps-top-10-vulnerabilities">Long read here</a> if you want more depth.</p>
@@ -401,7 +401,8 @@ header {
 <p>You should not spend more then an hour on part 1. If it takes longer, ask for help.</p>
 <h3 id="when-ussing-a-capture-the-flag-server">When ussing a Capture The Flag server</h3>
 <p>To make this competion more lively you may be instructed to use a &quot;Capture The Flag&quot; server. This is a shared web app where we can see everyone's progress on the challenges.</p>
-<img src="assets/hacker-scoreboard.png" alt="capture the flag scores">
+<!-- <img eleventy:ignore src="assets/hacker-scoreboard.png" alt="capture the flag scores"> -->
+<p><picture><source type="image/avif" srcset="/docs/pen-testing-game-day/7jPFusm1QR-2100.avif 2100w"><img loading="lazy" decoding="async" src="/docs/pen-testing-game-day/7jPFusm1QR-2100.webp" alt="capture the flag score board" width="2100" height="2100"></picture></p>
 <p>For this to work you shoud be given its URL and a CTF_KEY. Additionaly you will need to restart your juice shop in a different mode. This will disable tutorial mode, but your scores should be retained across starts.</p>
 <pre><code>docker run -p 3000:3000 \
            -e CTF_KEY=&quot;xxxxxxxx&quot; \
@@ -459,7 +460,7 @@ Start the proxied browser through Zap. Now browse the site and click various lin
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/docs/pen-testing-game-day/` was built on 2026-02-19T21:32:56.222Z -->
+		<!-- This page `/docs/pen-testing-game-day/` was built on 2026-02-19T21:50:43.542Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
