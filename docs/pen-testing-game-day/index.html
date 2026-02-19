@@ -385,20 +385,34 @@ header {
 <p>Try to keep communication on Slack since not everyone is in office.</p>
 <p>Note that some if the instructions here have a lot of details while others are purposefully lacking. Thats part of the challenge. Please read/skim the whole document before getting started so you know how to pace yourself.</p>
 <!-- NOTE: "ignore" here so the animated gif wont get processes into a static image -->
-<img src="https://raw.githubusercontent.com/juice-shop/juice-shop/master/screenshots/slideshow.gif" alt="juice shop slide show">
+<img src="assets/juiceshop-slideshow.gif" alt="juice shop slide show">
 <hr>
 <h2 id="part-1-getting-started">Part 1 - Getting started</h2>
 <p>Learn about the OWASP Top 10. <a href="https://owasp.org/www-project-top-ten/">Short read here</a>. <a href="https://www.jit.io/blog/the-in-depth-guide-to-owasps-top-10-vulnerabilities">Long read here</a> if you want more depth.</p>
-<p>Install OWASP Juice Shop locally. The <a href="https://pwning.owasp-juice.shop/companion-guide/latest/index.html">companion guide</a> has instructions for running it in various ways. I recommend using <a href="https://pwning.owasp-juice.shop/companion-guide/latest/part1/running.html#_docker_image">Docker</a> which you can start like so:<br>
-<code>docker run -d -p 3000:3000 -e NODE_ENV=tutorial bkimminich/juice-shop</code></p>
+<p>Install OWASP Juice Shop locally. The <a href="https://pwning.owasp-juice.shop/companion-guide/latest/index.html">companion guide</a> has instructions for running it in various ways. I recommend using <a href="https://pwning.owasp-juice.shop/companion-guide/latest/part1/running.html#_docker_image">Docker</a> which you can start like so:</p>
+<pre><code>docker run -p 3000:3000 \
+           -e NODE_ENV=tutorial \
+           bkimminich/juice-shop
+</code></pre>
 <p>Now visit <a href="http://localhost:3000">http://localhost:3000</a></p>
 <p>Browse the application and read about the <a href="https://pwning.owasp-juice.shop/companion-guide/latest/part1/happy-path.html">happy path</a>.</p>
 <p>Find the scoreboard.</p>
-<p>Using your browser dev tools complete three challenges: DOM XSS, Bonus Payload, Privacy Policy</p>
+<p>Using your browser dev tools complete 3-5 challenges.</p>
 <p>You should not spend more then an hour on part 1. If it takes longer, ask for help.</p>
+<h3 id="when-ussing-a-capture-the-flag-server">When ussing a Capture The Flag server</h3>
+<p>To make this competion more lively you may be instructed to use a &quot;Capture The Flag&quot; server. This is a shared web app where we can see everyone's progress on the challenges.</p>
+<img src="assets/hacker-scoreboard.png" alt="capture the flag scores">
+<p>For this to work you shoud be given its URL and a CTF_KEY. Additionaly you will need to restart your juice shop in a different mode. This will disable tutorial mode, but your scores should be retained across starts.</p>
+<pre><code>docker run -p 3000:3000 \
+           -e CTF_KEY=&quot;xxxxxxxx&quot; \
+           -e NODE_ENV=ctf \
+           bkimminich/juice-shop
+</code></pre>
+<p>Now when you look at a challenge you completed there should be a flag next to it. Click that flag to get the key. Then find that challenge on the score server and paste it in. You should stat by backfilling it with the challenges you already completed.</p>
 <h2 id="part-2-tooling">Part 2 - Tooling</h2>
 <p>We are going to use an open source tool called the <a href="https://www.zaproxy.org/">Zed Attack Proxy</a><br>
 (Zap) to help automate some attacks.</p>
+<p>Tools like this are super powerful, but also complex. There are many options, modes, and views that can often be hard to find. Just do your best when playing around. When doing a manual scan it sometimes works with Firefox better then Chrome or vice versa. I recommend ignoring the heads up display option in Zap, as it does not always work.</p>
 <p><picture><source type="image/avif" srcset="/docs/pen-testing-game-day/flNQyEvpp3-1212.avif 1212w"><source type="image/webp" srcset="/docs/pen-testing-game-day/flNQyEvpp3-1212.webp 1212w"><img loading="lazy" decoding="async" src="/docs/pen-testing-game-day/flNQyEvpp3-1212.png" alt="ZAP" width="1212" height="815"></picture></p>
 <p>Start by enabling the &quot;Community scripts&quot; and &quot;Python support&quot; add-ons.</p>
 <p>Poke around in the app and check out a video or two from the their <a href="https://www.zaproxy.org/videos-list/">videos archive</a> page to get to know some of its capabilities.</p>
@@ -406,7 +420,7 @@ header {
 Change the title of the site to something different like &quot;Hacker Fun Party&quot;<br>
 Start the proxied browser through Zap. Now browse the site and click various links and see that the title is your new title.</p>
 <p>Run the &quot;automated scan&quot; with &quot;ajax spider&quot; enabled. Let it run long enough and it may automatically solve some of the challenges for you!</p>
-<p>Do the &quot;Password strength&quot; challenge using Zap's &quot;fuzzer&quot;. For this you will need to use a password list. You can create your own, or find one online like <a href="https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/Pwdb_top-1000.txt">this one</a>.</p>
+<p>Do the &quot;Password strength&quot; challenge using Zap's &quot;fuzzer&quot;. For this you will need to use a password list. You can create your own, or find one online like <a href="https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/Pwdb_top-1000.txt">this one</a>. Note you will have to find the admin user name first. Look around the site to see if you can find it.</p>
 <p><a href="https://www.zaproxy.org/docs/guides/zapping-the-top-10-2021/">This doc</a> presents a high level starting point of how you can use Zap to treat the OWASP TOP 10.</p>
 <p>You have only scratched the surface of what these kinds of tools can do, but this should give you a feel for the basics of what an attacker has in their toolbelt.</p>
 <p>Spend no more than 2 hours on this section.</p>
@@ -420,7 +434,23 @@ Start the proxied browser through Zap. Now browse the site and click various lin
 <p>Congratulations! You have now defeated the internet with your amazing hacking skills. Now use those skills for good. Code defensively in your web development work.</p>
 <p>If you really loved it, you could get paid to do this. This is a computer security profession: <a href="https://www.linkedin.com/jobs/penetration-testing-jobs-san-francisco-ca/">https://www.linkedin.com/jobs/penetration-testing-jobs-san-francisco-ca/</a></p>
 <p><picture><source type="image/avif" srcset="/docs/pen-testing-game-day/PlM1iLGQul-1535.avif 1535w"><source type="image/webp" srcset="/docs/pen-testing-game-day/PlM1iLGQul-1535.webp 1535w"><img loading="lazy" decoding="async" src="/docs/pen-testing-game-day/PlM1iLGQul-1535.jpeg" alt="Hacked" width="1535" height="863"></picture></p>
-<p>Document last updated: 09 February 2026</p>
+<h1 id="do-you-want-to-run-a-game-day">Do you want to run a game day?</h1>
+<p>There are many resources online for running various workshops. The above should serve as a playbook for most of what you need. Here are some additional tips:</p>
+<ul>
+<li>Run this as a 1-2 day workshop, depending what is allowed since people will not be working those days.</li>
+<li>The day before the workshop, I give a 30 minute intro presentation. I do this the day before so they have the whole following day to work on it. This also works best if the team is across timezones. Typically this includes:
+<ul>
+<li><a href="https://jonocodes.github.io/pen-test-gameday-slides/">5 minutes of high level slides</a></li>
+<li>10 minutes for questions/discussion</li>
+<li>15 minutes for people to read through the doc and/or setup Zap on their machines since that could take some troubleshooting.</li>
+</ul>
+</li>
+<li>It is important to make sure everyone has read through this whole doc before starting as it answers a lot of questions that have come up every time I give the workshop.</li>
+<li><a href="https://pwning.owasp-juice.shop/companion-guide/latest/part4/ctf.html">Setup a capture the flag server</a>. The focus is on learning, not competing, but I find having the score board up encourages people to make a dent in the challenges. And its fun to watch. I find CTFd to be the simplist to get up and running. You can serve it from your desktop if you want. I use tailscale to expose it publicly for the day. Its also fun to share the score board to other folks at the company so they can watch the competition.</li>
+<li>I dont really have a specific ending or closing ceremony since it is self paced and some people may want to work on it more the next day. But I do always collect feedback shortly after so I can improve it later.</li>
+</ul>
+<hr>
+<p>Document last updated: 19 February 2026</p>
 
 
 		</main>
@@ -429,7 +459,7 @@ Start the proxied browser through Zap. Now browse the site and click various lin
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/docs/pen-testing-game-day/` was built on 2026-02-09T21:55:21.487Z -->
+		<!-- This page `/docs/pen-testing-game-day/` was built on 2026-02-19T21:32:56.222Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
