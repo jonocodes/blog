@@ -56,9 +56,9 @@ Try to keep communication on Slack since not everyone is in office.
 
 Note that some if the instructions here have a lot of details while others are purposefully lacking. Thats part of the challenge. Please read/skim the whole document before getting started so you know how to pace yourself.
 
-<!-- NOTE: "ignore" here so the animated gif wont get processes into a static image -->
+<!-- NOTE: "ignore" here so the animated gif wont get processes into a static image. also I could not get a local image to load here -->
 
-<img eleventy:ignore src="assets/juiceshop-slideshow.gif" alt="juice shop slide show">
+<img eleventy:ignore src="https://raw.githubusercontent.com/juice-shop/juice-shop/master/screenshots/slideshow.gif" alt="juice shop slide show">
 
 ---
 
@@ -88,7 +88,9 @@ You should not spend more then an hour on part 1. If it takes longer, ask for he
 
 To make this competion more lively you may be instructed to use a "Capture The Flag" server. This is a shared web app where we can see everyone's progress on the challenges.
 
-<img eleventy:ignore src="assets/hacker-scoreboard.png" alt="capture the flag scores">
+<!-- <img eleventy:ignore src="assets/hacker-scoreboard.png" alt="capture the flag scores"> -->
+
+![capture the flag score board](assets/hacker-scoreboard.png)
 
 For this to work you shoud be given its URL and a CTF_KEY. Additionaly you will need to restart your juice shop in a different mode. This will disable tutorial mode, but your scores should be retained across starts.
 
@@ -106,7 +108,6 @@ Now when you look at a challenge you completed there should be a flag next to it
 
 We are going to use an open source tool called the [Zed Attack Proxy](https://www.zaproxy.org/)
 (Zap) to help automate some attacks.
-
 
 Tools like this are super powerful, but also complex. There are many options, modes, and views that can often be hard to find. Just do your best when playing around. When doing a manual scan it sometimes works with Firefox better then Chrome or vice versa. I recommend ignoring the heads up display option in Zap, as it does not always work. 
 
