@@ -1,7 +1,7 @@
 ---
 tags:
   # - post
-  - ideas
+  - tips
 title: Jono's Guide to getting the Southwest Companion Pass
 ---
 

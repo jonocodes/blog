@@ -2,6 +2,7 @@
 tags:
   # - post
   - tech
+  - tips
 title: Using proprietary golinks in Firefox
 ---
 
