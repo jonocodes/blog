@@ -5,11 +5,165 @@
   <subtitle>thoughts, talks, projects and unpopular opinions</subtitle>
   <link href="https://www.dgt.is/feed/feed.xml" rel="self" />
   <link href="https://www.dgt.is/" />
-  <updated>2026-01-24T00:00:00Z</updated>
+  <updated>2026-03-10T00:00:00Z</updated>
   <id>https://www.dgt.is/</id>
   <author>
     <name>Jono Finger</name>
   </author>
+  <entry>
+    <title>Making sudo Work with AI Agents</title>
+    <link href="https://www.dgt.is/blog/2026-03-10-ai-sudo-with-agents/" />
+    <updated>2026-03-10T00:00:00Z</updated>
+    <id>https://www.dgt.is/blog/2026-03-10-ai-sudo-with-agents/</id>
+    <content type="html">&lt;p&gt;I have been doing a lot of system/network admin lately using Claude Code on my NixOS config files. It has been amazing since I do not like the Nix language, but I love the Nix experience. Now I can really cruse on trying new things and implementing production fixes. I really need to write that update to &lt;a href=&quot;https://www.dgt.is/blog/2026-03-10-ai-sudo-with-agents/2025-01-10-nix-death-by-a-thousand-cuts&quot;&gt;Nix - Death by a thousand cuts&lt;/a&gt;. So much has changed in the past year.&lt;/p&gt;
+&lt;p&gt;One of the nice thinks about Nix is I can do a full system build as my user, without switching to it. This way the agent can try fixing syntax and the like until the build passes. Then I can manually to the rebuld switch, which requires sudo access.&lt;/p&gt;
+&lt;p&gt;However there are times when I want the agent to do the switch itself - and sometimes often. For example when I was troubleshooting a tailscale dns issue I had it try a bunch of different configs until I could get the communication working. In this case I dont want the agent to be constantly asking me to run the manual switch.&lt;/p&gt;
+&lt;p&gt;So how do I work around this issue of running sudo commands? Can I have the agent stop and ask for my password? Today, coding agents like Claude Code and OpenCode share a fundamental limitation: they can&#39;t handle interactive terminal prompts. When a command needs &lt;code&gt;sudo&lt;/code&gt;, there&#39;s no TTY to type your password into. The agent&#39;s subprocess just fails:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo: a terminal is required to read the password
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&#39;s what I tried, what exists in the community, and the solution I landed on.&lt;/p&gt;
+&lt;h2 id=&quot;the-landscape-what-others-have-tried&quot;&gt;The Landscape: What Others Have Tried&lt;/h2&gt;
+&lt;p&gt;This is an industry-wide problem. Gemini CLI has &lt;a href=&quot;https://github.com/google-gemini/gemini-cli/issues/10585&quot;&gt;open issues&lt;/a&gt;. Claude Code has &lt;a href=&quot;https://github.com/anthropics/claude-code/issues/1135&quot;&gt;a dozen+ related issues&lt;/a&gt; on GitHub. Cursor has &lt;a href=&quot;https://forum.cursor.com/t/regression-agent-terminals-no-longer-support-sudo-or-interactive-input/136719&quot;&gt;forum threads&lt;/a&gt; about it. No tool has a built-in solution.&lt;/p&gt;
+&lt;p&gt;Here&#39;s what the community has come up with:&lt;/p&gt;
+&lt;h3 id=&quot;nopasswd-in-sudoers&quot;&gt;NOPASSWD in sudoers&lt;/h3&gt;
+&lt;p&gt;The most commonly recommended approach: make specific commands passwordless.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;your_username ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart my-app.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This works but requires pre-enumerating every command you&#39;ll need. In practice, you either end up with &lt;code&gt;NOPASSWD: ALL&lt;/code&gt; (too permissive) or constantly editing sudoers when you need a new command.&lt;/p&gt;
+&lt;h3 id=&quot;sudo-askpass-with-ssh-key-encryption&quot;&gt;SUDO_ASKPASS with SSH Key Encryption&lt;/h3&gt;
+&lt;p&gt;The most developed community solution is &lt;a href=&quot;https://github.com/GlassOnTin/secure-askpass/&quot;&gt;GlassOnTin/secure-askpass&lt;/a&gt; (and its &lt;a href=&quot;https://www.ricardodecal.com/guides/running-sudo-commands-in-claude-code-and-cursor/&quot;&gt;corrected fork by crypdick&lt;/a&gt;). It encrypts your sudo password with your SSH key using &lt;code&gt;age&lt;/code&gt; (for Ed25519) or OpenSSL (for RSA), then provides a GUI confirmation dialog for each sudo invocation.&lt;/p&gt;
+&lt;p&gt;The agent&#39;s command gets rewritten from &lt;code&gt;sudo foo&lt;/code&gt; to &lt;code&gt;SUDO_ASKPASS=/path/to/askpass sudo -A foo&lt;/code&gt;, which triggers the helper instead of a terminal prompt.&lt;/p&gt;
+&lt;p&gt;I actually tried this approach early on — writing a Claude Code hook that rewrote &lt;code&gt;sudo&lt;/code&gt; to &lt;code&gt;sudo -A&lt;/code&gt; with an askpass helper. It works on GUI workstations, but it&#39;s complex: you need the encrypted password file, the decryption helper, a GUI dialog library, and the hook to tie it all together. For a personal dev machine, it felt like overkill. Also, I want this to work on terminal only intefaces without a GUI.&lt;/p&gt;
+&lt;h3 id=&quot;polkit-pkexec-with-auto-expiry&quot;&gt;polkit/pkexec with Auto-Expiry&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/anthropics/claude-code/issues/28930&quot;&gt;Issue #28930&lt;/a&gt; on the Claude Code repo proposes using polkit for privilege escalation:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Claude calls &lt;code&gt;pkexec &amp;lt;grant-script&amp;gt;&lt;/code&gt; which triggers a native OS password dialog&lt;/li&gt;
+&lt;li&gt;Upon approval, a timed sudoers entry is created&lt;/li&gt;
+&lt;li&gt;A &lt;code&gt;systemd&lt;/code&gt; transient timer auto-revokes access after N minutes&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This is the most security-conscious proposal — crash-safe, time-bounded, using OS-native auth. But it&#39;s Linux-only, requires polkit and systemd, and isn&#39;t built yet.&lt;/p&gt;
+&lt;h3 id=&quot;pam-ssh-agent-auth&quot;&gt;pam_ssh_agent_auth&lt;/h3&gt;
+&lt;p&gt;A system-level approach where sudo authenticates via your SSH agent instead of passwords. Well-established for Ansible automation, but there&#39;s a &lt;a href=&quot;https://github.com/sudo-project/sudo/issues/83&quot;&gt;known bug&lt;/a&gt; where &lt;code&gt;sudo -n&lt;/code&gt; (non-interactive mode) still prompts for a password even when the SSH agent should handle it — which is exactly the mode AI agents need.&lt;/p&gt;
+&lt;h3 id=&quot;file-based-sudo-watcher&quot;&gt;File-Based sudo Watcher&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/anthropics/claude-code/issues/29275&quot;&gt;Issue #29275&lt;/a&gt; proposes a shell watcher: run a loop as root in a spare terminal that watches for command files Claude writes, executes them, and writes output back. Simple but hacky — file-based IPC has race conditions and it&#39;s only suitable for single-user dev machines.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-built&quot;&gt;What I Built&lt;/h2&gt;
+&lt;p&gt;I wanted something that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Works without a GUI&lt;/li&gt;
+&lt;li&gt;Doesn&#39;t require passwordless sudo&lt;/li&gt;
+&lt;li&gt;Doesn&#39;t store or encrypt passwords&lt;/li&gt;
+&lt;li&gt;Gives clear feedback when authentication is needed&lt;/li&gt;
+&lt;li&gt;Doesn&#39;t require the user to manually tell Claude to retry&lt;/li&gt;
+&lt;li&gt;Is not Nix specific&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The solution has three pieces.&lt;/p&gt;
+&lt;h3 id=&quot;1-global-sudo-timestamp&quot;&gt;1. Global sudo Timestamp&lt;/h3&gt;
+&lt;p&gt;The key insight: &lt;code&gt;sudo -v&lt;/code&gt; caches your credentials, but by default the cache is per-TTY. Claude&#39;s subprocess runs in a different TTY, so it never sees the cache. In my sudo config setting &lt;code&gt;Defaults timestamp_type=global&lt;/code&gt; makes the credential cache shared across all sessions.&lt;/p&gt;
+&lt;p&gt;Now when you run &lt;code&gt;sudo -v&lt;/code&gt; in any terminal, Claude&#39;s subprocesses can use the cached credentials for 10 minutes.&lt;/p&gt;
+&lt;h3 id=&quot;2-the-hook-deny-then-poll&quot;&gt;2. The Hook: Deny-Then-Poll&lt;/h3&gt;
+&lt;p&gt;Claude Code &lt;a href=&quot;https://code.claude.com/docs/en/hooks&quot;&gt;hooks&lt;/a&gt; let you run scripts before tool calls. A &lt;code&gt;PreToolUse&lt;/code&gt; hook on &lt;code&gt;Bash&lt;/code&gt; can inspect the command and allow or deny it.&lt;/p&gt;
+&lt;p&gt;The tricky part: how do you both show the user a message AND wait for them to act? Hook stderr isn&#39;t displayed in Claude&#39;s terminal. Only the &lt;code&gt;permissionDecisionReason&lt;/code&gt; from a JSON deny response is visible. But if you deny, the command doesn&#39;t run and the user has to manually tell Claude to retry.&lt;/p&gt;
+&lt;p&gt;My solution: a &lt;strong&gt;deny-then-poll&lt;/strong&gt; pattern using a state file.&lt;/p&gt;
+&lt;p&gt;$HOME/.claude/hooks/sudo-check.sh&lt;/p&gt;
+&lt;pre class=&quot;language-sh&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token shebang important&quot;&gt;#!/usr/bin/env sh&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Claude Code PreToolUse hook for Bash commands.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Blocks sudo commands when credentials aren&#39;t cached.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# First attempt: denies immediately with a message.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# Subsequent attempts: polls for up to 30s for credentials.&lt;/span&gt;
+
+&lt;span class=&quot;token assign-left variable&quot;&gt;STATEFILE&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;/tmp/claude-sudo-hook-notified&quot;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;INPUT&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;cat&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;COMMAND&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;%s&#39;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$INPUT&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; jq &lt;span class=&quot;token parameter variable&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;.tool_input.command // empty&#39;&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Only check commands that contain sudo&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;%s&#39;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$COMMAND&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-qw&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;sudo&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Test if sudo credentials are cached&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;/dev/null&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$STATEFILE&lt;/span&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# First time: deny with message so it&#39;s visible in the terminal&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$STATEFILE&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;touch&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$STATEFILE&lt;/span&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;{&quot;hookSpecificOutput&quot;:{&quot;hookEventName&quot;:&quot;PreToolUse&quot;,&quot;permissionDecision&quot;:&quot;deny&quot;,&quot;permissionDecisionReason&quot;:&quot;Sudo credentials not cached. Please run sudo -v in another terminal. Retrying automatically...&quot;}}&#39;&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Subsequent attempts: poll for up to 30s&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;ELAPSED&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;/dev/null&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;token assign-left variable&quot;&gt;ELAPSED&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$((&lt;/span&gt;ELAPSED &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;))&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$ELAPSED&lt;/span&gt;&quot;&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-ge&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$STATEFILE&lt;/span&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;{&quot;hookSpecificOutput&quot;:{&quot;hookEventName&quot;:&quot;PreToolUse&quot;,&quot;permissionDecision&quot;:&quot;deny&quot;,&quot;permissionDecisionReason&quot;:&quot;Sudo credentials not cached. Timed out after 30s. Please run sudo -v in another terminal and retry.&quot;}}&#39;&lt;/span&gt;
+    &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;done&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;$STATEFILE&lt;/span&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The flow:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Sudo command attempted, creds not cached&lt;/strong&gt; — hook denies with a message visible in Claude&#39;s terminal: &amp;quot;Please run &lt;code&gt;sudo -v&lt;/code&gt; in another terminal. Retrying automatically...&amp;quot;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Claude sees the deny and automatically retries&lt;/strong&gt; — second attempt hits the poll loop&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User runs &lt;code&gt;sudo -v&lt;/code&gt; in another terminal&lt;/strong&gt; — within 30 seconds, the hook detects the cached credentials and the command proceeds&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;If 30 seconds pass&lt;/strong&gt; — hook denies again with a timeout message, waits for the user to explicitly retry&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The &lt;code&gt;-qw&lt;/code&gt; flag on grep ensures word-boundary matching — so a path like &lt;code&gt;/run/sudo/ts/&lt;/code&gt; doesn&#39;t false-positive trigger the sudo check.&lt;/p&gt;
+&lt;h3 id=&quot;3-porting-to-opencode&quot;&gt;3. Porting to OpenCode&lt;/h3&gt;
+&lt;p&gt;I do use Opus a lot these days, but I have no allegiance to it. I want to see how this would work with a more open agent. The same approach works in &lt;a href=&quot;https://github.com/opencode-ai/opencode&quot;&gt;OpenCode&lt;/a&gt;, which uses a TypeScript plugin system instead of shell script hooks. OpenCode plugins implement &lt;code&gt;tool.execute.before&lt;/code&gt; and throw an error to block a command — no JSON protocol needed.&lt;/p&gt;
+&lt;pre class=&quot;language-typescript&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; Plugin &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;@opencode-ai/plugin&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; SudoCheck&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;Plugin&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; $ &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token string-property property&quot;&gt;&quot;tool.execute.before&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;input&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; output&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;input&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;tool &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;bash&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token regex&quot;&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token regex-source language-regex&quot;&gt;&#92;bsudo&#92;b&lt;/span&gt;&lt;span class=&quot;token regex-delimiter&quot;&gt;/&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;output&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;args&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;command&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;
+
+      &lt;span class=&quot;token comment&quot;&gt;// Check if sudo credentials are cached&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; $&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;sudo -n true 2&gt;/dev/null&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;token comment&quot;&gt;// Poll for up to 30 seconds waiting for the user to run sudo -v&lt;/span&gt;
+      &lt;span class=&quot;token builtin&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;Sudo credentials not cached. Run &#39;sudo -v&#39; in another terminal. Waiting up to 30s...&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token builtin&quot;&gt;Promise&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;r&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;token keyword&quot;&gt;await&lt;/span&gt; $&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;sudo -n true 2&gt;/dev/null&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+          &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;
+        &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;token keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;token string&quot;&gt;&quot;Sudo credentials not cached. Timed out after 30s. Please run sudo -v in another terminal.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Drop this in &lt;code&gt;~/.config/opencode/plugins/sudo-check.ts&lt;/code&gt; and OpenCode picks it up automatically.&lt;/p&gt;
+&lt;p&gt;The OpenCode version is simpler because async hooks can just &lt;code&gt;await&lt;/code&gt; in a loop — no state file or deny-then-retry dance needed. But the core logic is identical: check for &lt;code&gt;sudo&lt;/code&gt;, test &lt;code&gt;sudo -n true&lt;/code&gt;, poll, timeout. The two implementations can&#39;t share a single file since the hook interfaces are fundamentally different (shell script with JSON stdin/stdout vs TypeScript async functions), but they&#39;re small enough that maintaining both is trivial.&lt;/p&gt;
+&lt;h2 id=&quot;things-to-know&quot;&gt;Things to Know&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Every Bash command goes through the hook.&lt;/strong&gt; The &lt;code&gt;matcher&lt;/code&gt; config only filters by tool name, not command content. The script exits immediately for non-sudo commands (one &lt;code&gt;grep&lt;/code&gt;, negligible overhead), but there&#39;s no way to avoid invoking it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;timestamp_type=global&lt;/code&gt; has security implications.&lt;/strong&gt; Any process on the machine can use the cached credentials during the timeout window. This is fine for a personal dev machine. For shared systems, consider the polkit approach or NOPASSWD for specific commands instead.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Claude Code has a history of dangerous sudo interactions.&lt;/strong&gt; The auto-updater once suggested &lt;code&gt;sudo chown -R $USER /usr&lt;/code&gt; which &lt;a href=&quot;https://github.com/anthropics/claude-code/issues/168&quot;&gt;bricked multiple users&#39; systems&lt;/a&gt; by breaking sudo&#39;s setuid bit. Sudo-elevated child processes can also &lt;a href=&quot;https://github.com/anthropics/claude-code/issues/7877&quot;&gt;crash the terminal&lt;/a&gt; or &lt;a href=&quot;https://github.com/anthropics/claude-code/issues/29921&quot;&gt;cause unbounded disk growth&lt;/a&gt;. The hook adds a layer of protection here too — you&#39;re always aware when sudo is being used.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This hook fires even with &lt;code&gt;--dangerously-skip-permissions&lt;/code&gt;.&lt;/strong&gt; Hooks are the last line of defense. I use an alias &lt;code&gt;cl = &amp;quot;sudo -v &amp;amp;&amp;amp; claude --dangerously-skip-permissions&amp;quot;&lt;/code&gt; that pre-caches credentials and skips permission prompts, with the hook as the safety net.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Built-in support from Claude Code&lt;/strong&gt;: &lt;a href=&quot;https://github.com/anthropics/claude-code/issues/9881&quot;&gt;Issue #9881&lt;/a&gt; requests PTY support via &lt;code&gt;node-pty&lt;/code&gt;, which would solve sudo prompts at the root. Until then, hooks are the best we&#39;ve got.&lt;/p&gt;
+&lt;h2 id=&quot;the-code&quot;&gt;The Code&lt;/h2&gt;
+&lt;p&gt;All of this can be found in my public configs. Here are permalinks to the relevant files:&lt;/p&gt;
+&lt;p&gt;Claude Code hook - &lt;a href=&quot;https://github.com/jonocodes/configs/blob/c0cf447336c2979d52cf08ae314a306e0f49258e/home-manager/files/claude-sudo-check.sh&quot;&gt;claude-sudo-check.sh&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;OpenCode plugin - &lt;a href=&quot;https://github.com/jonocodes/configs/blob/c0cf447336c2979d52cf08ae314a306e0f49258e/home-manager/files/opencode-sudo-check.ts&quot;&gt;opencode-sudo-check.ts&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Thoughts on LLM use from a programming junkie</title>
     <link href="https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/" />
@@ -612,66 +766,6 @@ If you don&#39;t happen to know the answer from previously doing the same one or
 &lt;p&gt;I have adapted my own version of running this workshop. It&#39;s low overhead and can be done both as a group and individually self directed. I ran the workshop over a day with the development team while working at &lt;a href=&quot;https://www.populus.ai/&quot;&gt;Populus&lt;/a&gt;. It went well and I got some valuable feedback. I plan to repeat this tradition at future workplaces and will continue to refine it each time.&lt;/p&gt;
 &lt;!-- https://www.notion.so/populus/Application-Security-Bootcamp-2024-a2f66c989b374788aee60aef9df7f15e#f7121d961f2c4f0eb1ddebb2606b32d3 --&gt;
 &lt;p&gt;If you have it in you, running this workshop is a blast. &lt;a href=&quot;https://www.dgt.is/docs/pen-testing-game-day/&quot;&gt;You can follow my instructions here&lt;/a&gt;. Let me know how it goes.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Bringing Back San Francisco Casual Carpool</title>
-    <link href="https://www.dgt.is/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/" />
-    <updated>2023-08-10T00:00:00Z</updated>
-    <id>https://www.dgt.is/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/</id>
-    <content type="html">&lt;p&gt;I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done mostly between September 2022 and August 2023.&lt;/p&gt;
-&lt;h3 id=&quot;things-i-have-tried&quot;&gt;Things I have tried&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Waiting at the North Berkeley passenger line daily, using both &lt;a href=&quot;http://sfcarpool.app&quot;&gt;sfcarpool.app&lt;/a&gt; and the &lt;a href=&quot;https://rapidcarpool.com/&quot;&gt;RapidCarpool&lt;/a&gt; app
-&lt;ul&gt;
-&lt;li&gt;I have done this for close to a year, waiting 20 minutes a day. I get picked up around once a month.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Created &lt;a href=&quot;http://SFcarpool.app&quot;&gt;SFcarpool.app&lt;/a&gt; for helping people coordinate carpools&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/xGXc1hedHf-964.avif 964w&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://www.dgt.is/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/xGXc1hedHf-964.webp 964w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2023-08-10-bringing-back-san-francisco-casual-carpool/xGXc1hedHf-964.png&quot; alt=&quot;carpool app screenshot&quot; width=&quot;964&quot; height=&quot;636&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Reached out to existing &lt;a href=&quot;https://ridenow.org/carpool/discussion.html&quot;&gt;carpool web sites&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Handing out &lt;a href=&quot;https://docs.google.com/document/d/1LPvqR0_lNU-az14bWNEczinnv-THPdeeWqLz62zsdKw/edit?usp=sharing&quot;&gt;flyers at North Berkeley BART&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;This suggested with coordinated start date. BART riders showed interest, but there was no uptick in carpooling. I did this for about a month in late 2022.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://sfcarpool.app/survey&quot;&gt;Created outreach survey&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.facebook.com/groups/bringbacksfcarpool&quot;&gt;Created a Facebook group&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://nextdoor.com/p/mqMwzXJqrjTK?view=detail&quot;&gt;Post&lt;/a&gt; to other social media, like &lt;a href=&quot;https://www.reddit.com/r/bayarea/comments/yc46lb/casual_carpool_in_2022/jrcff21/?context=3&quot;&gt;Reddit&lt;/a&gt; and &lt;a href=&quot;https://nextdoor.com/p/dQJpxCTN6SmZ/c/846265547?post=241417236&amp;amp;comment=846265547&amp;amp;ct=pdXr03-vsiKf6ALGoGfMif2Va68MPE83Hrb77iEEcki2N3JNt6ytnWqJLzW7oL8Y&amp;amp;ec=jUsXRsKkOPMVxJBs1Cj9scCEDVfj1pLaDEEEO8rW-uw%3D&quot;&gt;Nextdoor&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;News outlet outreach
-&lt;ul&gt;
-&lt;li&gt;I reached out to reporters who wrote about carpool in the last couple years. At &lt;a href=&quot;https://www.kqed.org/news/11934347/will-casual-carpool-ever-come-back&quot;&gt;KQED&lt;/a&gt;, &lt;a href=&quot;https://www.berkeleyside.org/2022/11/20/casual-carpool-bay-bridge-covid-traffi&quot;&gt;Berkeleyside&lt;/a&gt;, Chronicle&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Reached out to the city of Berkeley to talk about help/solutions. No responses.&lt;/li&gt;
-&lt;li&gt;Reached out to the city of Oakland to talk about help/solutions. No responses.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://abc7news.com/bay-area-casual-carpool-commuting-bart-freeways/13559738/&quot;&gt;TV interview on ABC 7&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;youtube-video&quot;&gt;
-    &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/WMYYXLnO9cY?si=jZQE81rg_k0tKn1X&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-&lt;li&gt;Reached out to officials at MTC and SFMTA to see if we can get historical data for bridge exits to see if there has been a dip in exits at carpool drop sites. No response.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://blog.bayareametro.gov/posts/survey-seeks-bay-area-casual-carpool-revival&quot;&gt;MTC blog post&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://omny.fm/shows/kqed-segmented-audio/what-happened-to-casual-carpool&quot;&gt;KQED interview&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.sfchronicle.com/bayarea/article/traffic-casual-carpool-20218379.php&quot;&gt;SF Chronicle interview&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;things-i-have-not-yet-tried&quot;&gt;Things I have not yet tried&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Op-ed. It has been suggested I submit one to the Chronicle. And/or The East Bay Times, Berkeleyside, Daily Cal, Radio Perspective (KQED Radio)&lt;/li&gt;
-&lt;li&gt;Bay Curious podcast&lt;/li&gt;
-&lt;li&gt;Reach out to other casual carpool groups like Huston and DC.&lt;/li&gt;
-&lt;li&gt;Contact Caltrans to see if they have highway exit data.&lt;/li&gt;
-&lt;li&gt;Online date coordination
-&lt;ul&gt;
-&lt;li&gt;I flyered at BART with a start date to build a critical mass. But we could do a more effective version of this by polling people online and seeing who wants to commit to a date.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Posting physical flyers with various web addresses at BART stations.&lt;/li&gt;
-&lt;li&gt;Reviewing &lt;a href=&quot;https://www.researchgate.net/publication/292208482_Casual_Carpooling_in_The_San_Francisco_Bay_Area_Understanding_User_Characteristics_Behaviors_and_Motivations&quot;&gt;previous research&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
 </content>
   </entry>
 </feed>

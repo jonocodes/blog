@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Making sudo Work with AI Agents</title>
+		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		/* --text-color-link: #5d99ca;
+		--text-color-link-active: #6969f7; 
+		--text-color-link-visited: #a6a6f8; */
+
+		--text-color-link: #bebebe;
+		--text-color-link-active: #bebebe;
+		--text-color-link-visited: #bebebe;
+
+		/* --background-color: #15202b; */
+		--background-color: #1a1a1a;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	/* max-width: 40em; */
+
+	max-width: 50em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+	width: 100%;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+.home-grid hr {
+	margin: -10px 20px -8px 0;
+}
+.home-grid table {
+	/* padding: 20px; */
+}
+.home-grid td {
+	/* border: 1px solid red; */
+	width: 50%;
+	vertical-align: top;
+	padding: 20px 0 5px 0;
+}
+
+.home-grid p {
+	line-height: 2;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	/* font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px; */
+	text-decoration: none;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+
+.youtube-video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+  }
+  
+  .youtube-video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  }
+  
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+
+		<script async="" data-id="101475026" src="//static.getclicky.com/js"></script>
+
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Jono&#39;s Corner</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Posts</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1 id="making-sudo-work-with-ai-agents">Making sudo Work with AI Agents</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2026-03-10">10 March 2026</time></li>
+	<li><a href="/tags/tech/" class="post-tag">tech</a>, </li>
+	<li><a href="/tags/tips/" class="post-tag">tips</a></li>
+</ul>
+
+<p>
+	<heading-anchors>
+		<p>I have been doing a lot of system/network admin lately using Claude Code on my NixOS config files. It has been amazing since I do not like the Nix language, but I love the Nix experience. Now I can really cruse on trying new things and implementing production fixes. I really need to write that update to <a href="2025-01-10-nix-death-by-a-thousand-cuts">Nix - Death by a thousand cuts</a>. So much has changed in the past year.</p>
+<p>One of the nice thinks about Nix is I can do a full system build as my user, without switching to it. This way the agent can try fixing syntax and the like until the build passes. Then I can manually to the rebuld switch, which requires sudo access.</p>
+<p>However there are times when I want the agent to do the switch itself - and sometimes often. For example when I was troubleshooting a tailscale dns issue I had it try a bunch of different configs until I could get the communication working. In this case I dont want the agent to be constantly asking me to run the manual switch.</p>
+<p>So how do I work around this issue of running sudo commands? Can I have the agent stop and ask for my password? Today, coding agents like Claude Code and OpenCode share a fundamental limitation: they can't handle interactive terminal prompts. When a command needs <code>sudo</code>, there's no TTY to type your password into. The agent's subprocess just fails:</p>
+<pre><code>sudo: a terminal is required to read the password
+</code></pre>
+<p>Here's what I tried, what exists in the community, and the solution I landed on.</p>
+<h2 id="the-landscape-what-others-have-tried">The Landscape: What Others Have Tried</h2>
+<p>This is an industry-wide problem. Gemini CLI has <a href="https://github.com/google-gemini/gemini-cli/issues/10585">open issues</a>. Claude Code has <a href="https://github.com/anthropics/claude-code/issues/1135">a dozen+ related issues</a> on GitHub. Cursor has <a href="https://forum.cursor.com/t/regression-agent-terminals-no-longer-support-sudo-or-interactive-input/136719">forum threads</a> about it. No tool has a built-in solution.</p>
+<p>Here's what the community has come up with:</p>
+<h3 id="nopasswd-in-sudoers">NOPASSWD in sudoers</h3>
+<p>The most commonly recommended approach: make specific commands passwordless.</p>
+<pre><code>your_username ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart my-app.service
+</code></pre>
+<p>This works but requires pre-enumerating every command you'll need. In practice, you either end up with <code>NOPASSWD: ALL</code> (too permissive) or constantly editing sudoers when you need a new command.</p>
+<h3 id="sudo-askpass-with-ssh-key-encryption">SUDO_ASKPASS with SSH Key Encryption</h3>
+<p>The most developed community solution is <a href="https://github.com/GlassOnTin/secure-askpass/">GlassOnTin/secure-askpass</a> (and its <a href="https://www.ricardodecal.com/guides/running-sudo-commands-in-claude-code-and-cursor/">corrected fork by crypdick</a>). It encrypts your sudo password with your SSH key using <code>age</code> (for Ed25519) or OpenSSL (for RSA), then provides a GUI confirmation dialog for each sudo invocation.</p>
+<p>The agent's command gets rewritten from <code>sudo foo</code> to <code>SUDO_ASKPASS=/path/to/askpass sudo -A foo</code>, which triggers the helper instead of a terminal prompt.</p>
+<p>I actually tried this approach early on — writing a Claude Code hook that rewrote <code>sudo</code> to <code>sudo -A</code> with an askpass helper. It works on GUI workstations, but it's complex: you need the encrypted password file, the decryption helper, a GUI dialog library, and the hook to tie it all together. For a personal dev machine, it felt like overkill. Also, I want this to work on terminal only intefaces without a GUI.</p>
+<h3 id="polkit-pkexec-with-auto-expiry">polkit/pkexec with Auto-Expiry</h3>
+<p><a href="https://github.com/anthropics/claude-code/issues/28930">Issue #28930</a> on the Claude Code repo proposes using polkit for privilege escalation:</p>
+<ol>
+<li>Claude calls <code>pkexec &lt;grant-script&gt;</code> which triggers a native OS password dialog</li>
+<li>Upon approval, a timed sudoers entry is created</li>
+<li>A <code>systemd</code> transient timer auto-revokes access after N minutes</li>
+</ol>
+<p>This is the most security-conscious proposal — crash-safe, time-bounded, using OS-native auth. But it's Linux-only, requires polkit and systemd, and isn't built yet.</p>
+<h3 id="pam-ssh-agent-auth">pam_ssh_agent_auth</h3>
+<p>A system-level approach where sudo authenticates via your SSH agent instead of passwords. Well-established for Ansible automation, but there's a <a href="https://github.com/sudo-project/sudo/issues/83">known bug</a> where <code>sudo -n</code> (non-interactive mode) still prompts for a password even when the SSH agent should handle it — which is exactly the mode AI agents need.</p>
+<h3 id="file-based-sudo-watcher">File-Based sudo Watcher</h3>
+<p><a href="https://github.com/anthropics/claude-code/issues/29275">Issue #29275</a> proposes a shell watcher: run a loop as root in a spare terminal that watches for command files Claude writes, executes them, and writes output back. Simple but hacky — file-based IPC has race conditions and it's only suitable for single-user dev machines.</p>
+<h2 id="what-i-built">What I Built</h2>
+<p>I wanted something that:</p>
+<ul>
+<li>Works without a GUI</li>
+<li>Doesn't require passwordless sudo</li>
+<li>Doesn't store or encrypt passwords</li>
+<li>Gives clear feedback when authentication is needed</li>
+<li>Doesn't require the user to manually tell Claude to retry</li>
+<li>Is not Nix specific</li>
+</ul>
+<p>The solution has three pieces.</p>
+<h3 id="1-global-sudo-timestamp">1. Global sudo Timestamp</h3>
+<p>The key insight: <code>sudo -v</code> caches your credentials, but by default the cache is per-TTY. Claude's subprocess runs in a different TTY, so it never sees the cache. In my sudo config setting <code>Defaults timestamp_type=global</code> makes the credential cache shared across all sessions.</p>
+<p>Now when you run <code>sudo -v</code> in any terminal, Claude's subprocesses can use the cached credentials for 10 minutes.</p>
+<h3 id="2-the-hook-deny-then-poll">2. The Hook: Deny-Then-Poll</h3>
+<p>Claude Code <a href="https://code.claude.com/docs/en/hooks">hooks</a> let you run scripts before tool calls. A <code>PreToolUse</code> hook on <code>Bash</code> can inspect the command and allow or deny it.</p>
+<p>The tricky part: how do you both show the user a message AND wait for them to act? Hook stderr isn't displayed in Claude's terminal. Only the <code>permissionDecisionReason</code> from a JSON deny response is visible. But if you deny, the command doesn't run and the user has to manually tell Claude to retry.</p>
+<p>My solution: a <strong>deny-then-poll</strong> pattern using a state file.</p>
+<p>$HOME/.claude/hooks/sudo-check.sh</p>
+<pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token shebang important">#!/usr/bin/env sh</span>
+
+<span class="token comment"># Claude Code PreToolUse hook for Bash commands.</span>
+<span class="token comment"># Blocks sudo commands when credentials aren't cached.</span>
+<span class="token comment"># First attempt: denies immediately with a message.</span>
+<span class="token comment"># Subsequent attempts: polls for up to 30s for credentials.</span>
+
+<span class="token assign-left variable">STATEFILE</span><span class="token operator">=</span><span class="token string">"/tmp/claude-sudo-hook-notified"</span>
+<span class="token assign-left variable">INPUT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span><span class="token variable">)</span></span>
+<span class="token assign-left variable">COMMAND</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">printf</span> <span class="token string">'%s'</span> <span class="token string">"<span class="token variable">$INPUT</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.tool_input.command // empty'</span><span class="token variable">)</span></span>
+
+<span class="token comment"># Only check commands that contain sudo</span>
+<span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">printf</span> <span class="token string">'%s'</span> <span class="token string">"<span class="token variable">$COMMAND</span>"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-qw</span> <span class="token string">'sudo'</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token keyword">fi</span>
+
+<span class="token comment"># Test if sudo credentials are cached</span>
+<span class="token keyword">if</span> <span class="token function">sudo</span> <span class="token parameter variable">-n</span> <span class="token boolean">true</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$STATEFILE</span>"</span>
+  <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token keyword">fi</span>
+
+<span class="token comment"># First time: deny with message so it's visible in the terminal</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$STATEFILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token function">touch</span> <span class="token string">"<span class="token variable">$STATEFILE</span>"</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">'{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Sudo credentials not cached. Please run sudo -v in another terminal. Retrying automatically..."}}'</span>
+  <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+<span class="token keyword">fi</span>
+
+<span class="token comment"># Subsequent attempts: poll for up to 30s</span>
+<span class="token assign-left variable">ELAPSED</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token operator">!</span> <span class="token function">sudo</span> <span class="token parameter variable">-n</span> <span class="token boolean">true</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token function">sleep</span> <span class="token number">1</span>
+  <span class="token assign-left variable">ELAPSED</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>ELAPSED <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$ELAPSED</span>"</span> <span class="token parameter variable">-ge</span> <span class="token number">30</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$STATEFILE</span>"</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">'{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Sudo credentials not cached. Timed out after 30s. Please run sudo -v in another terminal and retry."}}'</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+  <span class="token keyword">fi</span>
+<span class="token keyword">done</span>
+
+<span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$STATEFILE</span>"</span>
+<span class="token builtin class-name">exit</span> <span class="token number">0</span></code></pre>
+<p>The flow:</p>
+<ol>
+<li><strong>Sudo command attempted, creds not cached</strong> — hook denies with a message visible in Claude's terminal: &quot;Please run <code>sudo -v</code> in another terminal. Retrying automatically...&quot;</li>
+<li><strong>Claude sees the deny and automatically retries</strong> — second attempt hits the poll loop</li>
+<li><strong>User runs <code>sudo -v</code> in another terminal</strong> — within 30 seconds, the hook detects the cached credentials and the command proceeds</li>
+<li><strong>If 30 seconds pass</strong> — hook denies again with a timeout message, waits for the user to explicitly retry</li>
+</ol>
+<p>The <code>-qw</code> flag on grep ensures word-boundary matching — so a path like <code>/run/sudo/ts/</code> doesn't false-positive trigger the sudo check.</p>
+<h3 id="3-porting-to-opencode">3. Porting to OpenCode</h3>
+<p>I do use Opus a lot these days, but I have no allegiance to it. I want to see how this would work with a more open agent. The same approach works in <a href="https://github.com/opencode-ai/opencode">OpenCode</a>, which uses a TypeScript plugin system instead of shell script hooks. OpenCode plugins implement <code>tool.execute.before</code> and throw an error to block a command — no JSON protocol needed.</p>
+<pre class="language-typescript" tabindex="0"><code class="language-typescript"><span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> Plugin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@opencode-ai/plugin"</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> SudoCheck<span class="token operator">:</span> <span class="token function-variable function">Plugin</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> $ <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"tool.execute.before"</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span>input<span class="token punctuation">,</span> output<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>input<span class="token punctuation">.</span>tool <span class="token operator">!==</span> <span class="token string">"bash"</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\bsudo\b</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>args<span class="token punctuation">.</span>command<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+      <span class="token comment">// Check if sudo credentials are cached</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> $<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">sudo -n true 2>/dev/null</span><span class="token template-punctuation string">`</span></span>
+        <span class="token keyword">return</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+      <span class="token comment">// Poll for up to 30 seconds waiting for the user to run sudo -v</span>
+      <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>
+        <span class="token string">"Sudo credentials not cached. Run 'sudo -v' in another terminal. Waiting up to 30s..."</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">30</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Promise</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+          <span class="token keyword">await</span> $<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">sudo -n true 2>/dev/null</span><span class="token template-punctuation string">`</span></span>
+          <span class="token keyword">return</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>
+        <span class="token string">"Sudo credentials not cached. Timed out after 30s. Please run sudo -v in another terminal."</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Drop this in <code>~/.config/opencode/plugins/sudo-check.ts</code> and OpenCode picks it up automatically.</p>
+<p>The OpenCode version is simpler because async hooks can just <code>await</code> in a loop — no state file or deny-then-retry dance needed. But the core logic is identical: check for <code>sudo</code>, test <code>sudo -n true</code>, poll, timeout. The two implementations can't share a single file since the hook interfaces are fundamentally different (shell script with JSON stdin/stdout vs TypeScript async functions), but they're small enough that maintaining both is trivial.</p>
+<h2 id="things-to-know">Things to Know</h2>
+<p><strong>Every Bash command goes through the hook.</strong> The <code>matcher</code> config only filters by tool name, not command content. The script exits immediately for non-sudo commands (one <code>grep</code>, negligible overhead), but there's no way to avoid invoking it.</p>
+<p><strong><code>timestamp_type=global</code> has security implications.</strong> Any process on the machine can use the cached credentials during the timeout window. This is fine for a personal dev machine. For shared systems, consider the polkit approach or NOPASSWD for specific commands instead.</p>
+<p><strong>Claude Code has a history of dangerous sudo interactions.</strong> The auto-updater once suggested <code>sudo chown -R $USER /usr</code> which <a href="https://github.com/anthropics/claude-code/issues/168">bricked multiple users' systems</a> by breaking sudo's setuid bit. Sudo-elevated child processes can also <a href="https://github.com/anthropics/claude-code/issues/7877">crash the terminal</a> or <a href="https://github.com/anthropics/claude-code/issues/29921">cause unbounded disk growth</a>. The hook adds a layer of protection here too — you're always aware when sudo is being used.</p>
+<p><strong>This hook fires even with <code>--dangerously-skip-permissions</code>.</strong> Hooks are the last line of defense. I use an alias <code>cl = &quot;sudo -v &amp;&amp; claude --dangerously-skip-permissions&quot;</code> that pre-caches credentials and skips permission prompts, with the hook as the safety net.</p>
+<p><strong>Built-in support from Claude Code</strong>: <a href="https://github.com/anthropics/claude-code/issues/9881">Issue #9881</a> requests PTY support via <code>node-pty</code>, which would solve sudo prompts at the root. Until then, hooks are the best we've got.</p>
+<h2 id="the-code">The Code</h2>
+<p>All of this can be found in my public configs. Here are permalinks to the relevant files:</p>
+<p>Claude Code hook - <a href="https://github.com/jonocodes/configs/blob/c0cf447336c2979d52cf08ae314a306e0f49258e/home-manager/files/claude-sudo-check.sh">claude-sudo-check.sh</a></p>
+<p>OpenCode plugin - <a href="https://github.com/jonocodes/configs/blob/c0cf447336c2979d52cf08ae314a306e0f49258e/home-manager/files/opencode-sudo-check.ts">opencode-sudo-check.ts</a></p>
+
+	</heading-anchors>
+</p>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2026-01-24-ai-programming-junkie/">Thoughts on LLM use from a programming junkie</a></li>
+</ul>
+
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2026-03-10-ai-sudo-with-agents/` was built on 2026-03-10T18:55:51.445Z -->
+		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
+	</body>
+</html>
