@@ -7,9 +7,9 @@ title: Making sudo Work with AI Agents
 
 I have been doing a lot of system/network admin lately using Claude Code on my NixOS config files. It has been amazing since I do not like the Nix language, but I love the Nix experience. Now I can really cruse on trying new things and implementing production fixes. I really need to write that update to [Nix - Death by a thousand cuts](2025-01-10-nix-death-by-a-thousand-cuts). So much has changed in the past year.
 
-One of the nice thinks about Nix is I can do a full system build as my user, without switching to it. This way the agent can try fixing syntax and the like until the build passes. Then I can manually to the rebuld switch, which requires sudo access.
+One of the nice thinks about Nix is I can do a full system build as my user, without switching to it. This way the agent can try fixing syntax and the like until the build passes. Then I can manually to the rebuild switch, which requires sudo access.
 
-However there are times when I want the agent to do the switch itself - and sometimes often. For example when I was troubleshooting a tailscale dns issue I had it try a bunch of different configs until I could get the communication working. In this case I dont want the agent to be constantly asking me to run the manual switch.
+However there are times when I want the agent to do the switch itself - and sometimes often. For example when I was troubleshooting a tailscale dns issue I had it try a bunch of different configs until I could get the communication working. In this case I don't want the agent to be constantly asking me to run the manual switch.
 
 So how do I work around this issue of running sudo commands? Can I have the agent stop and ask for my password? Today, coding agents like Claude Code and OpenCode share a fundamental limitation: they can't handle interactive terminal prompts. When a command needs `sudo`, there's no TTY to type your password into. The agent's subprocess just fails:
 
@@ -207,6 +207,5 @@ The OpenCode version is simpler because async hooks can just `await` in a loop â
 All of this can be found in my public configs. Here are permalinks to the relevant files:
 
 Claude Code hook - [claude-sudo-check.sh](https://github.com/jonocodes/configs/blob/c0cf447336c2979d52cf08ae314a306e0f49258e/home-manager/files/claude-sudo-check.sh)
-
 
 OpenCode plugin - [opencode-sudo-check.ts](https://github.com/jonocodes/configs/blob/c0cf447336c2979d52cf08ae314a306e0f49258e/home-manager/files/opencode-sudo-check.ts)
