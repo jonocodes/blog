@@ -21,3 +21,9 @@ I have adapted my own version of running this workshop. It's low overhead and ca
 <!-- https://www.notion.so/populus/Application-Security-Bootcamp-2024-a2f66c989b374788aee60aef9df7f15e#f7121d961f2c4f0eb1ddebb2606b32d3 -->
 
 If you have it in you, running this workshop is a blast. [You can follow my instructions here](/docs/pen-testing-game-day/). Let me know how it goes.
+
+Here is a lightning talk where I introduce the juice shop.
+
+<div class="youtube-video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/NkFiHk59ImI?si=nB-CjR0WIOzTS_fn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
