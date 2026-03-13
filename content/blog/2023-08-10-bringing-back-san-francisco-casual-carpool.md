@@ -2,6 +2,7 @@
 tags:
   - community
   - tech
+  - videos
 title: Bringing Back San Francisco Casual Carpool
 ---
 I have been trying to bring back SF casual carpool since it ended with the pandemic. Here are some of the things I/we have done mostly between September 2022 and August 2023.

@@ -4,6 +4,7 @@ tags:
   - work
   - tech
   - talks
+  - videos
 title: OWASP Security Workshop 2024
 ---
 At [Udemy](https://www.udemy.com/) we had a two day workshop/game given a couple times a year for anyone who wanted to join. It was a fun way of introducing penetration testing to web application developers.

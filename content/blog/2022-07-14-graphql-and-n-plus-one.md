@@ -4,6 +4,7 @@ tags:
   - talks
   - work
   - tech
+  - videos
 title: "Talk: GraphQL and the n+1 problem"
 ---
 When I was working at [Udemy](https://www.udemy.com/), there was a new charter for all services to communicate internally via grpc, and all for public facing traffic to use GraphQL.

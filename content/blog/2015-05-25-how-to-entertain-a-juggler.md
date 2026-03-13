@@ -2,6 +2,7 @@
 tags:
   # - post
   - talks
+  - videos
 title: "Talk: How to Entertain a Juggler"
 ---
 This is a presentation I seem to give every couple years. It can be 30 minutes to an hour depending on the venue, and if there is a hands on juggling lesson at the end.

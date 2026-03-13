@@ -2,7 +2,7 @@
 tags:
   - finance
   - talks
-  # - post
+  - videos
 title: "Talk: Financial Independence"
 ---
 In 2018, my buddy [Jory John](http://www.joryjohn.com/) was nudging me to [read](https://www.mrmoneymustache.com/) and [listen](https://choosefi.com/listen) to some personal finance stuff that was going around. I enjoyed it, and it was a wake up call for me to get my ducks in order.
