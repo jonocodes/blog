@@ -3,6 +3,7 @@ tags:
   # - post
   - talks
   - tech
+  - videos
 title: "Talk: Computer Keyboards!"
 ---
 I'm a keyboard nerd. I think if you are spending most of your days sitting at a desk, you may as well make it nice.
