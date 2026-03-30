@@ -11,18 +11,30 @@
     <name>Jono Finger</name>
   </author>
   <entry>
-    <title>The emerging control plane for AI development</title>
+    <title>Trends in Ambient Development</title>
     <link href="https://www.dgt.is/blog/2026-03-30-ai-ide/" />
     <updated>2026-03-30T00:00:00Z</updated>
     <id>https://www.dgt.is/blog/2026-03-30-ai-ide/</id>
-    <content type="html">&lt;p&gt;A lot of the talk around AI coding still assumes a pretty simple setup: you open a chat, paste something in, get something back.&lt;/p&gt;
+    <content type="html">&lt;p&gt;I have always been somewhat fixated on developer experience, and will often go way overboard trying to optimize my daily workflow. While working at Udemy, I starting the Local Dev Guild, where we all got to nerd out on this stuff. I was maybe a little too into it.&lt;/p&gt;
+&lt;p&gt;The &amp;quot;IDE&amp;quot; for developing with AI is having a fascinating renaissance right now, so I have been exploring some of these new tools for my day to day work.&lt;/p&gt;
+&lt;p&gt;In this new LLM world, we are becoming terribly productive and we need tools to manage many projects and many features, being continuously developed, by a single person. This is the new &amp;quot;IDE&amp;quot; I&#39;m talking about. I like to call it Ambient Development, since it is something you jump in and out of. sometimes tweaking a lot, sometime just nudging in a new direction. The agent takes over and continues your &amp;quot;theme&amp;quot; while you sleep.&lt;/p&gt;
+&lt;p&gt;Here are some of the projects I cooked up in the past month or so.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://stashcast.net&quot;&gt;StashCast&lt;/a&gt; - Custom podcast feeds that collect whatever specific media you want to listen to later&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jonocodes/HubSnub&quot;&gt;HubSnub&lt;/a&gt; - Taming github email notifications&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jonocodes/LinkHop&quot;&gt;LinkHop&lt;/a&gt; - Messaging between your browsers/devices&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jonocodes/newsloupe&quot;&gt;NewsLoupe&lt;/a&gt; - Customized Hacker News feed based on your ongoing interests.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jonocodes/arbor&quot;&gt;Arbor&lt;/a&gt; - A browser based/LLM agnostic control pane for remote development&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;too-many-agents&quot;&gt;Too many agents&lt;/h2&gt;
+&lt;p&gt;A lot of the talk around AI coding still assumes a pretty simple setup: you open a chat, paste something in, get something back.&lt;/p&gt;
 &lt;p&gt;That is not where things are going.&lt;/p&gt;
 &lt;p&gt;What’s starting to show up now is a different kind of system. Not just a coding assistant, and not quite a new IDE either, but something closer to a control plane for the development environment itself: agents running for a while, tools exposed remotely, state that persists, and the ability to check in from a phone, browser, or terminal.&lt;/p&gt;
 &lt;p&gt;This post is a survey of that space while it is still taking shape. There are many tools that are sprouting up everyday to suit people&#39;s personal needs. Here, I am looking at only several of them. Things are moving fast so this post will almost certainly not be relevant past March 2026.&lt;/p&gt;
 &lt;p&gt;Some of these tools are polished products. Some are one-man, open-source side projects. Some are really just thin layers over SSH. A few feel like early glimpses of a new IDE category altogether.&lt;/p&gt;
 &lt;p&gt;I’m not trying to make a definitive ranking here. The space is moving too fast for that. I mostly want to map the terrain, say what I am actually looking for, and explain why I think this category is going to matter.&lt;/p&gt;
 &lt;p&gt;There’s also a recent precursor to all of this in long-running agent like the &lt;a href=&quot;https://ghuntley.com/ralph/&quot;&gt;Ralph loop&lt;/a&gt; or the highly over-engineered &lt;a href=&quot;https://steve-yegge.medium.com/welcome-to-gas-town-4f25ee16dd04&quot;&gt;Gastown&lt;/a&gt;. That work matters, but I think the newer thing is slightly different: less about making agents autonomous in the abstract, more about making them usable inside a real development setup.&lt;/p&gt;
-&lt;p&gt;![[/gastown-term-orchestration.webp]]&lt;br&gt;
+&lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2026-03-30-ai-ide/Z9dRxRqpnz-1400.avif 1400w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2026-03-30-ai-ide/Z9dRxRqpnz-1400.webp&quot; alt=&quot;many terminals&quot; width=&quot;1400&quot; height=&quot;764&quot;&gt;&lt;/picture&gt;&lt;br&gt;
 (image from Gastown blog)&lt;/p&gt;
 &lt;h2 id=&quot;what-i-m-looking-for&quot;&gt;What I’m looking for&lt;/h2&gt;
 &lt;p&gt;Before comparing tools, it helps to be clear about what I want.&lt;/p&gt;
@@ -363,11 +375,12 @@
 &lt;p&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://www.dgt.is/blog/2026-03-30-ai-ide/0Gjxcc0aSJ-1223.avif 1223w&quot;&gt;&lt;img loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://www.dgt.is/blog/2026-03-30-ai-ide/0Gjxcc0aSJ-1223.webp&quot; alt=&quot;coolify&quot; width=&quot;1223&quot; height=&quot;942&quot;&gt;&lt;/picture&gt;&lt;/p&gt;
 &lt;p&gt;Coolify is interesting here as the deployment side of the loop, particularly for web apps. If agents can push changes, something like Coolify can expose feature deployments and previews quickly. I love, love, love this project. It is kind of like Vercel in that it provides a web interface for managing deployments, and can auto deploy services from pull requests. But it is self hosted, and more importantly it is full stack (Vercel is more stack restricted). I just make sure there is a docker-compose file in each project, and coolify will spin up all the dependent services and databases for every branch. Brilliant.&lt;/p&gt;
 &lt;p&gt;This probably deserves its own blog post since I did a deep survey of other tools, and bringing it up is not trivial, especially with my NixOS setup.&lt;/p&gt;
-&lt;h3 id=&quot;vs-code-web&quot;&gt;VS Code Web&lt;/h3&gt;
+&lt;h3 id=&quot;version-control&quot;&gt;Version Control&lt;/h3&gt;
 &lt;p&gt;One thing that still feels oddly missing is a good web-based git and code review interface.&lt;/p&gt;
-&lt;p&gt;VS Code Web is the closest thing I’ve found for reviewing code and pending edits before commit.&lt;/p&gt;
 &lt;p&gt;I still can’t quite believe there isn’t a great web git client here yet. There are many git services, just not clients where I can do standard things like review, staging, merging, etc.&lt;/p&gt;
 &lt;p&gt;That feels like an obvious missing piece in this stack: agents can generate changes, but reviewing them remotely is still awkward.&lt;/p&gt;
+&lt;p&gt;So far the best I have seen is Cloud CLI. They have a very nice built in file and versioning interface. I wish it were more standalone so it could be simply imported elsewhere.&lt;/p&gt;
+&lt;p&gt;Also I&#39;ve been meaning to experiment more with VS Code Web since it has a nice git client, and a bunch of other things that may be useful here.&lt;/p&gt;
 &lt;h2 id=&quot;the-real-tradeoffs&quot;&gt;The real tradeoffs&lt;/h2&gt;
 &lt;p&gt;These tools aren’t better or worse in some absolute sense. They’re making different choices.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Infrastructure ownership&lt;/strong&gt;&lt;br&gt;
