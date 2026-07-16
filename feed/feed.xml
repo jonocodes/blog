@@ -5,11 +5,78 @@
   <subtitle>thoughts, talks, projects and unpopular opinions</subtitle>
   <link href="https://www.dgt.is/feed/feed.xml" rel="self" />
   <link href="https://www.dgt.is/" />
-  <updated>2026-03-30T00:00:00Z</updated>
+  <updated>2026-05-27T00:00:00Z</updated>
   <id>https://www.dgt.is/</id>
   <author>
     <name>Jono Finger</name>
   </author>
+  <entry>
+    <title>The Programmer&#39;s Job in an AI World</title>
+    <link href="https://www.dgt.is/blog/2026-05-27-programmers-job/" />
+    <updated>2026-05-27T00:00:00Z</updated>
+    <id>https://www.dgt.is/blog/2026-05-27-programmers-job/</id>
+    <content type="html">&lt;p&gt;I have a friend who was a programmer a generation before me who I always looked up to. He now teaches at a community college. He recently reached out to me about what to teach his students. I&#39;m putting it here as historical record of this moment in time.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Jono,&lt;br&gt;
+Been a while. 🙂 I hope you and your folks &amp;amp; family are doing well.&lt;/p&gt;
+&lt;p&gt;I am still teaching College computer science and (as I&#39;m sure you know) AI changes EVERYTHING. It&#39;s not even clear to me whether the instructors in my department should continue teaching programming in its present form. My opinion is we need to teach our students to read and correct code (probably in Python) but it may not help them that much in the work world to teach them how to write code. But I&#39;m not sure.&lt;/p&gt;
+&lt;p&gt;I see it as a 3-step process to really help my students:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Understand what the job responsibilities are of a typical programmer in an AI workplace environment NOW.&lt;/li&gt;
+&lt;li&gt;Identify the set of skills necessary to successfully complete those responsibilities.&lt;/li&gt;
+&lt;li&gt;Work out the details of teaching those skills.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Which brings me to the point of this email. You struck me as one of the more professional programmers I&#39;ve run into since retirement. I&#39;d be seriously obliged if you could shoot me a summary of the responsibilities / deliverables of successful programmers these days.  I&#39;m preparing a new course on &amp;quot;Prompt Engineering &amp;amp; AI Agents&amp;quot; and really want to make this meaningful in the lives of my students.&lt;/p&gt;
+&lt;p&gt;Regards and all the best,&lt;br&gt;
+RonK&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Hey RonK!&lt;/p&gt;
+&lt;p&gt;Thanks for reaching out. I have a lot of thoughts on this topic. I was an early adopter, and am always mucking with the new tools. I think AI will probably be the end of humanity. But that&#39;s a whole separate conversation... Now let&#39;s ramble about coding.&lt;/p&gt;
+&lt;p&gt;About 6 months ago there was an inflection point with the deployment of Claude 4.5 where AI started becoming very powerful in such a way that you could do unattended tasks and trust that it would do things correctly. Since then, my immediate engineering team at work has been entirely let go and I&#39;m the last engineer in my office. I&#39;m still a full time software dev but I write very little code by hand. I probably spend about a day a month actually producing syntax from my brain. It&#39;s not uncommon for me to create an entire project in a couple days that would have taken me a couple of months.&lt;/p&gt;
+&lt;p&gt;I also don&#39;t review code much, from myself or others. Code review agents are very thorough and the good ones will point out which parts are worth putting real eyes on and which are not. So things are fast and messy right now. It&#39;s going to cause a lot of problems, but also a lot of solutions.&lt;/p&gt;
+&lt;p&gt;We&#39;re definitely in a weird place right now. I think for the most part engineers are loving the new tools that we have. Especially the more senior ones who have built that same CRUD endpoint a hundred times. Now we can skip all the boilerplate and just get to the interesting parts.&lt;/p&gt;
+&lt;p&gt;Just yesterday, at work... I&#39;m building a project around database synchronization. I wasn&#39;t sure which of several ways I wanted to go about it. So in a couple hours, I had an LLM essentially spit out three full runnable versions of the app to see which one I liked. This, of course, would not have been possible even a year ago. There are a lot of new workflows and methodologies that have come about from all of this new tech.&lt;/p&gt;
+&lt;p&gt;There are camps that think programming languages don&#39;t even matter any more and you should write everything in Rust or even assembly. Why use a user-friendly language like Python if you don&#39;t have to actually look at the code?&lt;/p&gt;
+&lt;p&gt;Here&#39;s an example of a guy who built an interesting development framework that has caught some serious traction. &lt;a href=&quot;https://www.youtube.com/watch?v=EJyuu6zlQCg&amp;amp;t=1s&quot;&gt;https://www.youtube.com/watch?v=EJyuu6zlQCg&amp;amp;t=1s&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;His stuff may get to some of your questions about prompt engineering. I&#39;m not entirely sold on the future of Skills-maxing, but it seems quite powerful at this immediate point in time.&lt;/p&gt;
+&lt;p&gt;Right now, I think junior developers are in quite a pickle. Most companies are shedding their juniors and only hiring the most senior ones they can find. And that&#39;s mostly because they need someone who&#39;s experienced enough to direct the AI and build systems that make sense architecturally. But even that won&#39;t last forever. I think what&#39;s gonna happen is we&#39;re going to have some very good product managers who will be able to spit out a good program and manage a bunch of AI agents and not really have to know much about what&#39;s going on underneath. I see this happening in the next few years. The day of devs being on top of the world is gone. The economics of supply and demand are turning on their head.&lt;/p&gt;
+&lt;p&gt;My product manager (also part of our most recent layoffs) had really gotten pretty proficient at actually building our products. He started using AI to make nice mock-ups, but by the end, he was writing full-on apps and doing half my job. He was a smart guy, but definitely not an engineer. If these layoffs had happened in a couple years from now with improved LLMs, I think I would have been let go before he was.&lt;/p&gt;
+&lt;p&gt;I personally spend most of my time with AI creating design docs. Deep research on best practices, prior art, testing workflows, cost analysis, etc. Then, when I&#39;m satisfied, I have the LLM spit out these very elaborate workbooks that a lesser agent can follow to actually write the code.&lt;/p&gt;
+&lt;p&gt;Funny thing is I got interviewed by a friend&#39;s kid the other day. A seventh grader who wants to learn about software engineering. I mostly told them all the reasons why I love it - because I truly do. But I don&#39;t know what to generally advise kids these days. Do my own kids need to have any hard skills? Should they go to college? Do they need to even go to a math class now? I don&#39;t know what the future is for white-collar work in general. Maybe we&#39;ll all move towards a leisure economy where we can just sit around and read books all day while the robots serve us martinis by the pool. 😃&lt;/p&gt;
+&lt;p&gt;AI also has many implications for the open-source world. At the Linux conferences I go to, most conversations have turned to the new culture around forking and how to deal with incoming waves of slop pull requests. Lots of thoughts there.&lt;/p&gt;
+&lt;p&gt;Speaking of open source, my personal collection of side projects has completely exploded in the last year. We all have documents of ideas that we will never implement. Now I&#39;ve actually started to crack out a bunch of them. The feeling of programming and producing something is just entirely different than it used to be. But that&#39;s its own story. I&#39;ve written about it a bit.&lt;br&gt;
+&lt;a href=&quot;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/&quot;&gt;https://www.dgt.is/blog/2026-01-24-ai-programming-junkie/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;What practical advice could I actually give? Not much.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;If you really wanna be a programmer, you should do it because you love it. Some argue that was always the case though I disagree.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Don&#39;t fight AI. That won&#39;t work in your favor. It&#39;s like fighting the light bulb or the printing press. You can&#39;t go without it in a work environment. But for the most part, juniors I&#39;ve worked with don&#39;t need this advice. As far as they&#39;re concerned, autocomplete in their IDE has just gotten better and better every year. That&#39;s all they know, so they&#39;re already pretty native to it. And these kids can move fast. Often faster than me. Using LLMs outside of work is a different story. You don&#39;t need to use it there if you don&#39;t want to.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use LLMs to dive deep and discover what you need to know when working on something new. When trying to get up to speed on a new topic or technology we used to scour outdated forums and documents to find any advice we could. But now an LLM can help you step back and think broadly about a problem before you decide which direction to take something. Tackling &amp;quot;unknown unknowns&amp;quot; is a hard problem, but now with the right style of curious querying you can learn a lot, fast. And after you have started actually working on a project, continue to have agents look at the big picture, since it is easy to dive deep into a rabbit hole if you are not careful.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once you have specced something out, ask if what you designed is a solved problem. LLMs today still are a bit bullish about writing everything themselves. You don&#39;t want to reinvent the wheel. Side note: That calculus is changing more and more, but the advice stands.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Testing is more important than ever. I have always been test-obsessed, but my testing style has changed with AI use. I should write a blog post to force myself to formalize my thoughts around this. Lately I have been playing with more TDD style coding.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Instead of creating a bunch of custom workflows that are meant to be understood by agents, focus on writing documents that are thorough and close to your code. It is of most importance that the docs do not drift, but you can often solve that by having AI check to see if the docs are out of sync with the code. These docs should really be directed at humans, but LLMs will discover them and will give them a lot of context and direction of how to run, build and test things. I&#39;ve experimented with a bunch of things here and think the art of managing these docs is starting to settle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you wanna read some fun philosophical stuff about AI there&#39;s some interesting stuff on the 80k hours podcast.&lt;br&gt;
+&lt;a href=&quot;https://80000hours.org/podcast/episodes/kyle-fish-ai-welfare-anthropic/&quot;&gt;https://80000hours.org/podcast/episodes/kyle-fish-ai-welfare-anthropic/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Speaking of podcasts, this was an entertaining one about a guy who tries to run a whole company with personified AI agents. Buffoonery ensues.&lt;br&gt;
+&lt;a href=&quot;https://pca.st/j22grjam&quot;&gt;https://pca.st/j22grjam&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Also unrelated. I started reading the Bobiverse books. You may enjoy them.&lt;/p&gt;
+&lt;p&gt;I use dictation to write this message so the wording is quite casual, but at least I didn&#39;t use an LLM. Give me a call sometime if you want to dig in on any of this or get into concrete examples. My thoughts on this stuff are really evolving day to day.&lt;/p&gt;
+&lt;p&gt;And now I have to get back to (not) programming.&lt;/p&gt;
+&lt;p&gt;-Jono&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Trends in Ambient Development</title>
     <link href="https://www.dgt.is/blog/2026-03-30-ai-ide/" />
@@ -1125,25 +1192,6 @@ If you don&#39;t happen to know the answer from previously doing the same one or
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Talk: Computer Keyboards!</title>
-    <link href="https://www.dgt.is/blog/2024-09-20-computer-keyboards/" />
-    <updated>2024-09-20T00:00:00Z</updated>
-    <id>https://www.dgt.is/blog/2024-09-20-computer-keyboards/</id>
-    <content type="html">&lt;p&gt;I&#39;m a keyboard nerd. I think if you are spending most of your days sitting at a desk, you may as well make it nice.&lt;/p&gt;
-&lt;p&gt;For me, its all about ergonomic &lt;a href=&quot;https://kinesis-ergo.com/keyboards/advantage360/&quot;&gt;forms&lt;/a&gt; and &lt;a href=&quot;https://colemak.com/&quot;&gt;layouts&lt;/a&gt;, but in this talk I get into the world of keyboard styling, meetups, hacking, competitions, and history. Its a very visual talk and somehow I managed to deliver these ~120 slides in 1 hour.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://jonocodes.github.io/awesome-keyboards&quot;&gt;Slides&lt;/a&gt; and &lt;a href=&quot;https://github.com/jonocodes/awesome-keyboards&quot;&gt;source&lt;/a&gt; here.&lt;/p&gt;
-&lt;div class=&quot;youtube-video&quot;&gt;
-  &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/W07djmOesVQ?si=8cJdX7rRoYojo-rV&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-&lt;p&gt;Key takeaways from the talk:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Thumb clusters are awesome.&lt;/li&gt;
-&lt;li&gt;QWERTY is an outdated convention.&lt;/li&gt;
-&lt;li&gt;Keyboard customization can be a (fun) rabbit hole.&lt;/li&gt;
-&lt;/ul&gt;
 </content>
   </entry>
 </feed>
