@@ -5,11 +5,73 @@
   <subtitle>thoughts, talks, projects and unpopular opinions</subtitle>
   <link href="https://www.dgt.is/feed/feed.xml" rel="self" />
   <link href="https://www.dgt.is/" />
-  <updated>2026-05-27T00:00:00Z</updated>
+  <updated>2026-07-19T00:00:00Z</updated>
   <id>https://www.dgt.is/</id>
   <author>
     <name>Jono Finger</name>
   </author>
+  <entry>
+    <title>AI DevEx Log - July 2026</title>
+    <link href="https://www.dgt.is/blog/2026-07-19-ai-dev-log/" />
+    <updated>2026-07-19T00:00:00Z</updated>
+    <id>https://www.dgt.is/blog/2026-07-19-ai-dev-log/</id>
+    <content type="html">&lt;p&gt;This is a time capsule post, since I&#39;m interested in keeping track of the quickly evolving experience of AI development.&lt;/p&gt;
+&lt;p&gt;I recently started a project that &lt;a href=&quot;https://github.com/jonocodes/deckd&quot;&gt;makes your phone into a context aware desktop controller&lt;/a&gt;. Sort of like the stream deck. The project itself is not important for this post - only the development methodology. With every new project, I try to use a new tool. This time that was mostly focused on skills experimentation.&lt;/p&gt;
+&lt;h1 id=&quot;models&quot;&gt;Models&lt;/h1&gt;
+&lt;p&gt;I have several subscriptions to the lowest plan offering from providers. Today that&#39;s Claude, Cursor, MiniMax, OpenCode Go. So I have been bouncing between these models mostly because I like to see how they vary:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Opus 4.8 - high level planning&lt;/li&gt;
+&lt;li&gt;GPT 5.5, 5.6 - grilling&lt;/li&gt;
+&lt;li&gt;DeepSeek V4 Pro - grilling, inception&lt;/li&gt;
+&lt;li&gt;MiniMax-M3 - implementation&lt;/li&gt;
+&lt;li&gt;GLM-5.2 - implementation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I recently tried this &lt;a href=&quot;https://www.youtube.com/watch?v=8GRmLR__OGQ&quot;&gt;method of encoding orchestration between models&lt;/a&gt; via my &lt;a href=&quot;http://AGENTS.md&quot;&gt;AGENTS.md&lt;/a&gt;, but I never got it quite working how I liked.&lt;/p&gt;
+&lt;h1 id=&quot;surfaces&quot;&gt;Surfaces&lt;/h1&gt;
+&lt;p&gt;I still have not found that holy grail client that does all I want:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;web first&lt;/li&gt;
+&lt;li&gt;works well on mobile&lt;/li&gt;
+&lt;li&gt;has an integrated terminal&lt;/li&gt;
+&lt;li&gt;code diffs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This area has exploded, and my list of ones to try has become exhausting. I have also filed bugs against a bunch of them, which helps me know which are active projects, and alerts me when to come back to them. At this point these projects seems like one offs that scratch an itch, but don&#39;t solve the whole problem, or they are forks of Happy, which has its own issues.&lt;/p&gt;
+&lt;p&gt;For now here are the ones I have been regularly driving in order of preference.&lt;/p&gt;
+&lt;h2 id=&quot;opencode-web-only&quot;&gt;opencode (web only)&lt;/h2&gt;
+&lt;p&gt;Using the existing nix home-manager service. Quite stable and great with tons of models, but cant use claude subscription (though apparently &lt;a href=&quot;https://github.com/ianjwhite99/opencode-with-claude&quot;&gt;there are workarounds&lt;/a&gt;)&lt;/p&gt;
+&lt;h2 id=&quot;t3code-web-only&quot;&gt;t3code (web only)&lt;/h2&gt;
+&lt;p&gt;This gives me access to all the models: opencode, claude, cursor, codex, etc. Active development, but mostly toward the desktop side which I don&#39;t use. Buggy, but improving.&lt;/p&gt;
+&lt;h2 id=&quot;claude-remote-control&quot;&gt;claude remote control&lt;/h2&gt;
+&lt;p&gt;I have always liked claude web. Its simple and to the point - but model restrictive. Using remote control gives me access to my whole dev setup, so quite nice.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Side thought&lt;/strong&gt;: Looking at stars and last commit is a good high level of project activity. But how about looking at ticket churn, PR comments, etc. Or maybe looking for dependents so you know who is using it. Are there tools that extract this data for us?&lt;/p&gt;
+&lt;h1 id=&quot;inception&quot;&gt;Inception&lt;/h1&gt;
+&lt;p&gt;I typically start with a conversation at &lt;a href=&quot;http://claude.ai&quot;&gt;claude.ai&lt;/a&gt; (not &lt;a href=&quot;http://claude.ai/code&quot;&gt;claude.ai/code&lt;/a&gt;). Here I ruminate on ideas, look for prior art, narrow down the goals until the project becomes somewhat tangible. This often happens over days of casual discussion.&lt;/p&gt;
+&lt;p&gt;Then we discuss naming. I particularly like this part. It generates a bunch of ideas. Then I narrow it down and have it look to see if any of the top candidates are already crowded. Mostly that means it checks for existing domain names, github repos, PyPI projects.&lt;/p&gt;
+&lt;p&gt;Then I tell the agent to generate a comprehensive &lt;a href=&quot;https://github.com/jonocodes/deckd/blob/add526f842f2d4c064dd60bd2fb3bfc9bed5a428/docs/INCEPTION.md&quot;&gt;inception document&lt;/a&gt;. This is pre-planning. So it should contain everything we talked about and how we arrived at the current state. This document is the seed where we can start materializing a spec, so I create a git repo with just that single file.&lt;/p&gt;
+&lt;h1 id=&quot;execution&quot;&gt;Execution&lt;/h1&gt;
+&lt;p&gt;This is the first time I went all in on a development framework - to see what the hype is all about.&lt;/p&gt;
+&lt;p&gt;I tend to shy from skills because I see them used for mundane things, and modern agents should not need micromanagement. For this I tried &lt;a href=&quot;https://github.com/mattpocock/skills&quot;&gt;Matt Pocock&#39;s skills&lt;/a&gt; which gives a standardized structure to your development workflow.&lt;/p&gt;
+&lt;p&gt;For the most part, I was following this type of workflow, but straight from my engineering brain, not from a canned repository.&lt;/p&gt;
+&lt;h2 id=&quot;pros&quot;&gt;Pros&lt;/h2&gt;
+&lt;h3 id=&quot;tdd&quot;&gt;TDD&lt;/h3&gt;
+&lt;p&gt;I never got TDD to work quite how I wanted when I explain it in a prompt, so its nice to have this all worked out. These models have basically read every book on testing, but they still don&#39;t stick to the rules.&lt;/p&gt;
+&lt;h3 id=&quot;context-aware-ticketing&quot;&gt;Context aware ticketing&lt;/h3&gt;
+&lt;p&gt;In the stage where the spec is turned into tickets, particular focus is taken to keep each one self contained. But more importantly some calculus as been done such that each ticket fits well in a standard context window, and doesn&#39;t get muddy during implementation. That&#39;s genuinely something I never did before. Neat.&lt;/p&gt;
+&lt;h3 id=&quot;works-across-agents&quot;&gt;Works across agents&lt;/h3&gt;
+&lt;p&gt;This may be somewhat specific to Matt Pocock&#39;s skills setup script, but they can be installed across agent harnesses since I bounce between them quite a bit.&lt;/p&gt;
+&lt;h2 id=&quot;cons&quot;&gt;Cons&lt;/h2&gt;
+&lt;h3 id=&quot;sometimes-it-feels-like-overkill&quot;&gt;Sometimes it feels like overkill&lt;/h3&gt;
+&lt;p&gt;Do I really need a hierarchy of documents to describe how a grilling session should go down? For small projects some parts are overkill. Specs, milestones, adr...&lt;/p&gt;
+&lt;h2 id=&quot;there-are-still-gaps&quot;&gt;There are still gaps&lt;/h2&gt;
+&lt;p&gt;I should probably create skills for these at some point:&lt;/p&gt;
+&lt;h3 id=&quot;creating-a-proof-of-concept&quot;&gt;Creating a proof of concept&lt;/h3&gt;
+&lt;p&gt;Actually I am talking pre-proof of concept. Often I need to see if some technology even works before I commit to continuing with a project. This is table stakes. For example in &lt;a href=&quot;https://github.com/jonocodes/deckd&quot;&gt;deckd&lt;/a&gt;, I have never made a web app that can control a mouse on the desktop. I know the tech exists, but will it actually work? Don&#39;t trust the LLM&#39;s intuition - since it can be wrong. So I need to build a couple demo apps that can test this out before committing to the rest of the project.&lt;/p&gt;
+&lt;h3 id=&quot;manual-testing&quot;&gt;Manual testing&lt;/h3&gt;
+&lt;p&gt;After each ticket is implemented I get a report of how it works, the clean up, the testing, etc. Even if the tests pass sometimes the feature is still broken. And even if it runs without a problem, does the feature actually work as expected? Maybe it lead to some visual regression, or it used the wrong wording on the page. I need to roll up my sleeves and try it.&lt;/p&gt;
+&lt;h1 id=&quot;nixos&quot;&gt;NixOS&lt;/h1&gt;
+&lt;p&gt;A last note on my main driver, NixOS. Some of these tools don&#39;t work out of the box there, so I often have to do some upfront work to get them running. For example t3code has an existing package, but not a set up web service, so &lt;a href=&quot;https://github.com/jonocodes/configs/blob/3048454253816cdef7e000e9b0eeefd6e9ac9974/home-manager/modules/t3code.nix&quot;&gt;I had to create one&lt;/a&gt;. Nothing an LLM cant handle.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>The Programmer&#39;s Job in an AI World</title>
     <link href="https://www.dgt.is/blog/2026-05-27-programmers-job/" />
@@ -1080,118 +1142,6 @@ boot&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;binfmt&lt;span
 &lt;li&gt;&lt;a href=&quot;https://mercyforanimals.org/ways-to-give/&quot;&gt;Mercy For Animals&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.catf.us/&quot;&gt;Clean Air Task Force&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>On Coding Interviews: What Works, What Doesn’t, and Why It Matters</title>
-    <link href="https://www.dgt.is/blog/2024-10-25-on-coding-interviews/" />
-    <updated>2024-10-25T00:00:00Z</updated>
-    <id>https://www.dgt.is/blog/2024-10-25-on-coding-interviews/</id>
-    <content type="html">&lt;p&gt;The relationship between technical interviews and real-world performance remains one of the most debated topics in software engineering recruitment. While you may be reading this because of a recent interview experience we shared, this post aims to explore a broader and more important question: how can companies better identify talented developers? Although many organizations have established interview processes they consider sufficient, the challenge of false negatives – rejecting qualified candidates – continues to impact both companies and developers &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn1&quot; id=&quot;fnref1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;. As Joel Spolsky notes, &amp;quot;A lot of good programmers end up getting rejected — while, even worse, companies end up hiring people who are good at passing tests, but under-perform in the real world&amp;quot; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn2&quot; id=&quot;fnref2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;. Drawing from industry anecdotes &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn3&quot; id=&quot;fnref3&quot;&gt;[3]&lt;/a&gt;&lt;/sup&gt;, professional discussions &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn4&quot; id=&quot;fnref4&quot;&gt;[4]&lt;/a&gt;&lt;/sup&gt;, and academic research &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn5&quot; id=&quot;fnref5&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;, this post examines real-world examples and alternatives to traditional coding interviews.&lt;/p&gt;
-&lt;h2 id=&quot;a-bit-about-me&quot;&gt;A bit about me&lt;/h2&gt;
-&lt;p&gt;I am a lifelong developer. When I discovered programming in adolescence I took to it and never stopped. After decades of being a full time individual contributor my love of coding only continues to deepen.&lt;/p&gt;
-&lt;p&gt;I always have my hands in open source and side projects. After the work day is done it is not uncommon for me to put in another days worth of work on &lt;a href=&quot;https://github.com/jonocodes&quot;&gt;my personal and open source projects&lt;/a&gt;. Many of these projects also directly benefit my place of work &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn6&quot; id=&quot;fnref6&quot;&gt;[6]&lt;/a&gt;&lt;/sup&gt; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn7&quot; id=&quot;fnref7&quot;&gt;[7]&lt;/a&gt;&lt;/sup&gt; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn8&quot; id=&quot;fnref8&quot;&gt;[8]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;p&gt;Managers say I am enthusiastic and known for going above and beyond to work out innovative solutions. I am eager to learn and like to mentor. I regularly give tech talks, non-tech talks, lead projects, and security workshops &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn9&quot; id=&quot;fnref9&quot;&gt;[9]&lt;/a&gt;&lt;/sup&gt;.  See my &lt;a href=&quot;https://digitus.notion.site/Jono-Finger-Professional-Info-113025d8c35b80bea249e1de35ae55c4&quot;&gt;reviews from peers and managers&lt;/a&gt;. They can be &lt;a href=&quot;https://www.linkedin.com/in/jfinger/details/recommendations&quot;&gt;verified on linkedin&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;the-problem-with-coding-questions&quot;&gt;The problem with coding questions&lt;/h2&gt;
-&lt;p&gt;I do well on all parts of the interview process, but not on live coding questions. Most professions do not have an equivalent hurdle in their process, but these are common place in tech. Many experienced engineers, particularly at senior levels, view these assessments with skepticism or actively avoid organizations that rely heavily on them &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn10&quot; id=&quot;fnref10&quot;&gt;[10]&lt;/a&gt;&lt;/sup&gt;. They consider it a red flag or they find them insulting.&lt;/p&gt;
-&lt;p&gt;Still, companies rely heavily on these pass/fail &amp;quot;tests&amp;quot;. In my tenure as a programmer I have actually seen interviews improve over the years by relying less on these assessments. But some traditions die hard &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn11&quot; id=&quot;fnref11&quot;&gt;[11]&lt;/a&gt;&lt;/sup&gt;. As technologists, we should strive to keep up with best practices.&lt;/p&gt;
-&lt;p&gt;Having an hour long tech question tends to rely on landing the &amp;quot;trick&amp;quot; to the answer early on.&lt;br&gt;
-If you don&#39;t happen to know the answer from previously doing the same one or miraculously stumbling upon it in the first few minutes you will be wasting the next 40. Some engineers have a knack for these types of questions - but it is not a good measure of the quality of their work.&lt;/p&gt;
-&lt;p&gt;Consider a magic trick: initially, it captivates audiences precisely because the solution seems impossibly clever. Yet once revealed, the same trick often appears deceptively simple, leading viewers to wonder why they didn&#39;t see through it immediately. This psychological shift reflects perfectly the dynamics of technical interview questions. This phenomenon can be explained by what psychologists call &amp;quot;the curse of knowledge&amp;quot; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn12&quot; id=&quot;fnref12&quot;&gt;[12]&lt;/a&gt;&lt;/sup&gt; or the &amp;quot;illusion of transparency&amp;quot; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn13&quot; id=&quot;fnref13&quot;&gt;[13]&lt;/a&gt;&lt;/sup&gt; When an interviewer is given the answer to a coding question it becomes obvious to them. They feel it is trivial by virtue of knowing the answer. This is not their fault. It&#39;s a natural bias, but one we can address.&lt;/p&gt;
-&lt;p&gt;The problem compounds when companies reuse interview questions over extended periods - sometimes years. Engineer interviewers naturally refine their understanding of the problem space, discovering edge cases and optimization opportunities. This deepening expertise can widen the gap between their perception of the problem&#39;s difficulty and a candidate&#39;s first-time experience with it.&lt;/p&gt;
-&lt;p&gt;Another common pitfall occurs when companies frame interview questions around their domain expertise, even when hiring for general software engineering roles. For instance, a biotech company might ask candidates to implement a gene-pair categorizing algorithm, despite not requiring prior biology knowledge. The employee lives and breaths these questions every day. So does everyone around them. That&#39;s likely been what they have been working on for years. Such questions can create an unintended expertise bias, as interviewers who work with these concepts daily may struggle to view the problem from a newcomer&#39;s perspective.&lt;/p&gt;
-&lt;p&gt;In practice these types of questions rarely come up at work. But if they do, we enjoy it. We share the problem with the team and try to figure out the best solutions. Sleep on it. Come back the next day and talk some more. Engineers are problem solvers and love a good challenge, but that experience is different then a timed pass/fail &amp;quot;test&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Much of the same can be said for interview sessions focused on algorithm whiteboarding. Balance a red black tree? When would someone ever need to implement that? In fact, they should not. A good engineer stands on the shoulders of giants and knows to not roll their own cryptography &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn14&quot; id=&quot;fnref14&quot;&gt;[14]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;alternative-approaches&quot;&gt;Alternative Approaches&lt;/h2&gt;
-&lt;p&gt;Here are several alternatives to traditional live coding interviews I have seen or implemented myself at companies that can better assess a candidate&#39;s real-world engineering capabilities:&lt;/p&gt;
-&lt;h3 id=&quot;1-take-home-projects&quot;&gt;1. Take-Home Projects&lt;/h3&gt;
-&lt;p&gt;Provide candidates with a substantial coding assignment they can complete in their natural development environment. This approach allows for more complex problems than live coding sessions, as developers can utilize their usual tools and resources – reflecting actual workplace conditions &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn15&quot; id=&quot;fnref15&quot;&gt;[15]&lt;/a&gt;&lt;/sup&gt;. Consider:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Setting clear time expectations rather than strict limits&lt;/li&gt;
-&lt;li&gt;Requesting documentation and test coverage&lt;/li&gt;
-&lt;li&gt;Create your own unit tests that can check the answers&lt;/li&gt;
-&lt;li&gt;Using platforms like Coderpad or Codility for streamlined administration&lt;/li&gt;
-&lt;li&gt;Ensuring the scope remains reasonable and respectful of candidates&#39; time&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;2-code-review-sessions&quot;&gt;2. Code Review Sessions&lt;/h3&gt;
-&lt;p&gt;Present candidates with existing code and evaluate their analytical abilities through various exercises:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Identifying potential issues and red flags&lt;/li&gt;
-&lt;li&gt;Debugging specific problems&lt;/li&gt;
-&lt;li&gt;Conducting mock pull request reviews&lt;/li&gt;
-&lt;li&gt;Discussing optimization opportunities&lt;/li&gt;
-&lt;li&gt;Implementing test coverage strategies&lt;/li&gt;
-&lt;li&gt;Analyzing algorithmic complexity&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;3-portfolio-discussion&quot;&gt;3. Portfolio Discussion&lt;/h3&gt;
-&lt;p&gt;Have candidates present their own project work, which provides insight into their:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Development process and decision-making&lt;/li&gt;
-&lt;li&gt;Technical communication skills&lt;/li&gt;
-&lt;li&gt;Understanding of trade-offs and improvements&lt;/li&gt;
-&lt;li&gt;Testing strategies and quality assurance approaches&lt;/li&gt;
-&lt;li&gt;Project management and prioritization abilities&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;4-guided-implementation&quot;&gt;4. Guided Implementation&lt;/h3&gt;
-&lt;p&gt;Share pre-designed algorithms or pseudocode for candidates to implement in code. This method:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Better mirrors real-world development scenarios&lt;/li&gt;
-&lt;li&gt;Focuses on implementation skills rather than problem-solving under pressure&lt;/li&gt;
-&lt;li&gt;Creates a collaborative environment for discussion&lt;/li&gt;
-&lt;li&gt;Allows evaluation of coding style and testing approaches&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;5-technical-discussion-series&quot;&gt;5. Technical Discussion Series&lt;/h3&gt;
-&lt;p&gt;Present a variety of shorter, focused technical discussions that might cover:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Database schema design and optimization&lt;/li&gt;
-&lt;li&gt;Algorithmic complexity analysis&lt;/li&gt;
-&lt;li&gt;Data structure selection and trade-offs&lt;/li&gt;
-&lt;li&gt;Security best practices and PII handling&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;6-flexible-assessment-options&quot;&gt;6. Flexible Assessment Options&lt;/h3&gt;
-&lt;p&gt;Consider offering candidates a choice of several of the different assessment methods above. This approach:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Accommodates diverse working styles and preferences&lt;/li&gt;
-&lt;li&gt;Promotes inclusive hiring practices &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fn10&quot; id=&quot;fnref10:1&quot;&gt;[10:1]&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
-&lt;li&gt;Allows candidates to demonstrate their strengths&lt;/li&gt;
-&lt;li&gt;Respects different time constraints and commitments&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These alternative approaches can be implemented within the same time investment as traditional coding interviews, while potentially yielding richer insights into candidates&#39; capabilities. If you want to improve the effectiveness even more, regularly gather candidate feedback and refine your methods over time.&lt;/p&gt;
-&lt;hr class=&quot;footnotes-sep&quot;&gt;
-&lt;section class=&quot;footnotes&quot;&gt;
-&lt;ol class=&quot;footnotes-list&quot;&gt;
-&lt;li id=&quot;fn1&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Howell, Max (2018). &lt;a href=&quot;https://www.quora.com/Whats-the-logic-behind-Google-rejecting-Max-Howell-the-author-of-Homebrew-for-not-being-able-to-invert-a-binary-tree&quot;&gt;What&#39;s the logic behind Google rejecting Max Howell, the author of Homebrew, for not being able to invert a binary tree?&lt;/a&gt; Quora &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn2&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Cassel, David (2018). &lt;a href=&quot;https://thenewstack.io/joel-spolsky-on-stack-overflow-inclusion-and-how-he-broke-it-recruiting/&quot;&gt;Joel Spolsky on Stack Overflow, Inclusion, and How He Broke IT Recruiting&lt;/a&gt; The New Stack &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref2&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn3&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Storm, Adam (2020). &lt;a href=&quot;https://medium.com/swlh/why-senior-engineers-hate-coding-interviews-d583d2855757&quot;&gt;Why Senior Engineers Hate Coding Interviews&lt;/a&gt; Medium &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref3&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn4&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Ellis, Ike (2013). &lt;a href=&quot;https://news.ycombinator.com/item?id=6251087&quot;&gt;I will no do a tech interview&lt;/a&gt; Hacker News &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref4&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn5&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Behroozi, Mahnaz; Parnin, Chris; Barik, Titus (2019). &lt;a href=&quot;https://www.researchgate.net/publication/334448588_Hiring_is_Broken_What_Do_Developers_Say_About_Technical_Interviews&quot;&gt;Hiring is Broken: What Do Developers Say About Technical Interviews?&lt;/a&gt; IEEE Symposium on Visual Languages / Human-Centric Computing Languages and Environments &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref5&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn6&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;jonocodes (2016). &lt;a href=&quot;https://github.com/jonocodes/branchr&quot;&gt;Branchr&lt;/a&gt; - Feature branch monitoring for product development &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref6&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn7&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;jonocodes (2017). &lt;a href=&quot;https://github.com/jonocodes/envoy&quot;&gt;Envoy&lt;/a&gt;- Test framework for microservices using Docker &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref7&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn8&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;jonocodes (2023). &lt;a href=&quot;https://pypi.org/project/mystique/&quot;&gt;Mystique&lt;/a&gt;- Python test helpers for loose data matching &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref8&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn9&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://juice-shop.github.io/juice-shop/&quot;&gt;OWASP Juice Shop&lt;/a&gt; - Insecure web application for security trainings &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref9&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn10&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Henry, Bradston (2022). &lt;a href=&quot;https://dev.to/bradstondev/why-i-stopped-interviewing-with-companies-that-require-a-coding-test-2j6n&quot;&gt;Why I Stopped Interviewing with Companies That Require a Coding Test&lt;/a&gt; DEV &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref10&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt; &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref10:1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn11&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Goodin, Dan (2019). &lt;a href=&quot;https://arstechnica.com/information-technology/2019/06/microsoft-says-mandatory-password-changing-is-ancient-and-obsolete/&quot;&gt;Microsoft says mandatory password changing is “ancient and obsolete”&lt;/a&gt; &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref11&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn12&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Curse_of_knowledge&quot;&gt;Curse of Knowledge&lt;/a&gt; Wikipedia &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref12&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn13&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Illusion_of_transparency&quot;&gt;Illusion of Transparency&lt;/a&gt; Wikipedia &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref13&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn14&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Morrow, Susan (2019). &lt;a href=&quot;https://www.infosecinstitute.com/resources/cryptography/the-dangers-of-rolling-your-own-encryption/&quot;&gt;The Dangers of “Rolling Your Own” Encryption&lt;/a&gt; Infosec Institute &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref14&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&quot;fn15&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Gentleman, Daniel (2022). &lt;a href=&quot;https://www.linkedin.com/pulse/live-coding-interviews-terrible-might-daniel-gentleman/&quot;&gt;Live coding interviews are terrible - and they might be discriminatory&lt;/a&gt; LinkedIn &lt;a href=&quot;https://www.dgt.is/blog/2024-10-25-on-coding-interviews/#fnref15&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/section&gt;
 </content>
   </entry>
 </feed>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Supercharging your API with Swagger</title>
+		<title>AI DevEx Log - July 2026</title>
 		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
 		
@@ -516,33 +516,74 @@ header {
 
 		<main id="skip">
 			
-<h1 id="supercharging-your-api-with-swagger">Supercharging your API with Swagger</h1>
+<h1 id="ai-devex-log-july-2026">AI DevEx Log - July 2026</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2018-03-22">22 March 2018</time></li>
-	<li><a href="/tags/tech/" class="post-tag">tech</a>, </li>
-	<li><a href="/tags/programming/" class="post-tag">programming</a></li>
+	<li><time datetime="2026-07-19">19 July 2026</time></li>
+	<li><a href="/tags/tech/" class="post-tag">tech</a></li>
 </ul>
 
 <p>
 	<heading-anchors>
-		<p><em>This was a post I wrote for the <a href="http://blogs.plos.org/tech/supercharging-your-api-with-swagger/">PLOS tech blog</a>, which is no longer online.</em></p>
-<p>If you manage, develop, or use REST APIs I have a tip for you. <a href="%5Bhttps://swagger.io/%5D(https://swagger.io/)">Swagger</a> is a framework and toolset that greatly eases the pain of documenting and interacting with your APIs. It's a swiss army knife for all things APIs and in this post I'll explain why and how it makes APIs more enjoyable to work with.</p>
-<p>We have quite a few APIs here are PLOS. Some are internal, some are exposed to the world. We have APIs for article content, authors, readers, manuscripts, taxonomies, configuration, metrics, reviewer matching and more. They are developed with a breadth of technologies including Java, Python, and Ruby.</p>
-<p>Keeping track of how all these APIs work is quite a task. Back when we only had a single API we had it documented in a Wiki. As the API grew, the maintenance cost of that document also increased. As we started splitting our mega service into smaller ones, we needed a better way to keep our documentation up to date. Swagger did that and so much more.</p>
-<p>At its core, Swagger uses the OpenAPI specification which is a machine readable description of your API. It typically looks like a large JSON or YAML file. The spec itself is not too interesting, but the tooling around it makes the spec incredibly powerful.</p>
-<p>For example, one of our <a href="https://github.com/PLOS/named-entity.service/">internal APIs</a> implements a well defined <a href="https://jersey.github.io/">Java REST specification</a>. We use a <a href="https://github.com/swagger-api/swagger-core/wiki/Swagger-Core-Jersey-2.X-Project-Setup-1.5">library provided by Swagger</a> to autogenerate the swagger spec into JSON from our API. This spec is regenerated every time our project is updated and hosted in a special namespace of our API.</p>
-<p>Now that we have a spec, we use the <a href="https://github.com/swagger-api/swagger-ui">Swagger UI tool</a> which is simply an HTML/Javascript page that parses the spec and displays it as readable documentation. The documentation is not static though. You can actually interact with it and perform API calls through your browser with it . We deploy these interactive docs with our service and it helps our consumers a lot.</p>
-<p><picture><source type="image/avif" srcset="/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.avif 1034w"><source type="image/webp" srcset="/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.webp 1034w"><img loading="lazy" decoding="async" src="/blog/2018-03-22-supercharging-your-api-with-swagger/3v96_icezP-1034.png" alt="swagger UI" width="1034" height="858"></picture></p>
-<p>We have done almost no work and our API consumers are greatly benefited. But it doesn't stop there.</p>
-<p>We have many APIs and we also have many apps that use those APIs. The consumer apps can also make use of the spec. <a href="https://swagger.io/swagger-codegen/">Swagger code generators</a> parse the spec and generate client libraries for us. This way our apps don't have to know about REST at all. They just load a client library and interact with it like an object. The generators support dozens of languages and frameworks out of the box. You can extend them or use one of the hundreds of <a href="https://swagger.io/open-source-integrations/">community driven ones</a>.</p>
-<p>Want a command line tool that can tap into all your APIs at your organization at once? The generators can help with that too.</p>
-<p>That is most of how we use it at PLOS, but Swagger can do much more. For example you can write an OpenAPI spec and use a code generator to create scaffolding for a new API. Or even mock parts of your API.</p>
-<p>Additionally the community behind swagger is an open group of API enthusiasts. I have found that most of the problems I might have with APIs they have solved, or are working on it.</p>
+		<p>This is a time capsule post, since I'm interested in keeping track of the quickly evolving experience of AI development.</p>
+<p>I recently started a project that <a href="https://github.com/jonocodes/deckd">makes your phone into a context aware desktop controller</a>. Sort of like the stream deck. The project itself is not important for this post - only the development methodology. With every new project, I try to use a new tool. This time that was mostly focused on skills experimentation.</p>
+<h1 id="models">Models</h1>
+<p>I have several subscriptions to the lowest plan offering from providers. Today that's Claude, Cursor, MiniMax, OpenCode Go. So I have been bouncing between these models mostly because I like to see how they vary:</p>
+<ul>
+<li>Opus 4.8 - high level planning</li>
+<li>GPT 5.5, 5.6 - grilling</li>
+<li>DeepSeek V4 Pro - grilling, inception</li>
+<li>MiniMax-M3 - implementation</li>
+<li>GLM-5.2 - implementation</li>
+</ul>
+<p>I recently tried this <a href="https://www.youtube.com/watch?v=8GRmLR__OGQ">method of encoding orchestration between models</a> via my <a href="http://AGENTS.md">AGENTS.md</a>, but I never got it quite working how I liked.</p>
+<h1 id="surfaces">Surfaces</h1>
+<p>I still have not found that holy grail client that does all I want:</p>
+<ul>
+<li>web first</li>
+<li>works well on mobile</li>
+<li>has an integrated terminal</li>
+<li>code diffs</li>
+</ul>
+<p>This area has exploded, and my list of ones to try has become exhausting. I have also filed bugs against a bunch of them, which helps me know which are active projects, and alerts me when to come back to them. At this point these projects seems like one offs that scratch an itch, but don't solve the whole problem, or they are forks of Happy, which has its own issues.</p>
+<p>For now here are the ones I have been regularly driving in order of preference.</p>
+<h2 id="opencode-web-only">opencode (web only)</h2>
+<p>Using the existing nix home-manager service. Quite stable and great with tons of models, but cant use claude subscription (though apparently <a href="https://github.com/ianjwhite99/opencode-with-claude">there are workarounds</a>)</p>
+<h2 id="t3code-web-only">t3code (web only)</h2>
+<p>This gives me access to all the models: opencode, claude, cursor, codex, etc. Active development, but mostly toward the desktop side which I don't use. Buggy, but improving.</p>
+<h2 id="claude-remote-control">claude remote control</h2>
+<p>I have always liked claude web. Its simple and to the point - but model restrictive. Using remote control gives me access to my whole dev setup, so quite nice.</p>
+<p><strong>Side thought</strong>: Looking at stars and last commit is a good high level of project activity. But how about looking at ticket churn, PR comments, etc. Or maybe looking for dependents so you know who is using it. Are there tools that extract this data for us?</p>
+<h1 id="inception">Inception</h1>
+<p>I typically start with a conversation at <a href="http://claude.ai">claude.ai</a> (not <a href="http://claude.ai/code">claude.ai/code</a>). Here I ruminate on ideas, look for prior art, narrow down the goals until the project becomes somewhat tangible. This often happens over days of casual discussion.</p>
+<p>Then we discuss naming. I particularly like this part. It generates a bunch of ideas. Then I narrow it down and have it look to see if any of the top candidates are already crowded. Mostly that means it checks for existing domain names, github repos, PyPI projects.</p>
+<p>Then I tell the agent to generate a comprehensive <a href="https://github.com/jonocodes/deckd/blob/add526f842f2d4c064dd60bd2fb3bfc9bed5a428/docs/INCEPTION.md">inception document</a>. This is pre-planning. So it should contain everything we talked about and how we arrived at the current state. This document is the seed where we can start materializing a spec, so I create a git repo with just that single file.</p>
+<h1 id="execution">Execution</h1>
+<p>This is the first time I went all in on a development framework - to see what the hype is all about.</p>
+<p>I tend to shy from skills because I see them used for mundane things, and modern agents should not need micromanagement. For this I tried <a href="https://github.com/mattpocock/skills">Matt Pocock's skills</a> which gives a standardized structure to your development workflow.</p>
+<p>For the most part, I was following this type of workflow, but straight from my engineering brain, not from a canned repository.</p>
+<h2 id="pros">Pros</h2>
+<h3 id="tdd">TDD</h3>
+<p>I never got TDD to work quite how I wanted when I explain it in a prompt, so its nice to have this all worked out. These models have basically read every book on testing, but they still don't stick to the rules.</p>
+<h3 id="context-aware-ticketing">Context aware ticketing</h3>
+<p>In the stage where the spec is turned into tickets, particular focus is taken to keep each one self contained. But more importantly some calculus as been done such that each ticket fits well in a standard context window, and doesn't get muddy during implementation. That's genuinely something I never did before. Neat.</p>
+<h3 id="works-across-agents">Works across agents</h3>
+<p>This may be somewhat specific to Matt Pocock's skills setup script, but they can be installed across agent harnesses since I bounce between them quite a bit.</p>
+<h2 id="cons">Cons</h2>
+<h3 id="sometimes-it-feels-like-overkill">Sometimes it feels like overkill</h3>
+<p>Do I really need a hierarchy of documents to describe how a grilling session should go down? For small projects some parts are overkill. Specs, milestones, adr...</p>
+<h2 id="there-are-still-gaps">There are still gaps</h2>
+<p>I should probably create skills for these at some point:</p>
+<h3 id="creating-a-proof-of-concept">Creating a proof of concept</h3>
+<p>Actually I am talking pre-proof of concept. Often I need to see if some technology even works before I commit to continuing with a project. This is table stakes. For example in <a href="https://github.com/jonocodes/deckd">deckd</a>, I have never made a web app that can control a mouse on the desktop. I know the tech exists, but will it actually work? Don't trust the LLM's intuition - since it can be wrong. So I need to build a couple demo apps that can test this out before committing to the rest of the project.</p>
+<h3 id="manual-testing">Manual testing</h3>
+<p>After each ticket is implemented I get a report of how it works, the clean up, the testing, etc. Even if the tests pass sometimes the feature is still broken. And even if it runs without a problem, does the feature actually work as expected? Maybe it lead to some visual regression, or it used the wrong wording on the page. I need to roll up my sleeves and try it.</p>
+<h1 id="nixos">NixOS</h1>
+<p>A last note on my main driver, NixOS. Some of these tools don't work out of the box there, so I often have to do some upfront work to get them running. For example t3code has an existing package, but not a set up web service, so <a href="https://github.com/jonocodes/configs/blob/3048454253816cdef7e000e9b0eeefd6e9ac9974/home-manager/modules/t3code.nix">I had to create one</a>. Nothing an LLM cant handle.</p>
 
 	</heading-anchors>
 </p>
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2015-05-25-how-to-entertain-a-juggler/">Talk: How to Entertain a Juggler</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2018-04-05-financial-independence/">Talk: Financial Independence</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2026-05-27-programmers-job/">The Programmer&#39;s Job in an AI World</a></li>
 </ul>
 
 		</main>
@@ -551,7 +592,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2018-03-22-supercharging-your-api-with-swagger/` was built on 2026-07-20T05:20:11.305Z -->
+		<!-- This page `/blog/2026-07-19-ai-dev-log/` was built on 2026-07-20T05:20:11.308Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
