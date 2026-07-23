@@ -26,7 +26,7 @@
 &lt;li&gt;MiniMax-M3 - implementation&lt;/li&gt;
 &lt;li&gt;GLM-5.2 - implementation&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I recently tried this &lt;a href=&quot;https://www.youtube.com/watch?v=8GRmLR__OGQ&quot;&gt;method of encoding orchestration between models&lt;/a&gt; via my &lt;a href=&quot;http://AGENTS.md&quot;&gt;AGENTS.md&lt;/a&gt;, but I never got it quite working how I liked.&lt;/p&gt;
+&lt;p&gt;I recently tried this &lt;a href=&quot;https://www.youtube.com/watch?v=8GRmLR__OGQ&quot;&gt;method of encoding orchestration between models&lt;/a&gt; via my &lt;a href=&quot;http://AGENTS.md&quot;&gt;AGENTS.md&lt;/a&gt;, but I never got it quite working how I liked. Model routing (see &lt;a href=&quot;https://github.com/langchain-ai/langgraph&quot;&gt;LangGraph&lt;/a&gt;) is an interesting subject right now, but it can be a &lt;a href=&quot;https://quesma.com/blog/custom-deep-research-pipeline/&quot;&gt;deceptively complex problem&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&quot;surfaces&quot;&gt;Surfaces&lt;/h1&gt;
 &lt;p&gt;I still have not found that holy grail client that does all I want:&lt;/p&gt;
 &lt;ul&gt;
@@ -38,11 +38,12 @@
 &lt;p&gt;This area has exploded, and my list of ones to try has become exhausting. I have also filed bugs against a bunch of them, which helps me know which are active projects, and alerts me when to come back to them. At this point these projects seems like one offs that scratch an itch, but don&#39;t solve the whole problem, or they are forks of Happy, which has its own issues.&lt;/p&gt;
 &lt;p&gt;For now here are the ones I have been regularly driving in order of preference.&lt;/p&gt;
 &lt;h2 id=&quot;opencode-web-only&quot;&gt;opencode (web only)&lt;/h2&gt;
-&lt;p&gt;Using the existing nix home-manager service. Quite stable and great with tons of models, but cant use claude subscription (though apparently &lt;a href=&quot;https://github.com/ianjwhite99/opencode-with-claude&quot;&gt;there are workarounds&lt;/a&gt;)&lt;/p&gt;
-&lt;h2 id=&quot;t3code-web-only&quot;&gt;t3code (web only)&lt;/h2&gt;
-&lt;p&gt;This gives me access to all the models: opencode, claude, cursor, codex, etc. Active development, but mostly toward the desktop side which I don&#39;t use. Buggy, but improving.&lt;/p&gt;
+&lt;p&gt;Using the existing nix home-manager service. Quite stable and great with tons of models, but cant use claude subscription (though apparently &lt;a href=&quot;https://github.com/ianjwhite99/opencode-with-claude&quot;&gt;there are workarounds&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&quot;paseo-web-mobile&quot;&gt;paseo (web/mobile)&lt;/h2&gt;
+&lt;p&gt;This gives me access to all the models: opencode, claude, cursor, codex, etc. While there are some kinks, it is under active development. Its the only one I have found that handles terminal scrolling well on mobile.&lt;/p&gt;
 &lt;h2 id=&quot;claude-remote-control&quot;&gt;claude remote control&lt;/h2&gt;
 &lt;p&gt;I have always liked claude web. Its simple and to the point - but model restrictive. Using remote control gives me access to my whole dev setup, so quite nice.&lt;/p&gt;
+&lt;p&gt;I have also put some time in with t3code (web only), but its still a bit rough. I&#39;m watching for some issues to get resolved before I reviset. And I&#39;ve filed some &lt;a href=&quot;https://github.com/pingdotgg/t3code/issues/2141&quot;&gt;issues&lt;/a&gt; and &lt;a href=&quot;https://github.com/pingdotgg/t3code/pull/4242#pullrequestreview-4749080794&quot;&gt;PRs&lt;/a&gt; there as well - though there are not formerly acceping them.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Side thought&lt;/strong&gt;: Looking at stars and last commit is a good high level of project activity. But how about looking at ticket churn, PR comments, etc. Or maybe looking for dependents so you know who is using it. Are there tools that extract this data for us?&lt;/p&gt;
 &lt;h1 id=&quot;inception&quot;&gt;Inception&lt;/h1&gt;
 &lt;p&gt;I typically start with a conversation at &lt;a href=&quot;http://claude.ai&quot;&gt;claude.ai&lt;/a&gt; (not &lt;a href=&quot;http://claude.ai/code&quot;&gt;claude.ai/code&lt;/a&gt;). Here I ruminate on ideas, look for prior art, narrow down the goals until the project becomes somewhat tangible. This often happens over days of casual discussion.&lt;/p&gt;
@@ -50,7 +51,7 @@
 &lt;p&gt;Then I tell the agent to generate a comprehensive &lt;a href=&quot;https://github.com/jonocodes/deckd/blob/add526f842f2d4c064dd60bd2fb3bfc9bed5a428/docs/INCEPTION.md&quot;&gt;inception document&lt;/a&gt;. This is pre-planning. So it should contain everything we talked about and how we arrived at the current state. This document is the seed where we can start materializing a spec, so I create a git repo with just that single file.&lt;/p&gt;
 &lt;h1 id=&quot;execution&quot;&gt;Execution&lt;/h1&gt;
 &lt;p&gt;This is the first time I went all in on a development framework - to see what the hype is all about.&lt;/p&gt;
-&lt;p&gt;I tend to shy from skills because I see them used for mundane things, and modern agents should not need micromanagement. For this I tried &lt;a href=&quot;https://github.com/mattpocock/skills&quot;&gt;Matt Pocock&#39;s skills&lt;/a&gt; which gives a standardized structure to your development workflow.&lt;/p&gt;
+&lt;p&gt;I tend to shy from skills because I see them used for mundane things, and modern agents should not need micromanagement. For this I tried &lt;a href=&quot;https://github.com/mattpocock/skills&quot;&gt;Matt Pocock&#39;s skills&lt;/a&gt; which gives a  standardized structure to your development workflow.&lt;/p&gt;
 &lt;p&gt;For the most part, I was following this type of workflow, but straight from my engineering brain, not from a canned repository.&lt;/p&gt;
 &lt;h2 id=&quot;pros&quot;&gt;Pros&lt;/h2&gt;
 &lt;h3 id=&quot;tdd&quot;&gt;TDD&lt;/h3&gt;
@@ -65,11 +66,11 @@
 &lt;h2 id=&quot;there-are-still-gaps&quot;&gt;There are still gaps&lt;/h2&gt;
 &lt;p&gt;I should probably create skills for these at some point:&lt;/p&gt;
 &lt;h3 id=&quot;creating-a-proof-of-concept&quot;&gt;Creating a proof of concept&lt;/h3&gt;
-&lt;p&gt;Actually I am talking pre-proof of concept. Often I need to see if some technology even works before I commit to continuing with a project. This is table stakes. For example in &lt;a href=&quot;https://github.com/jonocodes/deckd&quot;&gt;deckd&lt;/a&gt;, I have never made a web app that can control a mouse on the desktop. I know the tech exists, but will it actually work? Don&#39;t trust the LLM&#39;s intuition - since it can be wrong. So I need to build a couple demo apps that can test this out before committing to the rest of the project.&lt;/p&gt;
+&lt;p&gt;Actually I am talking pre-proof of concept. Often I need to see if some technology even works before I commit to continuing with a project. This is table stakes. For example in &lt;a href=&quot;https://github.com/jonocodes/deckd&quot;&gt;deckd&lt;/a&gt;, I have never made a web app that can control a mouse on the desktop. I know the tech exists, but will it actually work? Don&#39;t trust the LLM&#39;s intuition - since it can be wrong. So I need to build a couple demo apps that can test this out before committing to the rest of the project. There is a &lt;a href=&quot;https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype&quot;&gt;prototype skill&lt;/a&gt;, but I&#39;m not sure it gets me where I want.&lt;/p&gt;
 &lt;h3 id=&quot;manual-testing&quot;&gt;Manual testing&lt;/h3&gt;
 &lt;p&gt;After each ticket is implemented I get a report of how it works, the clean up, the testing, etc. Even if the tests pass sometimes the feature is still broken. And even if it runs without a problem, does the feature actually work as expected? Maybe it lead to some visual regression, or it used the wrong wording on the page. I need to roll up my sleeves and try it.&lt;/p&gt;
 &lt;h1 id=&quot;nixos&quot;&gt;NixOS&lt;/h1&gt;
-&lt;p&gt;A last note on my main driver, NixOS. Some of these tools don&#39;t work out of the box there, so I often have to do some upfront work to get them running. For example t3code has an existing package, but not a set up web service, so &lt;a href=&quot;https://github.com/jonocodes/configs/blob/3048454253816cdef7e000e9b0eeefd6e9ac9974/home-manager/modules/t3code.nix&quot;&gt;I had to create one&lt;/a&gt;. Nothing an LLM cant handle.&lt;/p&gt;
+&lt;p&gt;A last note on my main driver, NixOS. Some of these tools don&#39;t work out of the box there, so I often have to do some upfront work to get them running. For example t3code has an existing package, but not a set up web service, so &lt;a href=&quot;https://github.com/jonocodes/configs/blob/3048454253816cdef7e000e9b0eeefd6e9ac9974/home-manager/modules/t3code.nix&quot;&gt;I had to create one&lt;/a&gt;. Nothing an LLM cant handle. I&#39;m also working on &lt;a href=&quot;https://github.com/nix-community/home-manager/pull/9695&quot;&gt;upstreaming that to home-manager&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
   <entry>
