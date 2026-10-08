@@ -6,7 +6,9 @@ title: Why Isn't The Industry Freaking Out About DeepSeek 4.1 Flash?
 
 I have been using DeepSeek 4.1 Flash for about a month, heavily, across a dozen projects. It is super capable, and orders of magnitude cheaper that the "frontier" models. When I'm mid-session, if I don't look at the model name, I honestly could not tell you if I'm using DeepSeek or Opus. Whether it's our conversations, the work, or the speed, I don't notice a difference. I don't care that there is no 4.1 "Pro". I treat this like a frontier model because [it behaves like one](https://oneshotlm.com/model/deepseek-deepseek-v4-1-flash/). I'm coming at this from my subjective usage experience but you can see more [complete benchmarks](https://artificialanalysis.ai/models/releases/comparisons/claude-opus-5-5-vs-deepseek-v4-1-flash) here if that floats your boat.
 
-![deepseek cost per task](assets/deepseek-cost-compare.png)
+<center>
+<img src="assets/deepseek-cost-compare.png" alt="deepseek cost per task">
+</center>
 
 So why aren't the frontier labs freaking out right now? China is going to eat their lunch. They may be a month or two behind Anthropic/OpenAI, but these distilled Chinese models can handle the same workloads.
 
