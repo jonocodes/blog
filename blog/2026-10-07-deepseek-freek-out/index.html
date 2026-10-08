@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>AI DevEx Log - July 2026</title>
+		<title>Why Isn&#39;t The Industry Freaking Out About DeepSeek 4.1 Flash?</title>
 		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
 		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
 		
@@ -516,75 +516,33 @@ header {
 
 		<main id="skip">
 			
-<h1 id="ai-devex-log-july-2026">AI DevEx Log - July 2026</h1>
+<h1 id="why-isnt-the-industry-freaking-out-about-deepseek-4-1-flash">Why Isn&#39;t The Industry Freaking Out About DeepSeek 4.1 Flash?</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2026-07-19">19 July 2026</time></li>
+	<li><time datetime="2026-10-07">07 October 2026</time></li>
 	<li><a href="/tags/tech/" class="post-tag">tech</a></li>
 </ul>
 
 <p>
 	<heading-anchors>
-		<p>This is a time capsule post, since I'm interested in keeping track of the quickly evolving experience of AI development.</p>
-<p>I recently started a project that <a href="https://github.com/jonocodes/deckd">makes your phone into a context aware desktop controller</a>. Sort of like the stream deck. The project itself is not important for this post - only the development methodology. With every new project, I try to use a new tool. This time that was mostly focused on skills experimentation.</p>
-<h1 id="models">Models</h1>
-<p>I have several subscriptions to the lowest plan offering from providers. Today that's Claude, Cursor, MiniMax, OpenCode Go. So I have been bouncing between these models mostly because I like to see how they vary:</p>
-<ul>
-<li>Opus 4.8 - high level planning</li>
-<li>GPT 5.5, 5.6 - grilling</li>
-<li>DeepSeek V4 Pro - grilling, inception</li>
-<li>MiniMax-M3 - implementation</li>
-<li>GLM-5.2 - implementation</li>
-</ul>
-<p>I recently tried this <a href="https://www.youtube.com/watch?v=8GRmLR__OGQ">method of encoding orchestration between models</a> via my <a href="http://AGENTS.md">AGENTS.md</a>, but I never got it quite working how I liked. Model routing (see <a href="https://github.com/langchain-ai/langgraph">LangGraph</a>) is an interesting subject right now, but it can be a <a href="https://quesma.com/blog/custom-deep-research-pipeline/">deceptively complex problem</a>.</p>
-<h1 id="surfaces">Surfaces</h1>
-<p>I still have not found that holy grail client that does all I want:</p>
-<ul>
-<li>web first</li>
-<li>works well on mobile</li>
-<li>has an integrated terminal</li>
-<li>code diffs</li>
-</ul>
-<p>This area has exploded, and my list of ones to try has become exhausting. I have also filed bugs against a bunch of them, which helps me know which are active projects, and alerts me when to come back to them. At this point these projects seems like one offs that scratch an itch, but don't solve the whole problem, or they are forks of Happy, which has its own issues.</p>
-<p>For now here are the ones I have been regularly driving in order of preference.</p>
-<h2 id="opencode-web-only">opencode (web only)</h2>
-<p>Using the existing nix home-manager service. Quite stable and great with tons of models, but cant use claude subscription (though apparently <a href="https://github.com/ianjwhite99/opencode-with-claude">there are workarounds</a>).</p>
-<h2 id="paseo-web-mobile">paseo (web/mobile)</h2>
-<p>This gives me access to all the models: opencode, claude, cursor, codex, etc. While there are some kinks, it is under active development. Its the only one I have found that handles terminal scrolling well on mobile.</p>
-<h2 id="claude-remote-control">claude remote control</h2>
-<p>I have always liked claude web. Its simple and to the point - but model restrictive. Using remote control gives me access to my whole dev setup, so quite nice.</p>
-<p>I have also put some time in with t3code (web only), but its still a bit rough. I'm watching for some issues to get resolved before I reviset. And I've filed some <a href="https://github.com/pingdotgg/t3code/issues/2141">issues</a> and <a href="https://github.com/pingdotgg/t3code/pull/4242#pullrequestreview-4749080794">PRs</a> there as well - though there are not formerly acceping them.</p>
-<p><strong>Side thought</strong>: Looking at stars and last commit is a good high level of project activity. But how about looking at ticket churn, PR comments, etc. Or maybe looking for dependents so you know who is using it. Are there tools that extract this data for us?</p>
-<h1 id="inception">Inception</h1>
-<p>I typically start with a conversation at <a href="http://claude.ai">claude.ai</a> (not <a href="http://claude.ai/code">claude.ai/code</a>). Here I ruminate on ideas, look for prior art, narrow down the goals until the project becomes somewhat tangible. This often happens over days of casual discussion.</p>
-<p>Then we discuss naming. I particularly like this part. It generates a bunch of ideas. Then I narrow it down and have it look to see if any of the top candidates are already crowded. Mostly that means it checks for existing domain names, github repos, PyPI projects.</p>
-<p>Then I tell the agent to generate a comprehensive <a href="https://github.com/jonocodes/deckd/blob/add526f842f2d4c064dd60bd2fb3bfc9bed5a428/docs/INCEPTION.md">inception document</a>. This is pre-planning. So it should contain everything we talked about and how we arrived at the current state. This document is the seed where we can start materializing a spec, so I create a git repo with just that single file.</p>
-<h1 id="execution">Execution</h1>
-<p>This is the first time I went all in on a development framework - to see what the hype is all about.</p>
-<p>I tend to shy from skills because I see them used for mundane things, and modern agents should not need micromanagement. For this I tried <a href="https://github.com/mattpocock/skills">Matt Pocock's skills</a> which gives a  standardized structure to your development workflow.</p>
-<p>For the most part, I was following this type of workflow, but straight from my engineering brain, not from a canned repository.</p>
-<h2 id="pros">Pros</h2>
-<h3 id="tdd">TDD</h3>
-<p>I never got TDD to work quite how I wanted when I explain it in a prompt, so its nice to have this all worked out. These models have basically read every book on testing, but they still don't stick to the rules.</p>
-<h3 id="context-aware-ticketing">Context aware ticketing</h3>
-<p>In the stage where the spec is turned into tickets, particular focus is taken to keep each one self contained. But more importantly some calculus as been done such that each ticket fits well in a standard context window, and doesn't get muddy during implementation. That's genuinely something I never did before. Neat.</p>
-<h3 id="works-across-agents">Works across agents</h3>
-<p>This may be somewhat specific to Matt Pocock's skills setup script, but they can be installed across agent harnesses since I bounce between them quite a bit.</p>
-<h2 id="cons">Cons</h2>
-<h3 id="sometimes-it-feels-like-overkill">Sometimes it feels like overkill</h3>
-<p>Do I really need a hierarchy of documents to describe how a grilling session should go down? For small projects some parts are overkill. Specs, milestones, adr...</p>
-<h2 id="there-are-still-gaps">There are still gaps</h2>
-<p>I should probably create skills for these at some point:</p>
-<h3 id="creating-a-proof-of-concept">Creating a proof of concept</h3>
-<p>Actually I am talking pre-proof of concept. Often I need to see if some technology even works before I commit to continuing with a project. This is table stakes. For example in <a href="https://github.com/jonocodes/deckd">deckd</a>, I have never made a web app that can control a mouse on the desktop. I know the tech exists, but will it actually work? Don't trust the LLM's intuition - since it can be wrong. So I need to build a couple demo apps that can test this out before committing to the rest of the project. There is a <a href="https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype">prototype skill</a>, but I'm not sure it gets me where I want.</p>
-<h3 id="manual-testing">Manual testing</h3>
-<p>After each ticket is implemented I get a report of how it works, the clean up, the testing, etc. Even if the tests pass sometimes the feature is still broken. And even if it runs without a problem, does the feature actually work as expected? Maybe it lead to some visual regression, or it used the wrong wording on the page. I need to roll up my sleeves and try it.</p>
-<h1 id="nixos">NixOS</h1>
-<p>A last note on my main driver, NixOS. Some of these tools don't work out of the box there, so I often have to do some upfront work to get them running. For example t3code has an existing package, but not a set up web service, so <a href="https://github.com/jonocodes/configs/blob/3048454253816cdef7e000e9b0eeefd6e9ac9974/home-manager/modules/t3code.nix">I had to create one</a>. Nothing an LLM cant handle. I'm also working on <a href="https://github.com/nix-community/home-manager/pull/9695">upstreaming that to home-manager</a>.</p>
+		<p>I have been using DeepSeek 4.1 Flash for about a month, heavily, across a dozen projects. It is super capable, and orders of magnitude cheaper that the &quot;frontier&quot; models. When I'm mid-session, if I don't look at the model name, I honestly could not tell you if I'm using DeepSeek or Opus. Whether it's our conversations, the work, or the speed, I don't notice a difference. I don't care that there is no 4.1 &quot;Pro&quot;. I treat this like a frontier model because <a href="https://oneshotlm.com/model/deepseek-deepseek-v4-1-flash/">it behaves like one</a>. I'm coming at this from my subjective usage experience but you can see more <a href="https://artificialanalysis.ai/models/releases/comparisons/claude-opus-5-5-vs-deepseek-v4-1-flash">complete benchmarks</a> here if that floats your boat.</p>
+<p><picture><source type="image/avif" srcset="/blog/2026-10-07-deepseek-freek-out/sln317APDv-369.avif 369w"><source type="image/webp" srcset="/blog/2026-10-07-deepseek-freek-out/sln317APDv-369.webp 369w"><img loading="lazy" decoding="async" src="/blog/2026-10-07-deepseek-freek-out/sln317APDv-369.png" alt="deepseek cost per task" width="369" height="414"></picture></p>
+<p>So why aren't the frontier labs freaking out right now? China is going to eat their lunch. They may be a month or two behind Anthropic/OpenAI, but these distilled Chinese models can handle the same workloads.</p>
+<p>Sure, <a href="https://techcrunch.com/2026/02/23/anthropic-accuses-chinese-ai-labs-of-mining-claude-as-us-debates-ai-chip-exports/">they stole Claude's training</a>, and Anthropic stole it from other people. I'm not getting into the whole who-owns-whose-data debate, because most developers aren't thinking like that. They're just trying to get the most bang for their buck.</p>
+<h2 id="good-enough-changes-how-you-work">Good Enough Changes How You Work</h2>
+<p>Today's models are now good enough for high-quality unattended tasks. Chasing the latest and greatest is silly. It is fun to see the new Fable capabilities, but the tasks we throw at them are usually ridiculous (maybe even insulting) if you believe in LLM sentience. It's like asking a math PhD to organize the files on your desktop.</p>
+<p>With my OpenCode Go sub of $10/month, DeepSeek is basically unlimited. This has completely changed my way of developing. There is no shame now in spinning up mindless tasks, or exploratory UI monkey testing. And sure, go a head and reorganize your desktop files. That will cost $0.003 instead of $1. I have rarely exceeded $1 in expected costs in a session. I try to keep my sessions tight, but sometimes they run for most of a day.</p>
+<p>I even lean on Flash 4.1 for complex planning and research. For occasional critical tasks, I sometimes pull in Opus 5.5 to do a final code review, which will catch a few edge cases. Then I have DeepSeek execute the fixes. Even when I call up Opus or GLM (which seems to be drinking the same Chinese Kool-Aid as DeepSeek), it's less about quality and capabilities and more about getting new eyes on a problem.</p>
+<h2 id="cache-magic">Cache Magic</h2>
+<p>DeepSeek shrank the KV cache by roughly 437x compared to their V1 model. Holding that cache in GPU memory is one of the biggest costs of running long coding sessions. That's how my all-day sessions stay under a dollar.</p>
+<p>It must be better for the environment too. Using Claude almost feels wasteful, and not just on cost: their caching means DeepSeek must be using less water and electricity. <a href="https://insufferable.dev/posts/the-ai-race-just-got-awkward/">This cache magic</a> is also how Opus 5.5 quietly got their own efficiency boost.</p>
+<p>Yes, I have frontier subscriptions. My work provides Claude, Cursor, and others. I'm not nickel-and-diming here. I'm thinking more about long-term planning, sustainability, and democratizing access to high intelligence. This is a game changer.</p>
+<p>These wins are lost on the tech industry who think that if you're not paying top dollar, it's not worth it. FAANG wants to spend the most money for the highest intelligence. Forget it if it's unethical, expensive, bad for the environment, or the economy. This is dog-eat-dog capitalism. This leads to people having <a href="https://yegge.ai/essays/the-shape-of-things-to-come/">crazy setups to load balance a dozen Claude Max subs</a>, and <a href="https://x.com/doodlestein/status/2012740971088289858?s=20">complaing when they cant get more</a>.</p>
+<p>And to the self-hosters out there the economics of 4.1 Flash mean self-hosting is not worth it. If savings is your goal, you will never recoup the costs. But if your concern is privacy, just wait. These cache optimizations are coming to you, and this cache magic will soon run entirely locally. Even now, 4.1 Flash is technically self hostable, even if not practically so. Any day now.</p>
 
 	</heading-anchors>
 </p>
-<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2026-05-27-programmers-job/">The Programmer&#39;s Job in an AI World</a></li><li class="links-nextprev-next">Next →<br><a href="/blog/2026-10-07-deepseek-freek-out/">Why Isn&#39;t The Industry Freaking Out About DeepSeek 4.1 Flash?</a></li>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2026-07-19-ai-dev-log/">AI DevEx Log - July 2026</a></li>
 </ul>
 
 		</main>
@@ -593,7 +551,7 @@ header {
 			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
 		</footer>
 
-		<!-- This page `/blog/2026-07-19-ai-dev-log/` was built on 2026-10-08T00:10:08.449Z -->
+		<!-- This page `/blog/2026-10-07-deepseek-freek-out/` was built on 2026-10-08T00:10:08.449Z -->
 		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
 	</body>
 </html>
