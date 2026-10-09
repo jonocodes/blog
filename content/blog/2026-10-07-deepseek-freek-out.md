@@ -38,4 +38,4 @@ And to the self-hosters out there, the economics of 4.1 Flash mean self-hosting 
 
 Welcome, good people of [HackerNews](https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/). Seems like [we hit a nerve :)](https://hnrankings.com/50000488/)
 
-My point here is that these Chinese companies are playing by different rules, and soon more models will be following suit. The frontier labs have an entirely different business model, and they need to recoup the high cost of training these new LLMs. This is like comparing big pharma with generic manufacturers who can skip the R&D. While these drugs are not 1 to 1 copies, we are still comparing apples to apples, but with a 90% price cut.
+My point here is that these Chinese companies are playing by different rules, and soon more models will be following suit. The frontier labs have an entirely different business model, and they need to recoup the high cost of training these new LLMs. This is like comparing big pharma with generic manufacturers who can skip the R&D. While these drugs are not one-to-one copies, this is close enough to comparing apples to apples, but with a 90% price cut.
