@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Why Paseo is my daily driver</title>
+		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		/* --text-color-link: #5d99ca;
+		--text-color-link-active: #6969f7; 
+		--text-color-link-visited: #a6a6f8; */
+
+		--text-color-link: #bebebe;
+		--text-color-link-active: #bebebe;
+		--text-color-link-visited: #bebebe;
+
+		/* --background-color: #15202b; */
+		--background-color: #1a1a1a;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	/* max-width: 40em; */
+
+	max-width: 50em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+	width: 100%;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+.home-grid hr {
+	margin: -10px 20px -8px 0;
+}
+.home-grid table {
+	/* padding: 20px; */
+}
+.home-grid td {
+	/* border: 1px solid red; */
+	width: 50%;
+	vertical-align: top;
+	padding: 20px 0 5px 0;
+}
+
+.home-grid p {
+	line-height: 2;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	/* font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px; */
+	text-decoration: none;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+
+.youtube-video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+  }
+  
+  .youtube-video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  }
+  
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+
+		<script async="" data-id="101475026" src="//static.getclicky.com/js"></script>
+
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Jono&#39;s Corner</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Posts</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1 id="why-paseo-is-my-daily-driver">Why Paseo is my daily driver</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2026-10-20">20 October 2026</time></li>
+	<li><a href="/tags/tech/" class="post-tag">tech</a></li>
+</ul>
+
+<p>
+	<heading-anchors>
+		<p>There is no shortage of <a href="https://agentmgmt.dev/">agentic workspaces</a> these days. I do really love how there are so many different takes on the problems and solutions. Ah, open source, and the beauty of choice!</p>
+<p>In some of my <a href="https://www.dgt.is/blog/2026-07-19-ai-dev-log">recent posts</a>, I have been on a quest to find functional AI orchestration web front-ends for my use, and it's sort of impossible to keep track of all the new ones that are always coming into existence. Several were probably birthed while I was writing the sentence.</p>
+<p>For me, <a href="https://paseo.sh/">Paseo</a> has the right balance of features (that actually work). It empowers me, gets out of my way, and is easy to access across all my devices/platforms. The project is live and kicking with thousands of stars, open discussions, and tickets.</p>
+<p>I have spent the last few months using Paseo as my coding operating system, so I am familiar with all of its functionality and quirks. Here is a list of reasons (in order of importance to me) why Paseo has been my favorite tool.</p>
+<h2 id="it-gives-me-a-stateful-workspace-for-all-ongoing-work">It gives me a stateful workspace for all ongoing work</h2>
+<center>
+<picture><source type="image/avif" srcset="/blog/2026-10-20-paseo/CXnP2n9LA5-2068.avif 2068w"><source type="image/webp" srcset="/blog/2026-10-20-paseo/CXnP2n9LA5-2068.webp 2068w"><img loading="lazy" decoding="async" src="/blog/2026-10-20-paseo/CXnP2n9LA5-2068.png" alt="paseo threads" width="2068" height="1452"></picture>
+</center>
+<p>All my projects and sessions are there. All the time. If the agents are not running, they are essentially conversations ready for me to continue on whenever I am ready. No more need to start the IDE and get reacquainted with what I was doing. No Terminal/Tmux connection needed. This is what the web was made for. The context is literally all there, ready to go, like I never left. It's like my Firefox, with 100 stateful tabs. I can dive into an old topic right wherever I left off when I am ready.</p>
+<h2 id="forking-is-amazing">Forking is amazing!</h2>
+<p>I use it several times a day. I'm not sure what I would do without this superpower. When evaluating a plan the LLM often tells me things to be aware of, or what will bite me later outside of the topic of what I am currently working on. Sometimes I will have it write that to a ticket to pick up later. But it's even easier to have it fork off the conversation into a new session and pick that new subject up right then and there.</p>
+<center>
+<picture><source type="image/avif" srcset="/blog/2026-10-20-paseo/A3jfRomh_t-516.avif 516w"><source type="image/webp" srcset="/blog/2026-10-20-paseo/A3jfRomh_t-516.webp 516w"><img loading="lazy" decoding="async" src="/blog/2026-10-20-paseo/A3jfRomh_t-516.png" alt="forking threads" width="516" height="574"></picture>
+</center>
+<p>I use these for other side quests all the time. It's also the only way I know of to switch agents midstream. You can switch models in the same session, but if you need to switch from Claude to Opencode, that won't work unless you fork.</p>
+<h2 id="authentication-is-simple">Authentication is simple</h2>
+<p>Maybe I'm missing the point, but most of <a href="https://github.com/slopus/happy/tree/main/packages/happy-server">these services ship with a control plane</a>, or some kind of middleman service to help with remote access. These additional processes mostly get in my way. I particularly <a href="https://github.com/pingdotgg/t3code/discussions/6867">don't like</a> T3's solution, <a href="https://github.com/pingdotgg/t3code/blob/main/docs/user/remote-access.md">which relies on a hosted broker with account limits</a>. I would prefer to manage my network how I like. Tailscale gets this job done on its own without hand-holding.</p>
+<h2 id="the-terminal-and-scrolling-actually-works-on-mobile">The terminal and scrolling actually works on mobile</h2>
+<p>This is something most of these projects fail at. When I try a new project that has web terminal support, this is the first thing I check. Along with how the keyboard special keys work. Suffice to say, none of them work out of the box (<a href="https://github.com/siteboon/claudecodeui/issues/908">like no one bothered to check</a>), except Paseo. Continuing my theme of Paseo impressions - things just work. I'm not filing a bug report within 10 minutes of trying it. No surprises.</p>
+<p>While I rely less and less on terminals when working with agents, dependence on worktrees has made these integrated terminals particularly important. This is because finding where that worktree directory is not always easy, and just starting the in-session terminal solves that and more if you use the integrated Paseo worktree hooks.</p>
+<h2 id="client-server-version-mismatches-gracefully-degrade">Client/server version mismatches gracefully degrade</h2>
+<p>This is just not an assumption most client/server architectures support. And I have been very pleasantly surprised that Paseo handles this so well, because my server and phone may be running different versions - forward or behind. This is one of those features I took for granted until I was setting up T3 and found that it was not so forgiving. I had to do some serious gymnastics to keep them in lock step.</p>
+<h2 id="low-connectivity-no-problem">Low connectivity, no problem</h2>
+<p>I do a lot of work while on a train with a spotty connection as I go in and out of tunnels. Sure, the server can't respond in those cases, but many of these services halt the client entirely in this case. This is completely unnecessary and bad UX.</p>
+<p>Claude Web is particularly bad at this. Not only does a weak connection cripple the client, it also affects the server. If the agent is plugging away and my connection drops it can mess up the server side process as well. This should not be an issue. When I fire off a prompt I should be able to close my phone and come back later to see what happened on the host.</p>
+<p>In Paseo, the page stays open where I can review all the discussion from the running session, and more importantly, type into the message box. Then when the connection is up, the server will get it. I don't need to wait for a full connection before even starting to type. This is a simple thing for any productivity app to get right.</p>
+<h2 id="multi-host-support-works-great">Multi-host support works great</h2>
+<p>I have Paseo set up across operating systems, architectures, agents, models. <code>npx</code> gets you 95% there. NixOS is my main driver, which can be complex for new services, but this simple base service does not need a bunch of special architecture to get going.</p>
+<p>I can quickly point my client to a series of hosts in my Tailscale and immediately get going. Onboarding is a snap and this is important for me since I work from many devices (home desktop, work laptop, phone, tablets).</p>
+<h2 id="room-for-improvement">Room for improvement</h2>
+<p>After spending months with Paseo as my primary driver, I can't help but notice the quirks that bite me here and there. Here are some current ongoing issues/discussions that are important to me. Though I'm pretty sure they will work out over time.</p>
+<ul>
+<li>More comprehensive usage/hourly limits across models/agents. The global across agents is pretty good, but I have needed to build patches/plugins for <a href="https://github.com/getpaseo/paseo/discussions/3304">handling non-Claude agents like MiniMax</a> when viewing directly in chat.</li>
+<li><a href="https://github.com/getpaseo/paseo/discussions/2729">Landscape mode on mobile</a>. The history shows that this was hard code disabled at some point. Sometimes I need a wide view when viewing ASCII diagrams for example.</li>
+<li><a href="https://github.com/getpaseo/paseo/discussions/4487">Better organization tools</a> for <a href="https://github.com/getpaseo/paseo/discussions/4495#discussioncomment-18414047">managing large amounts of threads</a>.</li>
+<li>Moving threads between agents/models would be great, but I would like a <a href="https://github.com/getpaseo/paseo/discussions/3377">way to move across hosts</a> too. This has come up recently for me more so as I work on a <a href="https://github.com/jonocodes/deckd">project</a> that has platform specific needs. I have the Paseo service running on a Mac and Linux box, which I need to switch back and forth between.</li>
+</ul>
+
+	</heading-anchors>
+</p>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2026-10-07-deepseek-freek-out/">Why Isn&#39;t The Industry Freaking Out About DeepSeek 4.1 Flash?</a></li>
+</ul>
+
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2026-10-20-paseo/` was built on 2026-10-21T04:44:39.655Z -->
+		<script type="module" src="/dist/cC8wS6ZjFU.js"></script>
+	</body>
+</html>
