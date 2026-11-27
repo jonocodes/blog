@@ -32,9 +32,9 @@ Few scientists today doubt that animals like her can suffer. In 2024, hundreds o
  
 Her story isn't rare. It's normal. In the United States, about 99 out of every 100 farm animals live on factory farms. [^factoryfarms] That includes the pigs kept in crates too narrow to turn around in, [^crates] the hens crammed into cages or crowded sheds, [^eggs] and the dairy cows whose calves are taken away, usually within hours of birth. [^dairy]
  
-Around the world, more than 80 billion land animals are killed for food every year, about ten for every person on Earth. [^owid80b] Chickens alone are killed at a rate of more than 2,000 every second. [^owiddaily] In the ocean, it's even more: well over a trillion fish are caught every year, at least ten times the number of land animals. Most are never stunned, and many die slowly, out of the water. [^fish]
+Around the world, more than 80 billion land animals are killed for food every year, about ten for every person on Earth. [^owid80b] **Chickens alone are killed at a rate of more than 2,000 every second.** [^owiddaily] In the ocean, it's even more: well over a trillion fish are caught every year, at least ten times the number of land animals. Most are never stunned, and many die slowly, out of the water. [^fish]
  
-Numbers that big are impossible to really picture. So don't try. Just remember that every single one of them is an individual, like Nancy, like the turkey on so many tables today.
+Numbers that big are impossible to really picture. Just remember that every single one of them is an individual, like Nancy, like the turkey on so many tables today.
  
 We breed them into existence, own them, confine them, take their children, and kill them for food we don't need. If this were done to dogs, almost everyone would call it torture. It is a form of slavery, and it is torture. The only difference is which animals we've decided to look away from.
  
@@ -45,8 +45,7 @@ It's easy to feel like one person can't change something this big. But you aren'
 ## It's never too late
  
 None of this has to continue. It's never too late to do the right thing. Nancy is alive today because one family looked at a turkey and saw *someone*, and changed their minds. Every meal is a chance to do the same.
- 
----
+
 
  
 [^nancy]: Little Hill Sanctuary. [Nancy](https://littlehillsanctuary.org/nancy/). Her rescue story and sponsorship page.
