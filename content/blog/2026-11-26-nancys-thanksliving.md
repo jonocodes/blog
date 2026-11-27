@@ -1,11 +1,15 @@
 ---
 tags:
   - animals
-title: "Nancy's Thanksgiving"
+title: "Nancy's Thanks-Living"
 ---
  
 This year our family sponsored a turkey named [Nancy](https://littlehillsanctuary.org/nancy/). She lives at [Little Hill Sanctuary](https://littlehillsanctuary.org/) in Watsonville, California. Nancy was raised to be someone's Thanksgiving dinner, but before the holiday, the family who had her changed their minds and brought her to the sanctuary. The people who care for her say she is the sweetest girl, and that just sitting near her makes you feel calm. Today, Nancy gets to just *live*. [^nancy]
  
+<center>
+<img src="assets/nancy.jpg" alt="Nancy the turkey">
+</center>
+
 Nancy is one of the lucky ones. Almost no one like her is.
  
 We read the piece below aloud at our Thanksgiving table this year. I've added links and sources so you can check every claim for yourself.
@@ -42,7 +46,8 @@ It's easy to feel like one person can't change something this big. But you aren'
  
 None of this has to continue. It's never too late to do the right thing. Nancy is alive today because one family looked at a turkey and saw *someone*, and changed their minds. Every meal is a chance to do the same.
  
-If you'd like to help animals like Nancy directly, you can [sponsor a resident at Little Hill Sanctuary](https://littlehillsanctuary.org/nancy/) too.
+---
+
  
 [^nancy]: Little Hill Sanctuary. [Nancy](https://littlehillsanctuary.org/nancy/). Her rescue story and sponsorship page.
  
