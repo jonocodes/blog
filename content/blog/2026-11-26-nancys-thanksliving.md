@@ -1,0 +1,79 @@
+---
+tags:
+  - animals
+title: "Nancy's Thanksgiving"
+---
+ 
+This year our family sponsored a turkey named [Nancy](https://littlehillsanctuary.org/nancy/). She lives at [Little Hill Sanctuary](https://littlehillsanctuary.org/) in Watsonville, California. Nancy was raised to be someone's Thanksgiving dinner, but before the holiday, the family who had her changed their minds and brought her to the sanctuary. The people who care for her say she is the sweetest girl, and that just sitting near her makes you feel calm. Today, Nancy gets to just *live*. [^nancy]
+ 
+Nancy is one of the lucky ones. Almost no one like her is.
+ 
+We read the piece below aloud at our Thanksgiving table this year. I've added links and sources so you can check every claim for yourself.
+ 
+## The turkey who wasn't Nancy
+ 
+Picture another turkey, one who never got her luck. Every Thanksgiving, roughly 46 million turkeys like her are killed in the United States. [^turkeys] That's more turkeys than there are people living in all of California. [^census]
+ 
+She hatches in a factory hatchery and never meets her mother. On her first day of life, the tip of her beak is cut or burned off, because she'll spend her life so crowded with other birds that they would injure each other. [^beak] She grows up in a packed shed with thousands of others. She has been bred to grow so big, so fast, that by the end her legs can barely hold her up, and walking hurts. [^wap] [^carprofen]
+ 
+When she's a few months old, still a baby, she's loaded onto a truck and taken to a slaughterhouse. [^wap] Workers hang her upside down by her legs from a metal shackle on a moving line. She is dragged head-first through electrified water meant to stun her, then pulled across a machine blade that cuts her throat. [^lclark] If the blade misses, which the USDA estimates happens to about a million birds a year, she goes into the next tank still alive. It's full of scalding water meant to loosen her feathers. [^scalded]
+ 
+Federal law does almost nothing to protect her through any of this. The law that requires farm animals to be made unconscious before slaughter leaves birds out completely. [^hmsa]
+ 
+## She feels all of it
+ 
+Few scientists today doubt that animals like her can suffer. In 2024, hundreds of researchers signed the New York Declaration on Animal Consciousness, which says there is strong scientific support for conscious experience in mammals and birds. [^nydeclaration] Chickens, turkeys, pigs, and cows have the same basic pain systems we do: the same kinds of nerves, the same pain signals, and brain regions involved in fear and distress. Vets treat their pain with many of the same drugs used for dogs and cats. [^carprofen] A turkey hanging upside down from a shackle has the same basic capacity for pain and fear as the dog sleeping on your couch. We just don't let ourselves think about it.
+ 
+## Every one of them is someone
+ 
+Her story isn't rare. It's normal. In the United States, about 99 out of every 100 farm animals live on factory farms. [^factoryfarms] That includes the pigs kept in crates too narrow to turn around in, [^crates] the hens crammed into cages or crowded sheds, [^eggs] and the dairy cows whose calves are taken away, usually within hours of birth. [^dairy]
+ 
+Around the world, more than 80 billion land animals are killed for food every year, about ten for every person on Earth. [^owid80b] Chickens alone are killed at a rate of more than 2,000 every second. [^owiddaily] In the ocean, it's even more: well over a trillion fish are caught every year, at least ten times the number of land animals. Most are never stunned, and many die slowly, out of the water. [^fish]
+ 
+Numbers that big are impossible to really picture. So don't try. Just remember that every single one of them is an individual, like Nancy, like the turkey on so many tables today.
+ 
+We breed them into existence, own them, confine them, take their children, and kill them for food we don't need. If this were done to dogs, almost everyone would call it torture. It is a form of slavery, and it is torture. The only difference is which animals we've decided to look away from.
+ 
+## One plate at a time
+ 
+It's easy to feel like one person can't change something this big. But you aren't responsible for the whole system. You're responsible for your own choices, and those are completely in your hands. Every meal is a small decision about whether an animal like her is part of it. Over a lifetime, those small decisions add up to real animals who never have to live that life.
+ 
+## It's never too late
+ 
+None of this has to continue. It's never too late to do the right thing. Nancy is alive today because one family looked at a turkey and saw *someone*, and changed their minds. Every meal is a chance to do the same.
+ 
+If you'd like to help animals like Nancy directly, you can [sponsor a resident at Little Hill Sanctuary](https://littlehillsanctuary.org/nancy/) too.
+ 
+[^nancy]: Little Hill Sanctuary. [Nancy](https://littlehillsanctuary.org/nancy/). Her rescue story and sponsorship page.
+ 
+[^turkeys]: TIME. [How many turkeys are killed for Thanksgiving](https://time.com/5022315/turkeys-killed-thanksgiving/). National Turkey Federation estimate of about 45–46 million turkeys per Thanksgiving.
+ 
+[^census]: U.S. Census Bureau. [QuickFacts: California](https://www.census.gov/quickfacts/CA). Population estimate of 39.4 million (July 2025).
+ 
+[^beak]: [Peer-reviewed study of beak shape in commercial turkeys](https://pmc.ncbi.nlm.nih.gov/articles/PMC5608350) (PMC). Infrared beak trimming is standard practice, typically done at the hatchery on day-old poults.
+ 
+[^wap]: World Animal Protection. [5 ways turkeys suffer on factory farms](https://worldanimalprotection.us/blogs/5-ways-turkeys-suffer-factory-farms). Birth to slaughter in under five months; leg and joint pain from rapid growth.
+ 
+[^carprofen]: McGeown et al. (1999). [Effect of carprofen on lameness in broiler chickens](https://pubmed.ncbi.nlm.nih.gov/10404606/). Veterinary Record. Carprofen, a painkiller commonly prescribed for dogs, sharply improved walking in lame fast-growing chickens, evidence that walking hurts them. See also Danbury et al. (2000), [Self-selection of the analgesic drug carprofen by lame broiler chickens](https://research-information.bris.ac.uk/en/publications/self-selection-of-the-analgesic-drug-carprofen-by-lame-broiler-ch/), in which lame birds chose painkiller-laced feed.
+ 
+[^lclark]: Lewis & Clark Law School. [Let's Talk Turkey: The Law Fails To Provide Even Basic Protections To Birds Used For Food](https://law.lclark.edu/live/news/42379). Shackling, electrified-water stunning, and throat-cutting blades; 99.8% of U.S. turkeys are raised on factory farms.
+ 
+[^scalded]: Mercy For Animals. [Tell the USDA it's time to end the torture](https://mercyforanimals.org/blog/tell-the-usda-its-time-to-end-the-torture/). Citing the USDA estimate that about 1 million birds a year are scalded alive.
+ 
+[^hmsa]: USDA National Agricultural Library. [Humane Methods of Slaughter Act](https://www.nal.usda.gov/awic/humane-methods-slaughter-act). The Act covers livestock but not poultry. USDA says poultry are instead handled under the Poultry Products Inspection Act, which has no stunning requirement.
+ 
+[^nydeclaration]: The Tyee (2024). [If Animals Are Conscious, What About Us?](https://thetyee.ca/Analysis/2024/04/29/If-Animals-Are-Conscious-What-About-Us/). Quotes the New York Declaration on Animal Consciousness, which states there is "strong scientific support" for conscious experience in mammals and birds. Some scientists [argue the declaration overstates the evidence](https://thetransmitter.org/consciousness/premature-declarations-on-animal-consciousness-hinder-progress), especially for birds.
+ 
+[^factoryfarms]: Sentience Institute. [US Factory Farming Estimates](https://sentienceinstitute.org/us-factory-farming-estimates). An estimated 99% of U.S. farmed animals live on factory farms, a figure driven mostly by chickens.
+ 
+[^crates]: UC Davis Center for Animal Welfare. [Proposition 12 FAQs about Pigs](https://animalwelfare.ucdavis.edu/uploads/6/3/7/0/63703691/prop_12_faq_swine.pdf). Gestation crates are typically 7 by 2 feet; a 2012 USDA survey found most large-herd U.S. sows housed in them.
+ 
+[^eggs]: USDA Agricultural Marketing Service. [Egg Markets Overview](https://esmis.nal.usda.gov/sites/default/release-files/73667q50n/vd66z011g/nz807z48k/AMS_3725.PDF). U.S. table-egg hens are roughly 54% caged and 46% cage-free; cage-free hens live in crowded barns.
+ 
+[^dairy]: USDA APHIS (2021). [Colostrum Feeding and Management on U.S. Dairy Operations, 1991–2014](https://www.aphis.usda.gov/sites/default/files/colostrum-feeding-mgmt-us-dairy-ops-1991-2014.pdf). In 2014, 71.5% of dairy operations separated calves from their mothers less than 12 hours after birth.
+ 
+[^owid80b]: Our World in Data. [More than 80 billion land animals are slaughtered for meat every year](https://ourworldindata.org/data-insights/billions-of-chickens-ducks-and-pigs-are-slaughtered-for-meat-every-year). 83 billion in 2022.
+ 
+[^owiddaily]: Our World in Data. [How many animals get slaughtered every day?](https://ourworldindata.org/how-many-animals-get-slaughtered-every-day). About 202 million chickens per day (2021), or roughly 2,340 per second.
+ 
+[^fish]: Mood, A. & Brooke, P. (2024). [Estimating global numbers of fishes caught from the wild annually from 2000 to 2019](https://www.cambridge.org/core/journals/animal-welfare/article/estimating-global-numbers-of-fishes-caught-from-the-wild-annually-from-2000-to-2019/83F1B933E8691F3A552636620E8C7A01). Animal Welfare. 1.1–2.2 trillion wild fish caught per year; most are not stunned.
