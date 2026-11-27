@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Nancy&#39;s Thanks-Living</title>
+		<meta name="description" content="thoughts, talks, docs and unpopular opinions">
+		<link rel="alternate" href="feed/feed.xml" type="application/atom+xml" title="Jono&#39;s Corner">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+/* This is an arbitrary CSS string added to the bundle */
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		/* --text-color-link: #5d99ca;
+		--text-color-link-active: #6969f7; 
+		--text-color-link-visited: #a6a6f8; */
+
+		--text-color-link: #bebebe;
+		--text-color-link-active: #bebebe;
+		--text-color-link-visited: #bebebe;
+
+		/* --background-color: #15202b; */
+		--background-color: #1a1a1a;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	/* max-width: 40em; */
+
+	max-width: 50em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* Fluid images via https://www.zachleat.com/web/fluid-images/ */
+img {
+  max-width: 100%;
+}
+img[width][height] {
+  height: auto;
+}
+img[src$=".svg"] {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main,
+footer {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	display: flex;
+	justify-content: space-between;
+	gap: .5em 1em;
+	list-style: "";
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+.links-nextprev > * {
+	flex-grow: 1;
+}
+.links-nextprev-next {
+	text-align: right;
+}
+
+table {
+	margin: 1em 0;
+	width: 100%;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+.home-grid hr {
+	margin: -10px 20px -8px 0;
+}
+.home-grid table {
+	/* padding: 20px; */
+}
+.home-grid td {
+	/* border: 1px solid red; */
+	width: 50%;
+	vertical-align: top;
+	padding: 20px 0 5px 0;
+}
+
+.home-grid p {
+	line-height: 2;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	/* font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px; */
+	text-decoration: none;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+
+.youtube-video {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 aspect ratio */
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+  }
+  
+  .youtube-video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  }
+  
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}</style>
+
+		<script async="" data-id="101475026" src="//static.getclicky.com/js"></script>
+
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/" class="home-link">Jono&#39;s Corner</a>
+			<nav>
+				<h2 class="visually-hidden" id="top-level-navigation-menu">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="/">Home</a></li>
+					<li class="nav-item"><a href="/blog/">Posts</a></li>
+					<li class="nav-item"><a href="/about/">About</a></li>
+					<li class="nav-item"><a href="/feed/feed.xml">Feed</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1 id="nancys-thanks-living">Nancy&#39;s Thanks-Living</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2026-11-26">26 November 2026</time></li>
+	<li><a href="/tags/animals/" class="post-tag">animals</a></li>
+</ul>
+
+<p>
+	<heading-anchors>
+		<p>This year our family sponsored a turkey named <a href="https://littlehillsanctuary.org/nancy/">Nancy</a>. She lives at <a href="https://littlehillsanctuary.org/">Little Hill Sanctuary</a> in Watsonville, California. Nancy was raised to be someone's Thanksgiving dinner, but before the holiday, the family who had her changed their minds and brought her to the sanctuary. The people who care for her say she is the sweetest girl, and that just sitting near her makes you feel calm. Today, Nancy gets to just <em>live</em>. <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<center>
+<picture><source type="image/avif" srcset="/blog/2026-11-26-nancys-thanksliving/3kNCFdOvJ7-500.avif 500w"><source type="image/webp" srcset="/blog/2026-11-26-nancys-thanksliving/3kNCFdOvJ7-500.webp 500w"><img loading="lazy" decoding="async" src="/blog/2026-11-26-nancys-thanksliving/3kNCFdOvJ7-500.jpeg" alt="Nancy the turkey" width="500" height="500"></picture>
+</center>
+<p>Nancy is one of the lucky ones. Almost no one like her is.</p>
+<p>We read the piece below aloud at our Thanksgiving table this year. I've added links and sources so you can check every claim for yourself.</p>
+<h2 id="the-turkey-who-wasnt-nancy">The turkey who wasn't Nancy</h2>
+<p>Picture another turkey, one who never got her luck. Every Thanksgiving, roughly 46 million turkeys like her are killed in the United States. <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> That's more turkeys than there are people living in all of California. <sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>She hatches in a factory hatchery and never meets her mother. On her first day of life, the tip of her beak is cut or burned off, because she'll spend her life so crowded with other birds that they would injure each other. <sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> She grows up in a packed shed with thousands of others. She has been bred to grow so big, so fast, that by the end her legs can barely hold her up, and walking hurts. <sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup> <sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup></p>
+<p>When she's a few months old, still a baby, she's loaded onto a truck and taken to a slaughterhouse. <sup class="footnote-ref"><a href="#fn5" id="fnref5:1">[5:1]</a></sup> Workers hang her upside down by her legs from a metal shackle on a moving line. She is dragged head-first through electrified water meant to stun her, then pulled across a machine blade that cuts her throat. <sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup> If the blade misses, which the USDA estimates happens to about a million birds a year, she goes into the next tank still alive. It's full of scalding water meant to loosen her feathers. <sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup></p>
+<p>Federal law does almost nothing to protect her through any of this. The law that requires farm animals to be made unconscious before slaughter leaves birds out completely. <sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup></p>
+<h2 id="she-feels-all-of-it">She feels all of it</h2>
+<p>Few scientists today doubt that animals like her can suffer. In 2024, hundreds of researchers signed the New York Declaration on Animal Consciousness, which says there is strong scientific support for conscious experience in mammals and birds. <sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup> Chickens, turkeys, pigs, and cows have the same basic pain systems we do: the same kinds of nerves, the same pain signals, and brain regions involved in fear and distress. Vets treat their pain with many of the same drugs used for dogs and cats. <sup class="footnote-ref"><a href="#fn6" id="fnref6:1">[6:1]</a></sup> A turkey hanging upside down from a shackle has the same basic capacity for pain and fear as the dog sleeping on your couch. We just don't let ourselves think about it.</p>
+<h2 id="every-one-of-them-is-someone">Every one of them is someone</h2>
+<p>Her story isn't rare. It's normal. In the United States, about 99 out of every 100 farm animals live on factory farms. <sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup> That includes the pigs kept in crates too narrow to turn around in, <sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup> the hens crammed into cages or crowded sheds, <sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup> and the dairy cows whose calves are taken away, usually within hours of birth. <sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup></p>
+<p>Around the world, more than 80 billion land animals are killed for food every year, about ten for every person on Earth. <sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup> Chickens alone are killed at a rate of more than 2,000 every second. <sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup> In the ocean, it's even more: well over a trillion fish are caught every year, at least ten times the number of land animals. Most are never stunned, and many die slowly, out of the water. <sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup></p>
+<p>Numbers that big are impossible to really picture. So don't try. Just remember that every single one of them is an individual, like Nancy, like the turkey on so many tables today.</p>
+<p>We breed them into existence, own them, confine them, take their children, and kill them for food we don't need. If this were done to dogs, almost everyone would call it torture. It is a form of slavery, and it is torture. The only difference is which animals we've decided to look away from.</p>
+<h2 id="one-plate-at-a-time">One plate at a time</h2>
+<p>It's easy to feel like one person can't change something this big. But you aren't responsible for the whole system. You're responsible for your own choices, and those are completely in your hands. Every meal is a small decision about whether an animal like her is part of it. Over a lifetime, those small decisions add up to real animals who never have to live that life.</p>
+<h2 id="its-never-too-late">It's never too late</h2>
+<p>None of this has to continue. It's never too late to do the right thing. Nancy is alive today because one family looked at a turkey and saw <em>someone</em>, and changed their minds. Every meal is a chance to do the same.</p>
+<hr>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Little Hill Sanctuary. <a href="https://littlehillsanctuary.org/nancy/">Nancy</a>. Her rescue story and sponsorship page. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>TIME. <a href="https://time.com/5022315/turkeys-killed-thanksgiving/">How many turkeys are killed for Thanksgiving</a>. National Turkey Federation estimate of about 45–46 million turkeys per Thanksgiving. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>U.S. Census Bureau. <a href="https://www.census.gov/quickfacts/CA">QuickFacts: California</a>. Population estimate of 39.4 million (July 2025). <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5608350">Peer-reviewed study of beak shape in commercial turkeys</a> (PMC). Infrared beak trimming is standard practice, typically done at the hatchery on day-old poults. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>World Animal Protection. <a href="https://worldanimalprotection.us/blogs/5-ways-turkeys-suffer-factory-farms">5 ways turkeys suffer on factory farms</a>. Birth to slaughter in under five months; leg and joint pain from rapid growth. <a href="#fnref5" class="footnote-backref">↩︎</a> <a href="#fnref5:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>McGeown et al. (1999). <a href="https://pubmed.ncbi.nlm.nih.gov/10404606/">Effect of carprofen on lameness in broiler chickens</a>. Veterinary Record. Carprofen, a painkiller commonly prescribed for dogs, sharply improved walking in lame fast-growing chickens, evidence that walking hurts them. See also Danbury et al. (2000), <a href="https://research-information.bris.ac.uk/en/publications/self-selection-of-the-analgesic-drug-carprofen-by-lame-broiler-ch/">Self-selection of the analgesic drug carprofen by lame broiler chickens</a>, in which lame birds chose painkiller-laced feed. <a href="#fnref6" class="footnote-backref">↩︎</a> <a href="#fnref6:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Lewis &amp; Clark Law School. <a href="https://law.lclark.edu/live/news/42379">Let's Talk Turkey: The Law Fails To Provide Even Basic Protections To Birds Used For Food</a>. Shackling, electrified-water stunning, and throat-cutting blades; 99.8% of U.S. turkeys are raised on factory farms. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Mercy For Animals. <a href="https://mercyforanimals.org/blog/tell-the-usda-its-time-to-end-the-torture/">Tell the USDA it's time to end the torture</a>. Citing the USDA estimate that about 1 million birds a year are scalded alive. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn9" class="footnote-item"><p>USDA National Agricultural Library. <a href="https://www.nal.usda.gov/awic/humane-methods-slaughter-act">Humane Methods of Slaughter Act</a>. The Act covers livestock but not poultry. USDA says poultry are instead handled under the Poultry Products Inspection Act, which has no stunning requirement. <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>The Tyee (2024). <a href="https://thetyee.ca/Analysis/2024/04/29/If-Animals-Are-Conscious-What-About-Us/">If Animals Are Conscious, What About Us?</a>. Quotes the New York Declaration on Animal Consciousness, which states there is &quot;strong scientific support&quot; for conscious experience in mammals and birds. Some scientists <a href="https://thetransmitter.org/consciousness/premature-declarations-on-animal-consciousness-hinder-progress">argue the declaration overstates the evidence</a>, especially for birds. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>Sentience Institute. <a href="https://sentienceinstitute.org/us-factory-farming-estimates">US Factory Farming Estimates</a>. An estimated 99% of U.S. farmed animals live on factory farms, a figure driven mostly by chickens. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn12" class="footnote-item"><p>UC Davis Center for Animal Welfare. <a href="https://animalwelfare.ucdavis.edu/uploads/6/3/7/0/63703691/prop_12_faq_swine.pdf">Proposition 12 FAQs about Pigs</a>. Gestation crates are typically 7 by 2 feet; a 2012 USDA survey found most large-herd U.S. sows housed in them. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn13" class="footnote-item"><p>USDA Agricultural Marketing Service. <a href="https://esmis.nal.usda.gov/sites/default/release-files/73667q50n/vd66z011g/nz807z48k/AMS_3725.PDF">Egg Markets Overview</a>. U.S. table-egg hens are roughly 54% caged and 46% cage-free; cage-free hens live in crowded barns. <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn14" class="footnote-item"><p>USDA APHIS (2021). <a href="https://www.aphis.usda.gov/sites/default/files/colostrum-feeding-mgmt-us-dairy-ops-1991-2014.pdf">Colostrum Feeding and Management on U.S. Dairy Operations, 1991–2014</a>. In 2014, 71.5% of dairy operations separated calves from their mothers less than 12 hours after birth. <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn15" class="footnote-item"><p>Our World in Data. <a href="https://ourworldindata.org/data-insights/billions-of-chickens-ducks-and-pigs-are-slaughtered-for-meat-every-year">More than 80 billion land animals are slaughtered for meat every year</a>. 83 billion in 2022. <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn16" class="footnote-item"><p>Our World in Data. <a href="https://ourworldindata.org/how-many-animals-get-slaughtered-every-day">How many animals get slaughtered every day?</a>. About 202 million chickens per day (2021), or roughly 2,340 per second. <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn17" class="footnote-item"><p>Mood, A. &amp; Brooke, P. (2024). <a href="https://www.cambridge.org/core/journals/animal-welfare/article/estimating-global-numbers-of-fishes-caught-from-the-wild-annually-from-2000-to-2019/83F1B933E8691F3A552636620E8C7A01">Estimating global numbers of fishes caught from the wild annually from 2000 to 2019</a>. Animal Welfare. 1.1–2.2 trillion wild fish caught per year; most are not stunned. <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+	</heading-anchors>
+</p>
+<ul class="links-nextprev"><li class="links-nextprev-prev">← Previous<br> <a href="/blog/2026-10-20-paseo/">Why Paseo is my daily driver</a></li>
+</ul>
+
+		</main>
+
+		<footer>
+			<p><em>Built with <a href="https://www.11ty.dev/">eleventy</a></em></p>
+		</footer>
+
+		<!-- This page `/blog/2026-11-26-nancys-thanksliving/` was built on 2026-11-27T05:25:07.042Z -->
+		<script type="module" src="/dist/qUi4CpUNIF.js"></script>
+	</body>
+</html>
